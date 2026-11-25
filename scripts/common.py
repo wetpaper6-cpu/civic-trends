@@ -86,6 +86,8 @@ def _call_claude(prompt, model, max_tokens, timeout, thinking):
     }
     if thinking:
         req["thinking"] = thinking
+        if thinking.get("type") == "disabled":
+            req["temperature"] = 0  # 같은 기사엔 같은 판단
     body = json.dumps(req).encode()
     raw = fetch("https://api.anthropic.com/v1/messages", {
         "x-api-key": "".join(os.environ["ANTHROPIC_API_KEY"].split()),
