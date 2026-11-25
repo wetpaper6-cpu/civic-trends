@@ -43,8 +43,8 @@ def search_naver(org, keyword, since):
     url = ("https://naverapihub.apigw.ntruss.com/search/v1/news"
            f"?query={quote(query)}&display=100&sort=date")
     data = json.loads(fetch(url, {
-        "X-NCP-APIGW-API-KEY-ID": os.environ["NAVER_CLIENT_ID"].strip(),
-        "X-NCP-APIGW-API-KEY": os.environ["NAVER_CLIENT_SECRET"].strip(),
+        "X-NCP-APIGW-API-KEY-ID": "".join(os.environ["NAVER_CLIENT_ID"].split()),
+        "X-NCP-APIGW-API-KEY": "".join(os.environ["NAVER_CLIENT_SECRET"].split()),
     }))
     for it in data.get("items", []):
         try:
@@ -140,6 +140,45 @@ def group_events(items):
     return events
 
 
+CLUSTER_PROMPT = """아래는 시민사회단체 관련 뉴스 기사·게시글 목록입니다. 두 가지를 해 주세요.
+1) 같은 행사(같은 기자회견·집회, 같은 성명·논평)를 다룬 항목끼리 묶기. 언론사마다 제목이 달라도 같은 행사면 한 묶음입니다.
+2) 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평·보도자료가 아닌 항목은 제외 목록에 넣기
+   (단체가 잠깐 언급만 된 기사, 칼럼, 인사·동정, 단체와 무관한 동명 기사 등)
+
+JSON으로만 답하세요: {{"groups": [[번호, ...], ...], "drop": [번호, ...]}}
+모든 번호는 groups 또는 drop 중 한 곳에 한 번씩만 넣으세요.
+
+목록
+{items}"""
+
+
+def cluster_llm(groups):
+    """Claude로 같은 사안 묶기 + 관련 없는 기사 제외"""
+    lines = [f"{i}. [{g['org']}] {g['main']['title']} | {g['main']['snippet'][:120]}"
+             for i, g in enumerate(groups, 1)]
+    res = parse_json(call_claude(CLUSTER_PROMPT.format(items="\n".join(lines)),
+                                 CONFIG.get("model_daily", "claude-haiku-5-5"), 4000, 180))
+    n = len(groups)
+    drop = {i for i in res.get("drop", []) if isinstance(i, int)}
+    used, merged = set(), []
+    for grp in res.get("groups", []):
+        ids = [i for i in grp if isinstance(i, int) and 1 <= i <= n and i not in used and i not in drop]
+        if not ids:
+            continue
+        used.update(ids)
+        members = [groups[i - 1] for i in ids]
+        # 대표 기사: 단체 홈페이지 원문 > 가장 많이 보도된 묶음
+        base = max(members, key=lambda g: (g["main"]["source"] == "homepage", len(g["articles"])))
+        ev = {"org": base["org"], "keywords": [], "main": base["main"], "articles": []}
+        for g in members:
+            ev["articles"] += g["articles"]
+            ev["keywords"] += [k for k in g["keywords"] if k not in ev["keywords"]]
+        merged.append(ev)
+    merged += [g for i, g in enumerate(groups, 1) if i not in used and i not in drop]
+    log(f"Claude 묶기: {n}건 → {len(merged)}건 (제외 {len(drop)}건)")
+    return merged
+
+
 # ================================================================ 본문·항목 추출
 def article_text(url, limit=4000):
     try:
@@ -177,11 +216,14 @@ TIME_RE = re.compile(
 
 
 def clean_place(p):
-    """'오전 11시 청와대 분수대 앞' → '청와대 분수대 앞'"""
+    """'협동사무처장은 24일 오전 11시 국회 소통관' → '국회 소통관'
+    마지막 날짜·시각·주어(…은/는) 표현 뒤의 말만 장소로 씀"""
     tokens = p.split()
-    while len(tokens) > 1 and re.match(r"^(\d+(일|시|분)?|오전|오후|반|\S*[은는이가])$", tokens[0]):
-        tokens.pop(0)
-    return " ".join(tokens)
+    cut = 0
+    for i, t in enumerate(tokens[:-1]):
+        if re.search(r"\d", t) or re.match(r"^(오전|오후|반|등|\S*[은는이가])$", t):
+            cut = i + 1
+    return " ".join(tokens[cut:])
 
 
 def extract_rules(ev, text):
@@ -353,6 +395,13 @@ def main():
     SEEN_FILE.write_text(json.dumps(sorted(seen), ensure_ascii=False, indent=0))
 
     groups = group_events(list(items.values()))
+    groups.sort(key=lambda g: len(g["articles"]), reverse=True)
+    groups = groups[:200]
+    if has_claude() and len(groups) > 1:
+        try:
+            groups = cluster_llm(groups)
+        except Exception as e:
+            log(f"[Claude 묶기 실패, 제목 유사도로만 묶음] {e}")
     events = [enrich(g) for g in groups[:CONFIG.get("max_events", 80)]]
     order = {t: i for i, t in enumerate(TYPES + ["집회", "보도"])}
     events.sort(key=lambda e: (order.get(e["type"], 9), e["org"], e["published"]))

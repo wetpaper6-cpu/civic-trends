@@ -68,7 +68,7 @@ def call_claude(prompt, model, max_tokens=1000, timeout=120):
         "messages": [{"role": "user", "content": prompt}],
     }).encode()
     res = json.loads(fetch("https://api.anthropic.com/v1/messages", {
-        "x-api-key": os.environ["ANTHROPIC_API_KEY"].strip(),
+        "x-api-key": "".join(os.environ["ANTHROPIC_API_KEY"].split()),
         "anthropic-version": "2023-06-01",
         "content-type": "application/json"}, timeout=timeout, data=body))
     return "".join(b.get("text", "") for b in res["content"])
