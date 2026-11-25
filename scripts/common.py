@@ -112,6 +112,11 @@ def as_list(v):
     return [x.strip().lstrip("○-·•").strip() for x in items if x.strip().lstrip("○-·•").strip()]
 
 
+def as_text(v):
+    """주요 내용을 한 덩어리 글로 (예전 목록 형식도 이어 붙임)"""
+    return " ".join(as_list(v)) if isinstance(v, list) else " ".join(str(v or "").split())
+
+
 def parse_json(text):
     if "{" not in text:
         log(f"[Claude 응답에 JSON 없음] {text[:300]!r}")

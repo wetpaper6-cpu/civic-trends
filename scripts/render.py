@@ -18,7 +18,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 from common import DATA_DIR, FILES_DIR, load_json, log, report_date
-from common import as_list
+from common import as_list, as_text
 from weekly import points
 
 FONT = "맑은 고딕"
@@ -88,10 +88,7 @@ def daily_docx(d, out):
         else:
             label_line(doc, "일시", ev["datetime"])
         label_line(doc, "주최 기관", ev["hosts"])
-        p = doc.add_paragraph()
-        p.add_run("주요 내용 :").bold = True
-        p.paragraph_format.space_after = Pt(0)
-        bullets(doc, as_list(ev["summary"]))
+        label_line(doc, "주요 내용", as_text(ev["summary"]))
         src = doc.add_paragraph()
         first = ev["sources"][0]
         more = f" 외 {len(ev['sources']) - 1}건" if len(ev["sources"]) > 1 else ""
@@ -200,8 +197,7 @@ def daily_html(d):
             f"<div class='ev'><h3><span class='type'>[{e(ev['type'])}]</span> {e(ev['title'])}</h3>"
             f"<div class='row'><b>{'일시 / 장소' if ev['place'] else '일시'}</b> : {e(when)}</div>"
             f"<div class='row'><b>주최 기관</b> : {e(ev['hosts'])}</div>"
-            f"<div class='row'><b>주요 내용</b> :</div><ul class='bul'>"
-            + "".join(f"<li>{e(t)}</li>" for t in as_list(ev["summary"])) + "</ul>"
+            f"<div class='row'><b>주요 내용</b> : {e(as_text(ev['summary']))}</div>"
             f"<div class='src'>출처: {e(first['press'])}{more} · {e(first['url'])}</div></div>")
     return page(f"시민사회 동향 {d['period_label']}", "".join(parts))
 

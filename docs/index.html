@@ -92,7 +92,7 @@ function renderDaily() {
       <dl>
         <dt>${i.place ? "일시 / 장소" : "일시"}</dt><dd>${esc(i.datetime)}${i.place ? " / " + esc(i.place) : ""}</dd>
         <dt>주최 기관</dt><dd>${esc(i.hosts)}</dd>
-        <dt>주요 내용</dt><dd>${bul(i.summary)}</dd>
+        <dt>주요 내용</dt><dd>${esc(asList(i.summary).join(" "))}</dd>
       </dl>
       <div class="src">출처: ${(() => { const u = i.sources.filter((s, k, a) => a.findIndex(x => x.press === s.press) === k); return u.slice(0, 4).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.press)}</a>`).join(", ") + (i.sources.length > 4 ? ` 등 기사 ${i.sources.length}건` : ""); })()}</div>
     </div>`).join("") : `<div class="empty">해당 조건의 소식이 없습니다.</div>`);

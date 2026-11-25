@@ -12,7 +12,7 @@
 from collections import Counter
 from datetime import timedelta
 
-from common import (as_list, BUILD_DIR, CONFIG, DATA_DIR, call_claude, has_claude, load_json, log,
+from common import (as_list, as_text, BUILD_DIR, CONFIG, DATA_DIR, call_claude, has_claude, load_json, log,
                     now_kst, parse_json, period_label, report_date, save_json, build_index)
 
 PROMPT = """당신은 한국 시민사회 동향을 정리하는 정책 분석가입니다.
@@ -62,7 +62,7 @@ def main():
     label = period_label(start, today)
     log(f"주간: {label} 사안 {len(events)}건")
 
-    lines = [f"{i}. [{e['type']}] {e['published'][5:10]} {e['hosts']} | {e['title']} | {' / '.join(as_list(e['summary']))}"
+    lines = [f"{i}. [{e['type']}] {e['published'][5:10]} {e['hosts']} | {e['title']} | {as_text(e['summary'])}"
              for i, e in enumerate(events, 1)]
 
     report = None
@@ -86,7 +86,7 @@ def main():
             "main_issues": [{"title": "(자동 요약 미사용)",
                              "points": ["ANTHROPIC_API_KEY를 등록하면 이 부분을 Claude가 작성함"]}],
             "other_issues": [],
-            "table": [{"issue": e["title"], "actor": e["hosts"], "claim": " / ".join(as_list(e["summary"])),
+            "table": [{"issue": e["title"], "actor": e["hosts"], "claim": as_text(e["summary"]),
                        "ref": [i]} for i, e in enumerate(events, 1)],
         }
 

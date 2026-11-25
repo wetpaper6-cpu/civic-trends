@@ -20,7 +20,7 @@ from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from urllib.parse import quote, urljoin, urlparse
 
-from common import (as_list, CONFIG, DATA_DIR, BUILD_DIR, KST, call_claude, fetch, fmt_date,
+from common import (as_list, as_text, CONFIG, DATA_DIR, BUILD_DIR, KST, call_claude, fetch, fmt_date,
                     has_claude, load_json, log, now_kst, parse_json, period_label,
                     report_date, save_json, build_index)
 
@@ -264,7 +264,7 @@ def extract_rules(ev, text):
 
     sents = re.split(r"(?<=[다요]\.)\s+", text)
     summary = " ".join(s.strip() for s in sents[:2] if s.strip())
-    summary = as_list((summary or main["snippet"])[:300])
+    summary = (summary or main["snippet"])[:300]
 
     return {"type": kind, "date": "", "title": main["title"], "datetime": when,
             "place": place, "hosts": ", ".join(hosts), "summary": summary}
@@ -279,7 +279,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
  "hosts": "주최·발표 기관을 쉼표로 (공동주최 포함)",
- "summary": ["핵심 주장·요구를 개조식 항목 2~4개로. 한두 줄 구절, 명사형 종결(~ 촉구, ~ 요구, ~ 비판, ~ 지적), 앞에 기호 없이"]}}
+ "summary": "핵심 주장·요구를 1~2문장으로. 개조식 어미로 끝맺기(예: '~ 철회 촉구', '~ 요구', '~ 비판', '~ 지적'). '~했다', '~이다' 같은 서술형 금지. 문장이 둘이면 '~ 지적하며 ~ 촉구'처럼 잇거나 각각 명사형으로 끝맺기"}}
 
 다음 중 하나라도 해당하면 {{"skip": true}} 만 답하세요.
 - 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사 등)
@@ -384,7 +384,7 @@ def enrich(ev):
                 return None
             for k, v in llm.items():
                 if k in info and v:
-                    info[k] = as_list(v) if k == "summary" else squash(str(v))
+                    info[k] = as_text(v) if k == "summary" else squash(str(v))
             info["datetime"] = fix_date(info["datetime"], main["published"])
             if info["type"] not in ("기자회견", "집회"):
                 info["place"] = ""
@@ -427,9 +427,7 @@ def release_notes(day):
             f"### [{ev['type']}] {ev['title']}",
             f"**{label} :** {when}  ",
             f"**주최 기관 :** {ev['hosts']}  ",
-            "**주요 내용 :**  ",
-            *[f"- {p}" for p in as_list(ev["summary"])],
-            "",
+            f"**주요 내용 :** {as_text(ev['summary'])}  ",
             f"<sub>출처: [{first['press']}]({first['url']}){more}</sub>",
             "", "---", "",
         ]
