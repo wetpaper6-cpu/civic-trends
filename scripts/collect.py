@@ -92,10 +92,14 @@ class LinkParser(HTMLParser):
 
 def scrape_homepage(org, keywords, seen, now):
     for page in org.get("pages", []):
-        try:
-            body = fetch(page)
-        except Exception as e:
-            log(f"[홈페이지 실패] {org['name']} {page}: {e}")
+        body = None
+        for attempt in range(3):  # 느린 사이트 대비 재시도
+            try:
+                body = fetch(page, timeout=30)
+                break
+            except Exception as e:
+                log(f"[홈페이지 실패 {attempt + 1}/3] {org['name']} {page}: {e}")
+        if body is None:
             continue
         p = LinkParser()
         p.feed(body)
@@ -347,9 +351,12 @@ def is_party(h):
                 or re.search(r"의원|더민초|당협|원내대표", h))
 
 
+NATIONAL_HINT = re.compile(r"개헌|헌법|국회|입법|법안|[가-힣]+법(?!원)[^,]{0,8}?(제정|개정|철회|저지|통과|처리|폐기|반대|폐지)")
+
+
 def excluded(e):
     """지방의 지역 현안·정당 주최는 제외. 지방에서 열렸어도 전국 이슈(scope=전국)면 포함"""
-    national = e.get("scope") == "전국"
+    national = e.get("scope") == "전국" or bool(NATIONAL_HINT.search(e["title"]))
     if not national and e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
         return "지방 행사"
     first_host = e["hosts"].split(",")[0].strip()
@@ -357,7 +364,7 @@ def excluded(e):
         return "전국 조직의 지역본부"
     if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
-    if e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
+    if not national and e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
         return "지역 현안"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
     if hosts and all(is_party(h) for h in hosts):
@@ -433,7 +440,9 @@ def merge_similar(events):
         for o in out:
             hk1, hk2 = host_key(e["hosts"]), host_key(o["hosts"])
             same_hosts = hk1 and hk2 and (hk1 & hk2) and len(hk1 & hk2) >= min(len(hk1), len(hk2)) / 2
-            if e["date"] == o["date"] and same_hosts and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 2:
+            overlap = len(topic_grams(e["title"]) & topic_grams(o["title"]))
+            if e["date"] == o["date"] and e["type"] == o["type"] and (
+                    (same_hosts and overlap >= 2) or overlap >= 5):
                 keep, drop = (o, e) if len(o["sources"]) >= len(e["sources"]) else (e, o)
                 if drop.get("scope") == "전국":
                     keep["scope"] = "전국"

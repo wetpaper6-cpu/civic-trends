@@ -121,7 +121,9 @@ def parse_json(text):
     if "{" not in text:
         log(f"[Claude 응답에 JSON 없음] {text[:300]!r}")
     text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M)
-    return json.loads(text[text.find("{"): text.rfind("}") + 1])
+    # 첫 JSON 객체만 읽음 (뒤에 설명이 붙어 와도 괜찮게)
+    obj, _ = json.JSONDecoder().raw_decode(text[text.find("{"):])
+    return obj
 
 
 def load_json(path):
