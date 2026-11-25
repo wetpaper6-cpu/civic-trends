@@ -1,0 +1,22 @@
+{
+ "kind": "weekly",
+ "date": "2026-11-25",
+ "period_start": "2026-11-19",
+ "period_end": "2026-11-25",
+ "period_label": "2026.11.19(목) ~ 2026.11.25(수)",
+ "generated_at": "2026-11-25T17:34+09:00",
+ "count": 0,
+ "overview": "2026.11.19(목) ~ 2026.11.25(수) 동안 수집된 소식이 없다.",
+ "main_issues": [
+  {
+   "title": "(자동 요약 미사용)",
+   "body": "ANTHROPIC_API_KEY를 등록하면 이 부분을 Claude가 작성한다."
+  }
+ ],
+ "other_issues": [],
+ "table": [],
+ "files": {
+  "docx": "files/weekly-2026-11-25.docx",
+  "pdf": "files/weekly-2026-11-25.pdf"
+ }
+}
