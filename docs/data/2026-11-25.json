@@ -4,8 +4,8 @@
  "period_start": "2026-11-25",
  "period_end": "2026-11-25",
  "period_label": "2026.11.25(수)",
- "generated_at": "2026-11-25T21:22+09:00",
- "count": 16,
+ "generated_at": "2026-11-25T21:27+09:00",
+ "count": 15,
  "keywords": [
   "청와대",
   "분수대",
@@ -26,12 +26,12 @@
   {
    "type": "기자회견",
    "date": "2026-11-25",
-   "scope": "지역",
-   "title": "제주특별자치도 헌법적 지위 확보를 위한 범도민 기구 구성 촉구",
+   "scope": "전국",
+   "title": "제주특별자치도의 헌법적 지위 명문화를 위한 범도민 기구 구성 촉구",
    "datetime": "2026.11.25(수) 오전",
    "place": "제주도의회 도민카페",
    "hosts": "제주경제정의실천시민연합, 천년의 꿈을 여는 사람들, 제주흥사단",
-   "summary": "제주특별자치도의 헌법적 지위 명문화를 위한 범도민 헌법개정추진제주연석회의 구성 촉구",
+   "summary": "개헌 논의에서 제주특별자치도의 헌법적 지위 명문화를 위한 범도민 헌법개정추진제주연석회의 즉각 구성 촉구",
    "org": "경실련",
    "source": "naver",
    "keywords": [
@@ -51,22 +51,23 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "법정 정년 65세 연장 연내 입법 촉구",
+   "title": "65세 정년 연장 연내 입법 촉구",
    "datetime": "2026.11.25(수)",
    "place": "서울 여의도 국회 본관 계단",
    "hosts": "민주노총, 한국노총",
-   "summary": "법정 정년 연장(65세)의 연내 입법 처리 촉구",
+   "summary": "법정 정년 65세 연장 법안의 연내 입법 처리 촉구",
    "org": "한국노총",
    "source": "naver",
    "keywords": [
-    "기자회견"
+    "기자회견",
+    "성명"
    ],
    "published": "2026-11-25T10:40+09:00",
-   "url": "https://www.mk.co.kr/article/12217858",
+   "url": "https://www.mk.co.kr/article/12217854",
    "sources": [
     {
      "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
-     "url": "https://www.mk.co.kr/article/12217858",
+     "url": "https://www.mk.co.kr/article/12217854",
      "press": "mk.co.kr"
     },
     {
@@ -86,16 +87,6 @@
     },
     {
      "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
-     "url": "https://www.yna.co.kr/view/PYH20261125062600013?input=1196m",
-     "press": "yna.co.kr"
-    },
-    {
-     "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
-     "url": "https://www.yna.co.kr/view/PYH20261125062500013?input=1196m",
-     "press": "yna.co.kr"
-    },
-    {
-     "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
      "url": "https://www.yna.co.kr/view/PYH20261125062300013?input=1196m",
      "press": "yna.co.kr"
     },
@@ -105,9 +96,24 @@
      "press": "yna.co.kr"
     },
     {
+     "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
+     "url": "https://www.yna.co.kr/view/PYH20261125062500013?input=1196m",
+     "press": "yna.co.kr"
+    },
+    {
+     "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
+     "url": "https://www.yna.co.kr/view/PYH20261125062600013?input=1196m",
+     "press": "yna.co.kr"
+    },
+    {
      "title": "양대 노총 , ‘연내 65세 법정 정년연장 입법 촉구’",
      "url": "https://www.seoul.co.kr/news/politics/2026/11/25/20261125500089?wlog_tag3=naver",
      "press": "seoul.co.kr"
+    },
+    {
+     "title": "'65세 정년, 연내 입법'",
+     "url": "https://www.news1.kr/photos/8231809",
+     "press": "news1.kr"
     },
     {
      "title": "65세 정년 연내 입법 촉구하는 양대 노총",
@@ -117,11 +123,6 @@
     {
      "title": "양대 노총 '65세 법정 정년연장 지금 당장 입법'",
      "url": "https://www.news1.kr/photos/8231815",
-     "press": "news1.kr"
-    },
-    {
-     "title": "'65세 정년, 연내 입법'",
-     "url": "https://www.news1.kr/photos/8231809",
      "press": "news1.kr"
     },
     {
@@ -140,11 +141,6 @@
      "press": "kukinews.com"
     },
     {
-     "title": "65세 정년연장 촉구하는 양대 노총",
-     "url": "https://www.newspim.com/news/view/20261125000611",
-     "press": "newspim.com"
-    },
-    {
      "title": "65세 정년연장 입법 촉구하는 양대 노총",
      "url": "https://www.newspim.com/news/view/20261125000608",
      "press": "newspim.com"
@@ -152,6 +148,11 @@
     {
      "title": "양대 노총 \"65세 법정정년연장 지금 당장 입법\"",
      "url": "https://www.newspim.com/news/view/20261125000616",
+     "press": "newspim.com"
+    },
+    {
+     "title": "65세 정년연장 촉구하는 양대 노총",
+     "url": "https://www.newspim.com/news/view/20261125000611",
      "press": "newspim.com"
     },
     {
@@ -435,11 +436,6 @@
      "press": "sedaily.com"
     },
     {
-     "title": "'65세 정년연장 입법 촉구'",
-     "url": "https://www.newspim.com/news/view/20261125000615",
-     "press": "newspim.com"
-    },
-    {
      "title": "정년연장 입법 처리 촉구하는 이재진 민주노총 비상대책위원장",
      "url": "https://www.newspim.com/news/view/20261125000610",
      "press": "newspim.com"
@@ -453,6 +449,11 @@
      "title": "노동계 “정년연장 연내 입법 관철 때까지 투쟁”",
      "url": "https://www.munhwa.com/article/11634044?ref=naver",
      "press": "munhwa.com"
+    },
+    {
+     "title": "[이로운체크] 정년 65세, 어디까지 왔나...27일 특위 앞두고 '연장 방식...",
+     "url": "https://www.eroun.net/news/articleView.html?idxno=96452",
+     "press": "eroun.net"
     },
     {
      "title": "양대 노총 “정년 연장, 연내 입법” 최후통첩…정부·여당에 결단 촉구...",
@@ -495,9 +496,14 @@
      "press": "jasm.co.kr"
     },
     {
-     "title": "정년연장 공회전에 뿔난 노동계 '최후통첩'",
-     "url": "http://www.00news.co.kr/news/articleView.html?idxno=108353",
-     "press": "00news.co.kr"
+     "title": "[보도자료] 65세 법정 정년연장 연내 입법 처리 촉구 양대노총 기자회견",
+     "url": "https://nodong.org/statement/7953533#0",
+     "press": "민주노총 홈페이지"
+    },
+    {
+     "title": "[취재요청] 양대노총 65세 법정 정년연장 연내 입법 처리 촉구 기자회견",
+     "url": "https://nodong.org/statement/7953353#0",
+     "press": "민주노총 홈페이지"
     },
     {
      "title": "60세에 퇴직하면 연금까지 5년… 양대 노총 , 정년연장 더는 못 기다린다",
@@ -510,11 +516,11 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "일법 패키지(일하는사람들 기본법·근로자 추정제) 처리 중단 촉구",
+   "title": "일법 패키지 추진 중단 및 소상공인 대응 촉구",
    "datetime": "2026.11.25(수)",
    "place": "서울 여의도 소상공인연합회",
    "hosts": "소상공인연합회",
-   "summary": "일법 패키지 처리 강행 시 전국적인 김영훈 장관 퇴진 운동 돌입 경고, 일법 패키지와 고용악법 추진 중단 및 대통령 직속 소상공인위 설치 촉구",
+   "summary": "'일하는사람들 기본법'과 근로자 추정제 등 일법 패키지 강행 중단 촉구, 강행 시 장관 퇴진 운동 예고",
    "org": "한국노총",
    "source": "naver",
    "keywords": [
@@ -534,11 +540,11 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "ILO 제190호 협약 조속한 비준 촉구 및 일터 내 폭력·괴롭힘 근절 요구",
+   "title": "일터 내 폭력·괴롭힘 근절을 위한 ILO 제190호 협약 비준 촉구",
    "datetime": "2026.11.25(수) 오전",
    "place": "서울 여의도 국회의사당 앞",
    "hosts": "민주노총 공공운수노조",
-   "summary": "정부의 ILO 제190호 협약 조속한 비준과 비정규직·특수고용·플랫폼 노동자 등 사각지대 노동자 보호 대책 마련 촉구",
+   "summary": "비정규직·특수고용·플랫폼 노동자 등 법의 사각지대 노동자 보호를 위해 ILO 제190호 협약의 조속한 비준 촉구",
    "org": "민주노총",
    "source": "naver",
    "keywords": [
@@ -558,19 +564,14 @@
      "press": "ilyosisa.co.kr"
     },
     {
-     "title": "“일터 여성폭력은 노동권 침해”…ILO 190호 협약 비준 촉구",
-     "url": "https://newscham.net/130219/",
-     "press": "newscham.net"
-    },
-    {
-     "title": "여성폭력추방의 날 \"ILO 제190호 협약 비준하라\"",
-     "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084164",
-     "press": "newsclaim.co.kr"
-    },
-    {
      "title": "\"특수고용직, 성추행 사각지대\"…노조, ILO 협약 비준 촉구",
      "url": "https://news.tf.co.kr/read/life/2393163.htm",
      "press": "news.tf.co.kr"
+    },
+    {
+     "title": "“일터 여성폭력은 노동권 침해”…ILO 190호 협약 비준 촉구",
+     "url": "https://newscham.net/130219/",
+     "press": "newscham.net"
     }
    ]
   },
@@ -578,11 +579,11 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "지역",
-   "title": "노들섬 개발 사업비 533억 원 전액 삭감 촉구",
+   "title": "노들섬 개발사업 예산 533억 원 전액 삭감 촉구",
    "datetime": "2026.11.25(수) 오전 9시 30분",
    "place": "서울시의회 서소문별관 앞",
    "hosts": "민주노총 서울본부, 불평등을 넘어 새로운 서울을 만드는 사람들(너머서울)",
-   "summary": "서울시 2027년도 본예산에 편성된 노들섬 조성 사업비 533억 원의 전액 삭감 촉구",
+   "summary": "노들섬 글로벌 예술섬 조성 사업비 533억 원의 전액 삭감 촉구",
    "org": "민주노총",
    "source": "naver",
    "keywords": [
@@ -602,35 +603,11 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "국가직행정공제회 설립 관련 국회의원 감사패 전달",
-   "datetime": "2026.11.25(수)",
-   "place": "국공노와 국회 소통관",
-   "hosts": "국가공무원노동조합",
-   "summary": "국가직 복지포인트 격차 해소 및 국가직행정공제회 설립 입법 추진 촉구",
-   "org": "기타 단체",
-   "source": "naver",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:12+09:00",
-   "url": "https://www.asiatime.co.kr/article/20261125500168",
-   "sources": [
-    {
-     "title": "국공노, 박정현 의원에 감사패…국가직행정공제회 설립 ‘맞손’",
-     "url": "https://www.asiatime.co.kr/article/20261125500168",
-     "press": "asiatime.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "date": "2026-11-25",
-   "scope": "전국",
-   "title": "초광역특구법안 철회 및 사회적 논의기구 구성 촉구",
+   "title": "초광역특구법안 철회 및 사회적 논의기구 구성",
    "datetime": "2026.11.25(수) 오전 11시",
    "place": "전남광주 동구 전일빌딩245 시민마루",
    "hosts": "재벌 특혜 민주당 초광역특구법 저지·지역상생 반도체 특구 추진 시민행동",
-   "summary": "초광역특구법안의 재벌 특혜 우려를 지적하며 법안 철회와 사회적 논의기구 구성 촉구",
+   "summary": "초광역특구법안 철회 및 사회적 논의기구 구성 촉구",
    "org": "기타 단체",
    "source": "naver",
    "keywords": [
@@ -655,19 +632,9 @@
      "press": "news1.kr"
     },
     {
-     "title": "전남광주 시민단체 \"재벌 특혜·지역 수탈 초광역특구법 막아낼 것\"",
-     "url": "https://www.news1.kr/local/gwangju-jeonnam/6365444",
-     "press": "news1.kr"
-    },
-    {
      "title": "\"독을 탄 음식, 초광역특구법 저지\"…공동대응 기구 출범",
      "url": "https://www.newsis.com/view/NISX20261125_0003882588",
      "press": "newsis.com"
-    },
-    {
-     "title": "광주 시민단체 들, 정부와 여당 입법 추진 중인 '초광역특구법' 공동 저지...",
-     "url": "https://news.tf.co.kr/read/national/2393194.htm",
-     "press": "news.tf.co.kr"
     },
     {
      "title": "\"반도체 특구 찬성, 독소조항 안돼\"…시민사회 대응기구 출범",
@@ -680,22 +647,37 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "청년일자리 국가책임 실현 및 미래대응기금 투입 촉구",
+   "title": "청년 일자리 국가책임 실현 촉구",
    "datetime": "2026.11.25(수) 오전 11시",
    "place": "국회 소통관",
    "hosts": "진보당, 청년유니온",
-   "summary": "정부 일자리 정책의 국가책임 중심 전면 전환과 초과 세수 기반 미래대응기금의 청년 일자리 보장 투입 촉구",
+   "summary": "정부 일자리 정책의 국가책임 중심 전환과 초과 세수 기반 '미래대응기금'의 청년 일자리 보장 투입 촉구",
    "org": "기타 단체",
    "source": "naver",
    "keywords": [
     "기자회견"
    ],
    "published": "2026-11-25T11:32+09:00",
-   "url": "https://www.yna.co.kr/view/PYH20261125080400013?input=1196m",
+   "url": "https://www.yna.co.kr/view/PYH20261125080500013?input=1196m",
    "sources": [
     {
+     "title": "2027년 청년일자리 예산 5대 요구 진보당·청년단체 공동 기자회견",
+     "url": "https://www.newsis.com/view/NISI20261125_0021544729",
+     "press": "newsis.com"
+    },
+    {
+     "title": "진보당, 청년들과 2027년 청년일자리 예산 5대 요구 기자회견",
+     "url": "https://www.newsis.com/view/NISI20261125_0021544726",
+     "press": "newsis.com"
+    },
+    {
+     "title": "진보당, 2027년 청년일자리 예산 5대 요구 기자회견",
+     "url": "https://www.newsis.com/view/NISI20261125_0021544727",
+     "press": "newsis.com"
+    },
+    {
      "title": "\"미래대응기금으로 청년일자리 국가책임 실현하라\"",
-     "url": "https://www.yna.co.kr/view/PYH20261125080400013?input=1196m",
+     "url": "https://www.yna.co.kr/view/PYH20261125080500013?input=1196m",
      "press": "yna.co.kr"
     },
     {
@@ -705,42 +687,18 @@
     },
     {
      "title": "\"미래대응기금으로 청년일자리 국가책임 실현하라\"",
-     "url": "https://www.yna.co.kr/view/PYH20261125080500013?input=1196m",
+     "url": "https://www.yna.co.kr/view/PYH20261125080400013?input=1196m",
      "press": "yna.co.kr"
-    },
-    {
-     "title": "[현장영상+] 시의원 뺑뺑이 돌게 만들어도 따져보니...'기가 차는' 청년...",
-     "url": "https://news.ifm.kr/news/articleView.html?idxno=485472",
-     "press": "news.ifm.kr"
     },
     {
      "title": "청년계정 13조 중 일자리 2조…\"국가 청년 직접 고용 사업은 단 한 건도...",
      "url": "https://news.ifm.kr/news/articleView.html?idxno=485470",
      "press": "news.ifm.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "date": "2026-11-25",
-   "scope": "전국",
-   "title": "2027년도 지역영화·독립영화 예산 편성 촉구",
-   "datetime": "2026.11.25(수) 오후 1시 30분",
-   "place": "국회 본관 6층 예결위원장실",
-   "hosts": "한국독립영화협회, 한국영화제작가협회",
-   "summary": "4년째 편성되지 않은 지역영화 예산 40억원과 독립영화 유통 기반 예산 15억5000만원의 2027년도 예산 반영 촉구",
-   "org": "기타 단체",
-   "source": "naver",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T12:03+09:00",
-   "url": "https://www.fnnews.com/news/202611251144186122",
-   "sources": [
+    },
     {
-     "title": "지역영화 예산 4년째 '0원'…독립영화계 \"뤼미에르 선언, 2027년 예산으로...",
-     "url": "https://www.fnnews.com/news/202611251144186122",
-     "press": "fnnews.com"
+     "title": "[현장영상+] 시의원 뺑뺑이 돌게 만들어도 따져보니...'기가 차는' 청년...",
+     "url": "https://news.ifm.kr/news/articleView.html?idxno=485472",
+     "press": "news.ifm.kr"
     }
    ]
   },
@@ -752,7 +710,7 @@
    "datetime": "2026.11.25(수) 오전",
    "place": "서울 영등포구 근로복지공단 서울남부지사 앞",
    "hosts": "반올림(반도체 노동자의 건강과 인권지킴이)",
-   "summary": "삼성전자 하청노동자 김태진 씨의 산업재해 인정과 진상규명, 고용노동부의 원인 조사 및 재발 방지 대책 마련 촉구",
+   "summary": "삼성전자 화성사업장 하청노동자 혈액암 사망의 산업재해 인정과 진상규명 요구, 위험의 외주화 중단 및 정규직화 촉구",
    "org": "기타 단체",
    "source": "naver",
    "keywords": [
@@ -802,11 +760,11 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "검증 없는 개발 정책 전환 촉구",
+   "title": "반도체·AI 개발 정책의 검증 부재에 대한 대통령 답변 요구",
    "datetime": "2026.11.25(수) 오전",
    "place": "서울 종로구 광화문 세종문화회관 앞 계단",
    "hosts": "전국환경비상시국회의",
-   "summary": "반도체·AI 산업단지, 댐·송전망, 핵발전소 등 개발 중심 정책의 사전 검증 부재 비판 및 기후위기 대응 중심 정책 전환과 공동검증 도입 촉구",
+   "summary": "반도체·AI 산업단지, 신규 댐·송전망, 핵발전소 건설 등 개발 중심 정책의 검증 부재 지적 및 정책 결정 기준의 기후위기 대응 중심 전환, 대규모 개발사업의 공동검증과 공론의 장 마련 촉구",
    "org": "기타 단체",
    "source": "naver",
    "keywords": [
@@ -830,36 +788,12 @@
   {
    "type": "기자회견",
    "date": "2026-11-25",
-   "scope": "전국",
-   "title": "원전 공론화 과정에 대한 시민단체 반발",
-   "datetime": "2026.11.25(수)",
-   "place": "확인 필요",
-   "hosts": "신규 핵발전소 저지와 핵 없는 사회를 위한 전국행동",
-   "summary": "원전 공론화 과정의 공정성 문제 지적 및 공론화 중단 요구",
-   "org": "기타 단체",
-   "source": "naver",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T15:29+09:00",
-   "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0200&key=20261125.99099008058",
-   "sources": [
-    {
-     "title": "원전 공론화 시작부터 '먹구름'…전문가 불참· 시민단체 반발",
-     "url": "http://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0200&key=20261125.99099008058",
-     "press": "kookje.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "date": "2026-11-25",
    "scope": "지역",
    "title": "해양수도 부산 실현을 위한 특별법 전면 개정 요구",
-   "datetime": "2026.11.25(수) 오전",
+   "datetime": "2026.11.25(수)",
    "place": "부산시의회 브리핑룸",
    "hosts": "해양수도부산발전협의회, 부산시민단체",
-   "summary": "현행 '부산 해양수도 이전기관 지원에 관한 특별법'을 해양수도 실현을 위한 종합특별법으로 전면 개정 촉구",
+   "summary": "해양수도 부산 실현을 위해 현행 특별법을 해양수도 종합특별법으로 전면 개정할 것을 정부와 국회에 요구",
    "org": "기타 단체",
    "source": "naver",
    "keywords": [
@@ -879,14 +813,14 @@
      "press": "news.kbs.co.kr"
     },
     {
-     "title": "부산 시민단체 \"해양수도 조성 위한 종합특별법 마련해야\"",
-     "url": "https://www.yna.co.kr/view/AKR20261125121400051?input=1195m",
-     "press": "yna.co.kr"
-    },
-    {
      "title": "부산 시민단체 \"해양수도 특별법에 산업 육성·자치권 확대 담아야\"",
      "url": "https://www.news1.kr/local/busan-gyeongnam/6365511",
      "press": "news1.kr"
+    },
+    {
+     "title": "'부산 해양수도 특별법' 시행 1년...이전기관 정착 지원에 머물러 개정...",
+     "url": "https://news.bbsi.co.kr/news/articleView.html?idxno=4120801",
+     "press": "news.bbsi.co.kr"
     }
    ]
   },
@@ -894,7 +828,55 @@
    "type": "성명",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "대법원장 탄핵 추진 재고 촉구",
+   "title": "기준중위소득 현실화 및 부양의무자기준 폐지 촉구",
+   "datetime": "2026.11.25(수)",
+   "place": "",
+   "hosts": "참여연대",
+   "summary": "기준중위소득 현실화와 부양의무자기준 폐지 없이 '모두를 위한 복지'는 실현될 수 없음을 지적하며 부양의무자기준 폐지 촉구",
+   "org": "참여연대",
+   "source": "homepage",
+   "keywords": [
+    "성명"
+   ],
+   "published": "2026-11-25T21:27+09:00",
+   "url": "https://peoplepower21.org/welfare/2056972",
+   "sources": [
+    {
+     "title": "[성명] 기준중위소득 현실화, 부양의무자기준 폐지 없이 ‘모두를 위한 복지’는 실현될 수 없다 11-25",
+     "url": "https://peoplepower21.org/welfare/2056972",
+     "press": "참여연대 홈페이지"
+    }
+   ]
+  },
+  {
+   "type": "성명",
+   "date": "2026-11-25",
+   "scope": "전국",
+   "title": "국방인공지능법 졸속 처리 중단 요구",
+   "datetime": "2026.11.25(수)",
+   "place": "",
+   "hosts": "참여연대",
+   "summary": "찬성 측 인사만 참여한 요식행위 공청회를 지적하며 국방인공지능법의 졸속 통과 중단 촉구",
+   "org": "참여연대",
+   "source": "homepage",
+   "keywords": [
+    "성명"
+   ],
+   "published": "2026-11-25T21:27+09:00",
+   "url": "https://peoplepower21.org/publiclaw/2056953",
+   "sources": [
+    {
+     "title": "[성명] 찬성파만 불러놓은 ‘요식행위’ 공청회, 국방인공지능법 졸속 통과 안 된다 11-25",
+     "url": "https://peoplepower21.org/publiclaw/2056953",
+     "press": "참여연대 홈페이지"
+    }
+   ]
+  },
+  {
+   "type": "성명",
+   "date": "2026-11-25",
+   "scope": "전국",
+   "title": "대법원장 탄핵 추진에 대한 재고 촉구",
    "datetime": "2026.11.25(수)",
    "place": "",
    "hosts": "경실련",
@@ -918,21 +900,21 @@
    "type": "성명",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "월성 2·3·4호기 수명연장 추진계획 의결 철회 촉구",
+   "title": "노후 원전 수명연장 중단 및 정의로운 전환 계획 수립 요구",
    "datetime": "2026.11.25(수)",
    "place": "",
    "hosts": "환경운동연합",
-   "summary": "정부의 월성 2·3·4호기 계속운전 추진계획 의결을 비공개 절차와 안전 심사 전 투자 문제로 비판하며 철회 촉구",
+   "summary": "노후 원전 수명연장 중단과 안전한 폐로, 원전 노동자·지역사회를 위한 정의로운 전환 계획 수립 촉구",
    "org": "환경운동연합",
-   "source": "homepage",
+   "source": "naver",
    "keywords": [
     "성명"
    ],
-   "published": "2026-11-25T21:22+09:00",
-   "url": "https://kfem.or.kr/energy/?idx=175940356&bmode=view",
+   "published": "2026-11-25T14:26+09:00",
+   "url": "https://www.kukinews.com/article/view/kuk202611250125",
    "sources": [
     {
-     "title": "[성명] 안전 심사도 끝나기 전에 압력관부터 사겠다는 정부, 월성 2·3·4호기 수명연장 추진계획 의결을 철회하라! 0 0 12시간전 조회 200",
+     "title": "[성명] 안전 심사도 끝나기 전에 압력관부터 사겠다는 정부, 월성 2·3·4호기 수명연장 추진계획 의결을 철회하라! 0 0 12시간전 조회 202",
      "url": "https://kfem.or.kr/energy/?idx=175940356&bmode=view",
      "press": "환경운동연합 홈페이지"
     },
@@ -944,26 +926,26 @@
    ]
   },
   {
-   "type": "논평",
+   "type": "성명",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "기초생활보장 종합계획 미흡 및 부양의무자·재산 기준 개선 촉구",
-   "datetime": "2026.11.25(수)",
+   "title": "지역영화 예산 및 독립영화 유통 기반 예산 2027년도 반영 촉구",
+   "datetime": "2026.11.25(수) 오후 1시 30분",
    "place": "",
-   "hosts": "참여연대 사회복지위원회",
-   "summary": "생계급여 선정기준 35% 달성 시점을 2030년으로 미루고 주거급여 50% 달성 연도를 제시하지 않은 제4차 기초생활보장 종합계획 비판, 부양의무자 기준 완전 폐지와 재산 기준 완화 및 구체적 이행·재정 계획 제시 촉구",
-   "org": "참여연대",
+   "hosts": "한국독립영화협회",
+   "summary": "4년째 편성되지 않은 지역영화 예산 40억원과 독립영화 유통 기반 예산 15억5000만원의 2027년도 예산 반영 촉구",
+   "org": "기타 단체",
    "source": "naver",
    "keywords": [
-    "논평"
+    "성명"
    ],
-   "published": "2026-11-25T14:32+09:00",
-   "url": "https://www.beminor.com/news/articleView.html?idxno=30787",
+   "published": "2026-11-25T12:03+09:00",
+   "url": "https://www.fnnews.com/news/202611251144186122",
    "sources": [
     {
-     "title": "생계급여 선정기준 35% 목표, 또 2030년으로…부양의무자·재산 기준은 ...",
-     "url": "https://www.beminor.com/news/articleView.html?idxno=30787",
-     "press": "beminor.com"
+     "title": "지역영화 예산 4년째 '0원'…독립영화계 \"뤼미에르 선언, 2027년 예산으로...",
+     "url": "https://www.fnnews.com/news/202611251144186122",
+     "press": "fnnews.com"
     }
    ]
   }
