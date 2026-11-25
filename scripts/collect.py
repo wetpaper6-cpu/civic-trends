@@ -313,7 +313,7 @@ def fix_date(text, pub):
 
 REGIONS = "부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|충청|전북|전남|전라|경북|경남|경상|제주|수원|창원|청주|전주|포항|김해|성남|고양|용인"
 REGIONAL_PLACE = re.compile(rf"^(?!서울)\S*({REGIONS})")
-REGIONAL_HOST = re.compile(rf"({REGIONS})\S*(참여연대|경실련|환경운동연합|환경연합|녹색연합|본부|지부|지역|연대|시민단체|시민사회)")
+REGIONAL_HOST = re.compile(rf"^({REGIONS})|({REGIONS})\S*(본부|지부|지역)")  # 대구참여연대, 부산경실련, ○○지역본부
 PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래|더민초|당협|원내대표|국회의원|의원")
 
 
