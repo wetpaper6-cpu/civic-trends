@@ -117,7 +117,12 @@ def parse_feed(body, org, keywords, seen, now):
                "press": org["name"] + " 홈페이지", "published": now}
 
 
-def scrape_homepage(org, keywords, seen, now):
+LIST_URL = re.compile(r"[?&]cat=\d+|/category/|/board|/bbs|[?&](bo_table|board)=|/list")
+
+
+def scrape_homepage(org, keywords, seen, now, _depth=0):
+    """단체 홈페이지(또는 RSS)에서 키워드가 들어간 새 글. 메인에 걸린 게시판 목록 페이지도 한 단계 더 읽음"""
+    sub_pages = []
     for page in org.get("pages", []):
         body = None
         for attempt in range(3):  # 느린 사이트 대비 재시도
@@ -135,7 +140,16 @@ def scrape_homepage(org, keywords, seen, now):
         p = LinkParser()
         p.feed(body)
         for href, text in p.links:
-            if not href or href.startswith(("javascript:", "#", "mailto:")) or len(text) < 6:
+            if not href or href.startswith(("javascript:", "#", "mailto:")):
+                continue
+            # '성명', '토론회' 같은 게시판 목록 링크는 따로 모아 한 단계 더 읽음
+            if _depth == 0 and len(text) < 15 and any(k in text for k in keywords) \
+                    and LIST_URL.search(href) and len(sub_pages) < 3:
+                u = urljoin(page, href)
+                if u not in sub_pages and u not in org.get("pages", []):
+                    sub_pages.append(u)
+                continue
+            if len(text) < 6:
                 continue
             hits = [k for k in keywords if k in text]
             if not hits:
@@ -161,6 +175,9 @@ def scrape_homepage(org, keywords, seen, now):
                 "title": title, "snippet": "", "url": url, "naver_url": None,
                 "press": org["name"] + " 홈페이지", "published": now,
             }
+    if sub_pages:
+        sub = dict(org, pages=sub_pages)
+        yield from scrape_homepage(sub, keywords, seen, now, _depth=1)
 
 
 # ================================================================ 사안 묶기
