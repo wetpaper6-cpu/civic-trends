@@ -103,6 +103,15 @@ def _call_claude(prompt, model, max_tokens, timeout, thinking):
     return text
 
 
+def as_list(v):
+    """개조식 항목 목록 (예전 형식의 문단 문자열도 처리)"""
+    if isinstance(v, list):
+        items = [str(x) for x in v]
+    else:
+        items = str(v or "").split("\n")
+    return [x.strip().lstrip("○-·•").strip() for x in items if x.strip().lstrip("○-·•").strip()]
+
+
 def parse_json(text):
     if "{" not in text:
         log(f"[Claude 응답에 JSON 없음] {text[:300]!r}")

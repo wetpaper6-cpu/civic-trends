@@ -12,7 +12,7 @@
 from collections import Counter
 from datetime import timedelta
 
-from common import (BUILD_DIR, CONFIG, DATA_DIR, call_claude, has_claude, load_json, log,
+from common import (as_list, BUILD_DIR, CONFIG, DATA_DIR, call_claude, has_claude, load_json, log,
                     now_kst, parse_json, period_label, report_date, save_json, build_index)
 
 PROMPT = """당신은 한국 시민사회 동향을 정리하는 정책 분석가입니다.
@@ -41,13 +41,6 @@ JSON으로만 답하세요:
 {items}"""
 
 
-def as_list(v):
-    """개조식 항목 목록 (예전 형식의 문단 문자열도 처리)"""
-    if isinstance(v, list):
-        return [str(x).strip().lstrip("○-·•").strip() for x in v if str(x).strip()]
-    return [p.strip() for p in str(v or "").split("\n") if p.strip()]
-
-
 def points(item):
     return as_list(item.get("points", item.get("body", "")))
 
@@ -69,7 +62,7 @@ def main():
     label = period_label(start, today)
     log(f"주간: {label} 사안 {len(events)}건")
 
-    lines = [f"{i}. [{e['type']}] {e['published'][5:10]} {e['hosts']} | {e['title']} | {e['summary']}"
+    lines = [f"{i}. [{e['type']}] {e['published'][5:10]} {e['hosts']} | {e['title']} | {' / '.join(as_list(e['summary']))}"
              for i, e in enumerate(events, 1)]
 
     report = None
@@ -93,7 +86,7 @@ def main():
             "main_issues": [{"title": "(자동 요약 미사용)",
                              "points": ["ANTHROPIC_API_KEY를 등록하면 이 부분을 Claude가 작성함"]}],
             "other_issues": [],
-            "table": [{"issue": e["title"], "actor": e["hosts"], "claim": e["summary"],
+            "table": [{"issue": e["title"], "actor": e["hosts"], "claim": " / ".join(as_list(e["summary"])),
                        "ref": [i]} for i, e in enumerate(events, 1)],
         }
 

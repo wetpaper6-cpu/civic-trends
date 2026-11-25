@@ -41,9 +41,10 @@
   .report h2:first-child { margin-top:0; }
   .report h4 { font-size:15px; margin:14px 0 4px; }
   .report p { margin:0 0 8px; }
-  .report ul.bul { list-style:none; padding-left:1.3em; margin:0 0 8px; }
-  .report ul.bul li { text-indent:-1.15em; margin-bottom:3px; }
-  .report ul.bul li::before { content:"○ "; color:var(--accent); }
+  ul.bul { list-style:none; padding-left:1.3em; margin:0 0 8px; }
+  ul.bul li { text-indent:-1.15em; margin-bottom:3px; line-height:1.5; }
+  ul.bul li::before { content:"○ "; color:var(--accent); }
+  dd ul.bul { margin:0; padding-left:1.15em; }
   .tbl { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; font-size:13.5px; min-width:520px; }
   th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; line-height:1.5; }
@@ -77,6 +78,9 @@ function chips(values, current, name) {
     ["전체", ...values].map(v => `<button class="chip${v === current ? " on" : ""}" data-${name === "단체" ? "org" : "kw"}="${esc(v)}">${esc(v)}</button>`).join("") + `</div>`;
 }
 
+const asList = v => (Array.isArray(v) ? v : String(v || "").split("\n")).map(x => String(x).replace(/^[○\-·•]\s*/, "").trim()).filter(Boolean);
+const bul = v => `<ul class="bul">${asList(v).map(t => `<li>${esc(t)}</li>`).join("")}</ul>`;
+
 function renderDaily() {
   const rows = daily.events.filter(i => (org === "전체" || i.org === org) && (kw === "전체" || i.keywords.includes(kw)));
   $("#view").innerHTML = downloads(daily.files)
@@ -88,9 +92,9 @@ function renderDaily() {
       <dl>
         <dt>${i.place ? "일시 / 장소" : "일시"}</dt><dd>${esc(i.datetime)}${i.place ? " / " + esc(i.place) : ""}</dd>
         <dt>주최 기관</dt><dd>${esc(i.hosts)}</dd>
-        <dt>주요 내용</dt><dd>${esc(i.summary)}</dd>
+        <dt>주요 내용</dt><dd>${bul(i.summary)}</dd>
       </dl>
-      <div class="src">출처: ${i.sources.slice(0, 4).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.press)}</a>`).join(", ")}${i.sources.length > 4 ? ` 외 ${i.sources.length - 4}건` : ""}</div>
+      <div class="src">출처: ${(() => { const u = i.sources.filter((s, k, a) => a.findIndex(x => x.press === s.press) === k); return u.slice(0, 4).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.press)}</a>`).join(", ") + (i.sources.length > 4 ? ` 등 기사 ${i.sources.length}건` : ""); })()}</div>
     </div>`).join("") : `<div class="empty">해당 조건의 소식이 없습니다.</div>`);
   document.querySelectorAll("[data-org]").forEach(b => b.onclick = () => { org = b.dataset.org; renderDaily(); });
   document.querySelectorAll("[data-kw]").forEach(b => b.onclick = () => { kw = b.dataset.kw; renderDaily(); });
@@ -98,8 +102,7 @@ function renderDaily() {
 
 function renderWeekly() {
   const w = weekly;
-  const asList = v => Array.isArray(v) ? v : String(v || "").split("\n").filter(x => x.trim());
-  const ul = items => `<ul class="bul">${asList(items).map(t => `<li>${esc(String(t).replace(/^[○\-·•]\s*/, ""))}</li>`).join("")}</ul>`;
+  const ul = bul;
   const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4>${ul(it.points || it.body)}`).join("") : "<p>-</p>";
   $("#view").innerHTML = downloads(w.files) + `<div class="report">
     <div class="sub" style="margin-bottom:14px">${esc(w.period_label)} · 기자회견·성명·논평 등 ${w.count}건</div>
