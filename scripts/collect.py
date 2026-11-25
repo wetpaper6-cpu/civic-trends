@@ -37,8 +37,11 @@ def squash(s):
 
 
 # ================================================================ 수집
-def search_naver(org, keyword, since):
-    query = f"{org['name']} {keyword}"
+OTHER = "기타 단체"  # 지정 6개 단체 외
+
+
+def search_naver(query, since, org_name, aliases, keyword):
+    """aliases가 있으면 제목·요약에 단체명이 나오는 기사만 남김"""
     # NAVER API HUB (네이버 클라우드 플랫폼). 기존 openapi.naver.com 검색 API는 이관됨
     url = ("https://naverapihub.apigw.ntruss.com/search/v1/news"
            f"?query={quote(query)}&display=100&sort=date")
@@ -55,11 +58,11 @@ def search_naver(org, keyword, since):
             continue
         title = squash(strip_tags(it.get("title")))
         desc = squash(strip_tags(it.get("description")))
-        if not any(a in f"{title} {desc}" for a in org["aliases"]):
+        if aliases and not any(a in f"{title} {desc}" for a in aliases):
             continue
         link = it.get("originallink") or it.get("link")
         yield {
-            "source": "naver", "org": org["name"], "keywords": [keyword],
+            "source": "naver", "org": org_name, "keywords": [keyword],
             "title": title, "snippet": desc, "url": link,
             "naver_url": it.get("link"),
             "press": urlparse(link).netloc.replace("www.", ""),
@@ -140,10 +143,14 @@ def group_events(items):
     return events
 
 
-CLUSTER_PROMPT = """아래는 시민사회단체 관련 뉴스 기사·게시글 목록입니다. 두 가지를 해 주세요.
+CLUSTER_PROMPT = """아래는 시민사회 관련 뉴스 기사·게시글 목록입니다. 대상 기간: {period}
+두 가지를 해 주세요.
 1) 같은 행사(같은 기자회견·집회, 같은 성명·논평)를 다룬 항목끼리 묶기. 언론사마다 제목이 달라도 같은 행사면 한 묶음입니다.
-2) 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평·보도자료가 아닌 항목은 제외 목록에 넣기
-   (단체가 잠깐 언급만 된 기사, 칼럼, 인사·동정, 단체와 무관한 동명 기사 등)
+2) 아래에 해당하는 항목은 제외 목록에 넣기
+   - 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아닌 것 (단순 언급 기사, 칼럼, 일정 목록, 인사·동정 등)
+   - 서울 이외 지역에서 열린 행사, 또는 지역 조직(○○지역본부, ○○지부, 인천경실련·부산경실련 같은 지역 단위)이 낸 것
+   - 대상 기간이 아닌 날에 열렸거나 발표된 것 (과거 행사를 다시 다룬 기사 포함)
+   - [기타 단체] 항목 중 전국적 관심사가 아니거나 중요도가 낮은 것, 정당·정부·기업·연예·스포츠 관련 발표
 
 JSON으로만 답하세요: {{"groups": [[번호, ...], ...], "drop": [번호, ...]}}
 모든 번호는 groups 또는 drop 중 한 곳에 한 번씩만 넣으세요.
@@ -152,11 +159,11 @@ JSON으로만 답하세요: {{"groups": [[번호, ...], ...], "drop": [번호, .
 {items}"""
 
 
-def cluster_llm(groups):
+def cluster_llm(groups, period):
     """Claude로 같은 사안 묶기 + 관련 없는 기사 제외"""
     lines = [f"{i}. [{g['org']}] {g['main']['title']} | {g['main']['snippet'][:120]}"
              for i, g in enumerate(groups, 1)]
-    res = parse_json(call_claude(CLUSTER_PROMPT.format(items="\n".join(lines)),
+    res = parse_json(call_claude(CLUSTER_PROMPT.format(period=period, items="\n".join(lines)),
                                  CONFIG.get("model_daily", "claude-haiku-5-5"), 4000, 180,
                                  thinking={"type": "disabled"}))
     n = len(groups)
@@ -259,22 +266,25 @@ def extract_rules(ev, text):
     summary = " ".join(s.strip() for s in sents[:2] if s.strip())
     summary = (summary or main["snippet"])[:300]
 
-    return {"type": kind, "title": main["title"], "datetime": when,
+    return {"type": kind, "date": "", "title": main["title"], "datetime": when,
             "place": place, "hosts": ", ".join(hosts), "summary": summary}
 
 
-LLM_PROMPT = """다음은 한국 시민사회단체의 활동을 다룬 기사(또는 단체 게시글)입니다.
+LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단체 게시글)입니다.
 아래 JSON 형식으로만 답하세요. 다른 말은 쓰지 마세요.
 
-{{"type": "기자회견|성명|논평|집회|보도 중 하나",
+{{"type": "기자회견|성명|논평|집회 중 하나",
+ "date": "행사일(성명·논평은 발표일), YYYY-MM-DD",
  "title": "사안을 나타내는 간결한 제목 (언론사 제목의 과장 표현은 빼고)",
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
  "hosts": "주최·발표 기관을 쉼표로 (공동주최 포함)",
  "summary": "핵심 주장과 요구를 2~3문장으로"}}
 
-기준 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아니면(일정 목록, 단순 언급 기사 등)
-{{"skip": true}} 만 답하세요.
+다음 중 하나라도 해당하면 {{"skip": true}} 만 답하세요.
+- 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사 등)
+- 서울 이외 지역에서 열렸거나, 지역 조직(○○지역본부, ○○지부, 지역 경실련 등)이 주최·발표함
+- 기준 단체가 '{other}'인데 전국적 관심사가 아니거나, 정당·정부·기업이 주체임
 
 기준 단체: {org}
 기사 게시 시각: {published}
@@ -285,7 +295,7 @@ LLM_PROMPT = """다음은 한국 시민사회단체의 활동을 다룬 기사(�
 def extract_llm(ev, text):
     main = ev["main"]
     prompt = LLM_PROMPT.format(
-        org=ev["org"], published=main["published"].strftime("%Y-%m-%d %H:%M"),
+        org=ev["org"], other=OTHER, published=main["published"].strftime("%Y-%m-%d %H:%M"),
         title=main["title"], text=text or main["snippet"])
     return parse_json(call_claude(prompt, CONFIG.get("model_daily", "claude-haiku-5-5"), 1000, 60,
                                   thinking={"type": "disabled"}))
@@ -323,8 +333,22 @@ def enrich(ev):
                 info["place"] = ""
         except Exception as e:
             log(f"[Claude 정리 실패, 규칙 기반 사용] {main['title']}: {e}")
+    # 행사일: Claude가 준 date → 일시 문구 → 기사 게시일 순으로 사용 (연도는 게시일 기준 보정)
+    d = info.get("date", "")
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
+        d = fix_date(d.replace("-", "."), main["published"])
+    else:
+        d = info["datetime"]
+    m = re.search(r"(\d{4})\.(\d{2})\.(\d{2})", d)
+    info["date"] = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else main["published"].date().isoformat()
+    org = ev["org"]
+    if org == OTHER:  # 지정 단체가 주최에 들어 있으면 가장 먼저 적힌 단체로
+        pos = [(min(info["hosts"].find(a) for a in o["aliases"] if a in info["hosts"]), o["name"])
+               for o in CONFIG["orgs"] if any(a in info["hosts"] for a in o["aliases"])]
+        if pos:
+            org = min(pos)[1]
     sources = [{"title": a["title"], "url": a["url"], "press": a["press"]} for a in ev["articles"]]
-    return {**info, "org": ev["org"], "keywords": ev["keywords"],
+    return {**info, "org": org, "keywords": ev["keywords"],
             "published": main["published"].isoformat(timespec="minutes"),
             "url": main["url"], "sources": sources}
 
@@ -366,12 +390,10 @@ def main():
     today = report_date()
     end = datetime.combine(today, time(23, 59), KST) if today != now.date() else now
     # 일요일: 금~일 3일치, 그 외: 하루치 (실행 지연 대비 2시간 여유, 중복은 아래에서 제거)
-    if today.weekday() == 6:
-        start_day = today - timedelta(days=2)
-        since = end - timedelta(hours=74)
-    else:
-        start_day = today
-        since = end - timedelta(hours=26)
+    # 일요일: 금~일, 그 외: 당일. 기간 안에 게시된 기사만 검색
+    start_day = today - timedelta(days=2) if today.weekday() == 6 else today
+    since = datetime.combine(start_day, time(0, 0), KST)
+    period = period_label(start_day, today)
     keywords = CONFIG["keywords"]
     already = previous_urls(today)
 
@@ -387,27 +409,27 @@ def main():
             items[item["url"]] = item
 
     if os.environ.get("NAVER_CLIENT_ID") and os.environ.get("NAVER_CLIENT_SECRET"):
-        naver_ok = True
-        for org in CONFIG["orgs"]:
-            for kw in keywords:
-                try:
-                    for it in search_naver(org, kw, since):
-                        if it["published"] <= end:
-                            add(it)
-                except Exception as e:
-                    detail = ""
-                    if hasattr(e, "read"):  # 네이버가 보낸 상세 사유
-                        try:
-                            detail = " | " + e.read().decode("utf-8", "replace")[:300]
-                        except Exception:
-                            pass
-                    log(f"[네이버 실패] {org['name']} {kw}: {e}{detail}")
-                    if getattr(e, "code", None) in (401, 403):
-                        log("인증 오류라 나머지 네이버 검색을 건너뜁니다.")
-                        naver_ok = False
-                        break
-            if not naver_ok:
-                break
+        searches = [(f"{o['name']} {kw}", o["name"], o["aliases"], kw)
+                    for o in CONFIG["orgs"] for kw in keywords]
+        for q in CONFIG.get("extra_queries", []):  # 지정 단체 외 주요 기자회견·성명
+            kw = next((k for k in keywords if k in q), "기자회견")
+            searches.append((q, OTHER, None, kw))
+        for query, org_name, aliases, kw in searches:
+            try:
+                for it in search_naver(query, since, org_name, aliases, kw):
+                    if it["published"] <= end:
+                        add(it)
+            except Exception as e:
+                detail = ""
+                if hasattr(e, "read"):  # 네이버가 보낸 상세 사유
+                    try:
+                        detail = " | " + e.read().decode("utf-8", "replace")[:300]
+                    except Exception:
+                        pass
+                log(f"[네이버 실패] {query}: {e}{detail}")
+                if getattr(e, "code", None) in (401, 403):
+                    log("인증 오류라 나머지 네이버 검색을 건너뜁니다.")
+                    break
     else:
         log("NAVER_CLIENT_ID/SECRET 없음: 네이버 검색을 건너뜁니다.")
 
@@ -421,24 +443,35 @@ def main():
 
     groups = group_events(list(items.values()))
     groups.sort(key=lambda g: len(g["articles"]), reverse=True)
-    groups = groups[:200]
+    groups = groups[:300]
     if has_claude() and len(groups) > 1:
         try:
-            groups = cluster_llm(groups)
+            groups = cluster_llm(groups, period)
         except Exception as e:
             log(f"[Claude 묶기 실패, 제목 유사도로만 묶음] {e}")
-    events = [e for e in (enrich(g) for g in groups[:CONFIG.get("max_events", 80)]) if e]
-    order = {t: i for i, t in enumerate(TYPES + ["집회", "보도"])}
-    events.sort(key=lambda e: (order.get(e["type"], 9), e["org"], e["published"]))
+    events = []
+    for g in groups[:CONFIG.get("max_events", 100)]:
+        e = enrich(g)
+        if not e:
+            continue
+        if e["type"] not in TYPES + ["집회"]:  # 단순 보도는 제외
+            continue
+        if not (start_day.isoformat() <= e["date"] <= today.isoformat()):
+            log(f"[기간 밖, 제외] {e['date']} {e['title']}")
+            continue
+        events.append(e)
+    order = {t: i for i, t in enumerate(TYPES + ["집회"])}
+    org_order = {o["name"]: i for i, o in enumerate(CONFIG["orgs"])}
+    events.sort(key=lambda e: (order.get(e["type"], 9), org_order.get(e["org"], 99), e["published"]))
 
     ds = today.isoformat()
     day = {
         "kind": "daily", "date": ds,
         "period_start": start_day.isoformat(), "period_end": ds,
-        "period_label": period_label(start_day, today),
+        "period_label": period,
         "generated_at": now.isoformat(timespec="minutes"),
         "count": len(events), "keywords": keywords,
-        "orgs": [o["name"] for o in CONFIG["orgs"]], "events": events,
+        "orgs": [o["name"] for o in CONFIG["orgs"]] + [OTHER], "events": events,
         "files": {"docx": f"files/daily-{ds}.docx", "pdf": f"files/daily-{ds}.pdf"},
     }
     save_json(DATA_DIR / f"{ds}.json", day)

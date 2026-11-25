@@ -1,5 +1,5 @@
 {
-  "max_events": 80,
+  "max_events": 100,
   "model_daily": "claude-haiku-5-5",
   "model_weekly": "claude-sonnet-5-5",
   "keywords": [
@@ -68,5 +68,17 @@
         "https://www.greenkorea.org"
       ]
     }
+  ],
+  "extra_queries": [
+    "시민단체 기자회견",
+    "시민사회단체 기자회견",
+    "노동단체 기자회견",
+    "국회 소통관 기자회견",
+    "청와대 앞 기자회견",
+    "광화문 기자회견",
+    "시민단체 성명",
+    "시민사회단체 성명",
+    "시민단체 논평",
+    "시민사회 논평"
   ]
 }

@@ -16,26 +16,40 @@ from common import (BUILD_DIR, CONFIG, DATA_DIR, call_claude, has_claude, load_j
                     now_kst, parse_json, period_label, report_date, save_json, build_index)
 
 PROMPT = """당신은 한국 시민사회 동향을 정리하는 정책 분석가입니다.
-아래는 {period} 동안 주요 시민사회단체({orgs})가 발표한 기자회견·성명·논평 목록입니다.
-이 목록만을 근거로 'A4 두 페이지' 분량의 주간 시민사회 동향 보고서를 작성하세요.
+아래는 {period} 동안 발표된 시민사회 기자회견·성명·논평 목록입니다.
+이 목록만을 근거로 'A4 두 페이지' 분량의 주간 시민사회 동향 보고서를 **개조식**으로 작성하세요.
 
 JSON으로만 답하세요:
 {{
- "overview": "1) 개요. 한 주의 전반적 흐름을 요약. 400~600자, 1~2문단(문단 구분은 \\n\\n)",
- "main_issues": [{{"title": "현안명", "body": "배경, 단체들의 입장과 요구, 대립 지점. 300~450자"}}],
- "other_issues": [{{"title": "쟁점명", "body": "100~200자"}}],
+ "overview": ["1) 개요: 한 주의 전반적 흐름. 항목 5~7개"],
+ "main_issues": [{{"title": "현안명", "points": ["배경, 단체별 입장·요구, 대립 지점. 항목 4~6개"]}}],
+ "other_issues": [{{"title": "쟁점명", "points": ["항목 2~3개"]}}],
  "table": [{{"issue": "주요 쟁점(짧게)", "actor": "단위주체(단체명)", "claim": "핵심주장 한 문장", "ref": [항목 번호]}}]
 }}
 
-작성 기준
-- main_issues: 이번 주 가장 크게 이슈가 된 정책·기조 현안 2~3개 (합계 1,000~1,300자)
-- other_issues: 그 밖의 주요 쟁점 2~4개 (합계 400~600자)
+개조식 작성 기준
+- 각 항목은 한두 줄의 짧은 구절로, 명사형으로 끝맺기 (예: "~ 촉구", "~ 요구함", "~ 비판", "~ 예정임")
+- "~했다", "~이다" 같은 서술형 문장 금지. 항목 앞에 기호(○, -, 숫자)는 붙이지 말 것
+- 주체(단체명)를 항목 앞부분에 밝히기 (예: "참여연대, 기초연금 개편안 국회 심의 중단 요구")
+- main_issues: 이번 주 가장 크게 이슈가 된 정책·기조 현안 2~3개 (한 페이지 이내)
+- other_issues: 그 밖의 주요 쟁점 2~4개 (반 페이지)
+- overview: 반 페이지
 - table: 목록의 모든 항목을 빠짐없이 반영. 같은 단체가 같은 쟁점으로 낸 항목은 한 줄로 합치고 ref에 번호를 모두 적기. 같은 쟁점끼리 붙여서 정렬
 - 목록에 없는 사실·수치·평가를 지어내지 말 것
-- 문체는 보고서체 평서문(~했다, ~이다)
 
 목록
 {items}"""
+
+
+def as_list(v):
+    """개조식 항목 목록 (예전 형식의 문단 문자열도 처리)"""
+    if isinstance(v, list):
+        return [str(x).strip().lstrip("○-·•").strip() for x in v if str(x).strip()]
+    return [p.strip() for p in str(v or "").split("\n") if p.strip()]
+
+
+def points(item):
+    return as_list(item.get("points", item.get("body", "")))
 
 
 def main():
@@ -72,12 +86,12 @@ def main():
         by_type = Counter(e["type"] for e in events)
         by_org = Counter(e["org"] for e in events)
         report = {
-            "overview": (f"{label} 동안 수집된 시민사회 동향은 총 {len(events)}건이다. "
-                         + ", ".join(f"{k} {v}건" for k, v in by_type.most_common()) + ". "
-                         + "단체별로는 " + ", ".join(f"{k} {v}건" for k, v in by_org.most_common()) + "이다.")
-                        if events else f"{label} 동안 수집된 소식이 없다.",
+            "overview": ([f"{label} 수집된 시민사회 동향 총 {len(events)}건",
+                          "유형별: " + ", ".join(f"{k} {v}건" for k, v in by_type.most_common()),
+                          "단체별: " + ", ".join(f"{k} {v}건" for k, v in by_org.most_common())]
+                         if events else [f"{label} 수집된 소식 없음"]),
             "main_issues": [{"title": "(자동 요약 미사용)",
-                             "body": "ANTHROPIC_API_KEY를 등록하면 이 부분을 Claude가 작성한다."}],
+                             "points": ["ANTHROPIC_API_KEY를 등록하면 이 부분을 Claude가 작성함"]}],
             "other_issues": [],
             "table": [{"issue": e["title"], "actor": e["hosts"], "claim": e["summary"],
                        "ref": [i]} for i, e in enumerate(events, 1)],
@@ -103,12 +117,12 @@ def main():
 
     md = [f"# 주간 시민사회 동향 · {label}", "",
           "📄 Word·PDF 파일은 맨 아래 **Assets**에서 내려받을 수 있습니다.", "",
-          "## 1. 개요", weekly["overview"], "", "## 2. 주요 정책/기조 현안"]
+          "## 1. 개요", *[f"- {p}" for p in as_list(weekly["overview"])], "", "## 2. 주요 정책/기조 현안"]
     for i, it in enumerate(weekly["main_issues"]):
-        md += [f"**{'가나다라마바'[i]}. {it['title']}**", it["body"], ""]
+        md += [f"**{'가나다라마바'[i]}. {it['title']}**", *[f"- {p}" for p in points(it)], ""]
     md.append("## 3. 그 외 주요 쟁점")
     for i, it in enumerate(weekly["other_issues"]):
-        md += [f"**{'가나다라마바'[i]}. {it['title']}**", it["body"], ""]
+        md += [f"**{'가나다라마바'[i]}. {it['title']}**", *[f"- {p}" for p in points(it)], ""]
     md += ["## 4. 참고자료", "", "| 주요 쟁점 | 단위주체 | 핵심주장 |", "|---|---|---|"]
     for r in weekly["table"]:
         cell = lambda s: str(s).replace("|", "/").replace("\n", " ")

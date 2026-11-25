@@ -18,6 +18,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 from common import DATA_DIR, FILES_DIR, load_json, log, report_date
+from weekly import as_list, points
 
 FONT = "맑은 고딕"
 ACCENT = RGBColor(0x1F, 0x6F, 0x5C)
@@ -95,6 +96,15 @@ def daily_docx(d, out):
     doc.save(out)
 
 
+def bullets(doc, items):
+    for t in items:
+        p = doc.add_paragraph()
+        p.paragraph_format.left_indent = Cm(0.9)
+        p.paragraph_format.first_line_indent = Cm(-0.5)
+        p.paragraph_format.space_after = Pt(2)
+        p.add_run("○  " + t)
+
+
 def weekly_docx(w, out):
     doc = new_doc()
     doc.add_heading("주간 시민사회 동향", 0)
@@ -103,16 +113,15 @@ def weekly_docx(w, out):
     r.font.color.rgb = GREY
 
     doc.add_heading("1. 개요", 1)
-    for para in w["overview"].split("\n\n"):
-        doc.add_paragraph(para.strip())
+    bullets(doc, as_list(w["overview"]))
     doc.add_heading("2. 주요 정책/기조 현안", 1)
     for i, it in enumerate(w["main_issues"]):
         doc.add_heading(f"{LETTERS[i]}. {it['title']}", 3)
-        doc.add_paragraph(it["body"])
+        bullets(doc, points(it))
     doc.add_heading("3. 그 외 주요 쟁점", 1)
     for i, it in enumerate(w["other_issues"]):
         doc.add_heading(f"{LETTERS[i]}. {it['title']}", 3)
-        doc.add_paragraph(it["body"])
+        bullets(doc, points(it))
     if not w["other_issues"]:
         doc.add_paragraph("-")
 
@@ -165,6 +174,9 @@ table { width: 100%; border-collapse: collapse; font-size: 9pt; }
 th, td { border: 1px solid #bbb; padding: 4pt 5pt; vertical-align: top; text-align: left; }
 th { background: #e6efec; } tr { page-break-inside: avoid; }
 td small { display: block; color: #6b6b6b; font-size: 7.5pt; }
+ul.bul { list-style: none; margin: 0 0 6pt; padding-left: 1.2em; }
+ul.bul li { margin: 0 0 2pt; text-indent: -1.1em; }
+ul.bul li::before { content: "○ "; }
 """
 
 
@@ -190,14 +202,17 @@ def daily_html(d):
 
 
 def weekly_html(w):
+    def ul(items):
+        return "<ul class='bul'>" + "".join(f"<li>{e(t)}</li>" for t in items) + "</ul>"
+
     def issues(items):
-        return "".join(f"<h3>{LETTERS[i]}. {e(it['title'])}</h3><p>{e(it['body'])}</p>"
+        return "".join(f"<h3>{LETTERS[i]}. {e(it['title'])}</h3>{ul(points(it))}"
                        for i, it in enumerate(items)) or "<p>-</p>"
     rows = "".join(
         f"<tr><td>{e(r['issue'])}</td><td>{e(r['actor'])}<small>{e(r.get('meta', ''))}</small></td>"
         f"<td>{e(r['claim'])}</td></tr>" for r in w["table"])
     body = (f"<h1>주간 시민사회 동향</h1><div class='period'>{e(w['period_label'])} · 기자회견·성명·논평 등 {w['count']}건</div>"
-            "<h2>1. 개요</h2>" + "".join(f"<p>{e(p.strip())}</p>" for p in w["overview"].split("\n\n"))
+            "<h2>1. 개요</h2>" + ul(as_list(w["overview"]))
             + "<h2>2. 주요 정책/기조 현안</h2>" + issues(w["main_issues"])
             + "<h2>3. 그 외 주요 쟁점</h2>" + issues(w["other_issues"])
             + "<h2>4. 참고자료</h2><table><colgroup><col style='width:24%'><col style='width:24%'><col></colgroup>"

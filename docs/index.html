@@ -41,6 +41,9 @@
   .report h2:first-child { margin-top:0; }
   .report h4 { font-size:15px; margin:14px 0 4px; }
   .report p { margin:0 0 8px; }
+  .report ul.bul { list-style:none; padding-left:1.3em; margin:0 0 8px; }
+  .report ul.bul li { text-indent:-1.15em; margin-bottom:3px; }
+  .report ul.bul li::before { content:"○ "; color:var(--accent); }
   .tbl { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; font-size:13.5px; min-width:520px; }
   th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; line-height:1.5; }
@@ -95,10 +98,12 @@ function renderDaily() {
 
 function renderWeekly() {
   const w = weekly;
-  const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4><p>${esc(it.body)}</p>`).join("") : "<p>-</p>";
+  const asList = v => Array.isArray(v) ? v : String(v || "").split("\n").filter(x => x.trim());
+  const ul = items => `<ul class="bul">${asList(items).map(t => `<li>${esc(String(t).replace(/^[○\-·•]\s*/, ""))}</li>`).join("")}</ul>`;
+  const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4>${ul(it.points || it.body)}`).join("") : "<p>-</p>";
   $("#view").innerHTML = downloads(w.files) + `<div class="report">
     <div class="sub" style="margin-bottom:14px">${esc(w.period_label)} · 기자회견·성명·논평 등 ${w.count}건</div>
-    <h2>1. 개요</h2>${w.overview.split("\n\n").map(p => `<p>${esc(p)}</p>`).join("")}
+    <h2>1. 개요</h2>${ul(w.overview)}
     <h2>2. 주요 정책/기조 현안</h2>${issues(w.main_issues)}
     <h2>3. 그 외 주요 쟁점</h2>${issues(w.other_issues)}
     <h2>4. 참고자료</h2>
