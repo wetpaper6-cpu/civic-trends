@@ -57,11 +57,27 @@ def fetch(url, headers=None, timeout=20, data=None):
     return raw.decode("utf-8", "replace")
 
 
+_claude_off = False
+
+
 def has_claude():
-    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+    return bool(os.environ.get("ANTHROPIC_API_KEY")) and not _claude_off
 
 
 def call_claude(prompt, model, max_tokens=1000, timeout=120):
+    global _claude_off
+    try:
+        return _call_claude(prompt, model, max_tokens, timeout)
+    except Exception as e:
+        code = getattr(e, "code", None)
+        if code in (401, 403) or (code == 400 and "credit" in str(getattr(e, "_body", "")).lower()):
+            _claude_off = True
+            log(f"Claude API 키 오류({code}): 이번 실행에서는 Claude 정리를 끕니다. "
+                "ANTHROPIC_API_KEY 값과 크레딧을 확인하세요.")
+        raise
+
+
+def _call_claude(prompt, model, max_tokens, timeout):
     body = json.dumps({
         "model": model,
         "max_tokens": max_tokens,
