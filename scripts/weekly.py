@@ -64,7 +64,7 @@ def main():
             report = parse_json(call_claude(
                 PROMPT.format(period=label, orgs=", ".join(o["name"] for o in CONFIG["orgs"]),
                               items="\n".join(lines)),
-                CONFIG.get("model_weekly", "claude-sonnet-5-5"), 16000, 600))
+                CONFIG.get("model_weekly", "claude-sonnet-5-5"), 32000, 900))  # 생각 + 보고서
         except Exception as e:
             log(f"[Claude 주간 작성 실패, 기본 양식 사용] {e}")
 

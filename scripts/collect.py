@@ -157,7 +157,8 @@ def cluster_llm(groups):
     lines = [f"{i}. [{g['org']}] {g['main']['title']} | {g['main']['snippet'][:120]}"
              for i, g in enumerate(groups, 1)]
     res = parse_json(call_claude(CLUSTER_PROMPT.format(items="\n".join(lines)),
-                                 CONFIG.get("model_daily", "claude-haiku-5-5"), 4000, 180))
+                                 CONFIG.get("model_daily", "claude-haiku-5-5"), 4000, 180,
+                                 thinking={"type": "disabled"}))
     n = len(groups)
     drop = {i for i in res.get("drop", []) if isinstance(i, int)}
     used, merged = set(), []
@@ -283,7 +284,8 @@ def extract_llm(ev, text):
     prompt = LLM_PROMPT.format(
         org=ev["org"], published=main["published"].strftime("%Y-%m-%d %H:%M"),
         title=main["title"], text=text or main["snippet"])
-    return parse_json(call_claude(prompt, CONFIG.get("model_daily", "claude-haiku-5-5"), 600, 60))
+    return parse_json(call_claude(prompt, CONFIG.get("model_daily", "claude-haiku-5-5"), 1000, 60,
+                                  thinking={"type": "disabled"}))
 
 
 def enrich(ev):

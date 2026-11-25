@@ -64,10 +64,11 @@ def has_claude():
     return bool(os.environ.get("ANTHROPIC_API_KEY")) and not _claude_off
 
 
-def call_claude(prompt, model, max_tokens=1000, timeout=120):
+def call_claude(prompt, model, max_tokens=1000, timeout=120, thinking=None):
+    """thinking: None이면 모델 기본값(생각 켜짐). 짧은 작업은 {"type": "disabled"}"""
     global _claude_off
     try:
-        return _call_claude(prompt, model, max_tokens, timeout)
+        return _call_claude(prompt, model, max_tokens, timeout, thinking)
     except Exception as e:
         code = getattr(e, "code", None)
         if code in (401, 403) or (code == 400 and "credit" in str(getattr(e, "_body", "")).lower()):
@@ -77,12 +78,15 @@ def call_claude(prompt, model, max_tokens=1000, timeout=120):
         raise
 
 
-def _call_claude(prompt, model, max_tokens, timeout):
-    body = json.dumps({
+def _call_claude(prompt, model, max_tokens, timeout, thinking):
+    req = {
         "model": model,
         "max_tokens": max_tokens,
         "messages": [{"role": "user", "content": prompt}],
-    }).encode()
+    }
+    if thinking:
+        req["thinking"] = thinking
+    body = json.dumps(req).encode()
     raw = fetch("https://api.anthropic.com/v1/messages", {
         "x-api-key": "".join(os.environ["ANTHROPIC_API_KEY"].split()),
         "anthropic-version": "2023-06-01",
