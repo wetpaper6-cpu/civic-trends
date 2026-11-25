@@ -67,7 +67,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const get = async u => (await fetch(u, {cache:"no-store"})).json();
 const LET = "가나다라마바사아";
-let entries = [], entry = null, tab = "daily", daily = null, weekly = null, org = "전체", kw = "전체";
+let entries = [], entry = null, tab = "daily", daily = null, weekly = null, org = "전체", kw = "전체", notice = "";
 
 function downloads(files) {
   return `<div class="bar"><a class="dl" href="${esc(files.docx)}" download>⬇ Word</a><a class="dl" href="${esc(files.pdf)}" download>⬇ PDF</a></div>`;
@@ -102,6 +102,12 @@ function renderDaily() {
 
 function renderWeekly() {
   const w = weekly;
+  if (!w) {
+    const hasAny = entries.some(e => e.weekly);
+    const msg = hasAny ? "이 날짜 이전에는 주간 동향이 없습니다. 날짜를 바꿔 보세요." : (notice || "아직 주간 동향이 없습니다.");
+    $("#view").innerHTML = `<div class="report"><p style="margin:0">📅 ${esc(msg)}</p></div>`;
+    return;
+  }
   const ul = bul;
   const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4>${ul(it.points || it.body)}`).join("") : "<p>-</p>";
   $("#view").innerHTML = downloads(w.files) + `<div class="report">
@@ -117,15 +123,16 @@ function renderWeekly() {
 
 function renderTabs() {
   $("#tabs").innerHTML = `<button class="tab${tab === "daily" ? " on" : ""}" data-tab="daily">일일 동향</button>`
-    + (entry.weekly ? `<button class="tab${tab === "weekly" ? " on" : ""}" data-tab="weekly">주간 동향</button>` : "");
+    + `<button class="tab${tab === "weekly" ? " on" : ""}" data-tab="weekly">주간 동향</button>`;
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; renderTabs(); tab === "daily" ? renderDaily() : renderWeekly(); });
 }
 
 async function load(date) {
   entry = entries.find(e => e.date === date);
   daily = await get(`data/${date}.json`);
-  weekly = entry.weekly ? await get(`data/weekly-${date}.json`) : null;
-  if (!weekly) tab = "daily";
+  // 고른 날짜 기준 가장 최근 주간 동향
+  const w = entries.filter(e => e.weekly && e.date <= date).sort((a, b) => b.date.localeCompare(a.date))[0];
+  weekly = w ? await get(`data/weekly-${w.date}.json`) : null;
   renderTabs();
   tab === "weekly" ? renderWeekly() : renderDaily();
 }
@@ -134,6 +141,7 @@ async function load(date) {
   try {
     const idx = await get("data/index.json");
     entries = idx.entries;
+    notice = idx.weekly_notice || "";
     $("#sub").textContent = `일~목 저녁 7시 게재 · 목요일 주간 동향 · 마지막 업데이트 ${idx.updated.replace("T", " ").slice(0, 16)}`;
     $("#date").innerHTML = entries.map(e => `<option value="${e.date}">${e.label}${e.weekly ? " · 주간 포함" : ""} (${e.count}건)</option>`).join("");
     $("#date").onchange = e => load(e.target.value);

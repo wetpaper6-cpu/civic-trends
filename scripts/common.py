@@ -145,5 +145,11 @@ def build_index():
             "count": d["count"],
             "weekly": (DATA_DIR / f"weekly-{d['date']}.json").exists(),
         })
+    first = CONFIG.get("weekly_first_date", "")
+    notice = ""
+    if first:
+        d = date.fromisoformat(first)
+        notice = f"첫 주간 동향은 {d.month}월 {d.day}일({WEEKDAYS[d.weekday()]}) 저녁 7시에 올라옵니다."
     save_json(DATA_DIR / "index.json",
-              {"updated": now_kst().isoformat(timespec="minutes"), "entries": entries})
+              {"updated": now_kst().isoformat(timespec="minutes"), "entries": entries,
+               "weekly_notice": notice})
