@@ -113,9 +113,21 @@ def scrape_homepage(org, keywords, seen, now):
             if url in seen:
                 continue
             seen.add(url)
+            # 목록에 날짜가 함께 적혀 있으면 기억 (예: "제목 11-25", "제목 2026.11.25")
+            listed, title = "", text
+            m = re.search(r"(?:(20\d\d)[.\-/])?(\d{1,2})[.\-/](\d{1,2})\.?\s*$", text)
+            if m:
+                y = int(m.group(1) or now.year)
+                try:
+                    dd = datetime(y, int(m.group(2)), int(m.group(3))).date()
+                    if dd > now.date():  # 연초에 지난해 12월 글
+                        dd = dd.replace(year=y - 1)
+                    listed, title = dd.isoformat(), text[:m.start()].strip()
+                except ValueError:
+                    pass
             yield {
-                "source": "homepage", "org": org["name"], "keywords": hits,
-                "title": text, "snippet": "", "url": url, "naver_url": None,
+                "source": "homepage", "org": org["name"], "keywords": hits, "listed_date": listed,
+                "title": title, "snippet": "", "url": url, "naver_url": None,
                 "press": org["name"] + " 홈페이지", "published": now,
             }
 
@@ -483,6 +495,8 @@ def enrich(ev):
             log(f"[Claude 정리 실패, 규칙 기반 사용] {main['title']}: {e}")
     # 행사일: Claude가 준 date → 일시 문구 → 기사 게시일 순으로 사용 (연도는 게시일 기준 보정)
     d = info.get("date", "")
+    if main["source"] == "homepage" and main.get("listed_date"):
+        d = main["listed_date"]  # 단체 홈페이지 목록에 적힌 날짜가 가장 정확
     if main["source"] == "homepage" and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
         log(f"[홈페이지 글 날짜 확인 불가, 제외] {main['title']}")
         return None
