@@ -508,15 +508,12 @@ def main():
 
     groups = group_events(list(items.values()))
     groups.sort(key=lambda g: len(g["articles"]), reverse=True)
-    groups = groups[:300]
-    if has_claude() and len(groups) > 1:
-        try:
-            groups = cluster_llm(groups, period)
-        except Exception as e:
-            log(f"[Claude 묶기 실패, 제목 유사도로만 묶음] {e}")
+    # 긴 목록을 한 번에 묶으면 엉뚱하게 합쳐지므로, 사안별로 각각 정리한 뒤 마지막에 짧은 목록으로 합침
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        enriched = list(pool.map(enrich, groups[:CONFIG.get("max_events", 200)]))
     events = []
-    for g in groups[:CONFIG.get("max_events", 100)]:
-        e = enrich(g)
+    for e in enriched:
         if not e:
             continue
         if e["type"] not in TYPES + ["집회"]:  # 단순 보도는 제외
