@@ -384,6 +384,51 @@ def dedupe_final(events):
     return out
 
 
+def host_key(hosts):
+    """주최 기관을 비교용으로 정리 (정식 명칭 → 약칭, 순서 무시)"""
+    names = set()
+    for h in hosts.split(","):
+        h = h.strip()
+        for o in CONFIG["orgs"]:
+            if any(al in h for al in o["aliases"]):
+                h = o["name"]
+                break
+        if h:
+            names.add(re.sub(r"\s|\(.*?\)", "", h))
+    return names
+
+
+COMMON_WORDS = re.compile(r"촉구|요구|규탄|반대|발표|기자회견|성명|논평|입장|관련|및|대한|위한|국회|정부|즉각|철회|중단")
+
+
+def topic_grams(title):
+    """핵심 낱말의 두 글자 조각 (흔한 말 제외, 낱말 경계 유지)"""
+    grams = set()
+    for w in COMMON_WORDS.sub(" ", title).split():
+        w = re.sub(r"[^가-힣A-Za-z0-9]", "", w)
+        grams |= {w[i:i + 2] for i in range(len(w) - 1)}
+    return grams
+
+
+def merge_similar(events):
+    """같은 날·같은 주최·비슷한 제목이면 한 건으로 (Claude 합치기의 빈틈 보완)"""
+    out = []
+    for e in events:
+        for o in out:
+            hk1, hk2 = host_key(e["hosts"]), host_key(o["hosts"])
+            same_hosts = hk1 and hk2 and (hk1 & hk2) and len(hk1 & hk2) >= min(len(hk1), len(hk2)) / 2
+            if e["date"] == o["date"] and same_hosts and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 2:
+                keep, drop = (o, e) if len(o["sources"]) >= len(e["sources"]) else (e, o)
+                urls = {x["url"] for x in keep["sources"]}
+                keep["sources"] += [x for x in drop["sources"] if x["url"] not in urls]
+                if keep is e:
+                    out[out.index(o)] = e
+                break
+        else:
+            out.append(e)
+    return out
+
+
 def enrich(ev):
     main = ev["main"]
     text = article_text(main["url"]) or main["snippet"]
@@ -549,6 +594,10 @@ def main():
             events = dedupe_final(events)
         except Exception as ex:
             log(f"[최종 합치기 실패] {ex}")
+    n_before = len(events)
+    events = merge_similar(events)
+    if len(events) < n_before:
+        log(f"주최·제목 기준 추가 합치기: {n_before}건 → {len(events)}건")
     order = {t: i for i, t in enumerate(TYPES + ["집회"])}
     org_order = {o["name"]: i for i, o in enumerate(CONFIG["orgs"])}
     events.sort(key=lambda e: (order.get(e["type"], 9), org_order.get(e["org"], 99), e["published"]))
