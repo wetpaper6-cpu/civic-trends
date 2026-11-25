@@ -273,6 +273,9 @@ LLM_PROMPT = """다음은 한국 시민사회단체의 활동을 다룬 기사(�
  "hosts": "주최·발표 기관을 쉼표로 (공동주최 포함)",
  "summary": "핵심 주장과 요구를 2~3문장으로"}}
 
+기준 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아니면(일정 목록, 단순 언급 기사 등)
+{{"skip": true}} 만 답하세요.
+
 기준 단체: {org}
 기사 게시 시각: {published}
 제목: {title}
@@ -295,6 +298,9 @@ def enrich(ev):
     if has_claude():
         try:
             llm = extract_llm(ev, text)
+            if llm.get("skip"):
+                log(f"[관련 없음, 제외] {main['title']}")
+                return None
             info.update({k: squash(str(v)) for k, v in llm.items() if k in info and v})
             if info["type"] not in ("기자회견", "집회"):
                 info["place"] = ""
@@ -404,7 +410,7 @@ def main():
             groups = cluster_llm(groups)
         except Exception as e:
             log(f"[Claude 묶기 실패, 제목 유사도로만 묶음] {e}")
-    events = [enrich(g) for g in groups[:CONFIG.get("max_events", 80)]]
+    events = [e for e in (enrich(g) for g in groups[:CONFIG.get("max_events", 80)]) if e]
     order = {t: i for i, t in enumerate(TYPES + ["집회", "보도"])}
     events.sort(key=lambda e: (order.get(e["type"], 9), e["org"], e["published"]))
 
