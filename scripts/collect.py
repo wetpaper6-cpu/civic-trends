@@ -320,6 +320,7 @@ def main():
             items[item["url"]] = item
 
     if os.environ.get("NAVER_CLIENT_ID") and os.environ.get("NAVER_CLIENT_SECRET"):
+        naver_ok = True
         for org in CONFIG["orgs"]:
             for kw in keywords:
                 try:
@@ -327,7 +328,19 @@ def main():
                         if it["published"] <= end:
                             add(it)
                 except Exception as e:
-                    log(f"[네이버 실패] {org['name']} {kw}: {e}")
+                    detail = ""
+                    if hasattr(e, "read"):  # 네이버가 보낸 상세 사유
+                        try:
+                            detail = " | " + e.read().decode("utf-8", "replace")[:300]
+                        except Exception:
+                            pass
+                    log(f"[네이버 실패] {org['name']} {kw}: {e}{detail}")
+                    if getattr(e, "code", None) in (401, 403):
+                        log("인증 오류라 나머지 네이버 검색을 건너뜁니다.")
+                        naver_ok = False
+                        break
+            if not naver_ok:
+                break
     else:
         log("NAVER_CLIENT_ID/SECRET 없음: 네이버 검색을 건너뜁니다.")
 
