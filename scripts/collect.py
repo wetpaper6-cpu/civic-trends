@@ -400,15 +400,22 @@ def dedupe_final(events):
                                  CONFIG.get("model_daily", "claude-haiku-5-5"), 2000, 120,
                                  thinking={"type": "disabled"}))
     used, out = set(), []
+    sub_groups = []
     for grp in res.get("groups", []):
         ids = [i for i in grp if isinstance(i, int) and 1 <= i <= len(events) and i not in used]
-        if not ids:
-            continue
         used.update(ids)
+        # 유형·날짜가 다르면 같은 행사가 아님 (예: 11.25 성명과 11.23 논평)
+        by_key = {}
+        for i in ids:
+            by_key.setdefault((events[i - 1]["type"], events[i - 1]["date"]), []).append(i)
+        sub_groups += by_key.values()
+    for ids in sub_groups:
         members = [events[i - 1] for i in ids]
         best = max(members, key=lambda e: (len(e["sources"]), len(e["summary"])))
         if any(m.get("scope") == "전국" for m in members):
             best["scope"] = "전국"
+        if any(m.get("source") == "homepage" for m in members):
+            best["source"] = "homepage"
         seen_urls = set()
         best["sources"] = [s for m in members for s in m["sources"]
                            if not (s["url"] in seen_urls or seen_urls.add(s["url"]))]
@@ -459,6 +466,8 @@ def merge_similar(events):
                 keep, drop = (o, e) if len(o["sources"]) >= len(e["sources"]) else (e, o)
                 if drop.get("scope") == "전국":
                     keep["scope"] = "전국"
+                if drop.get("source") == "homepage":
+                    keep["source"] = "homepage"
                 urls = {x["url"] for x in keep["sources"]}
                 keep["sources"] += [x for x in drop["sources"] if x["url"] not in urls]
                 if keep is e:
@@ -651,7 +660,7 @@ def main():
     kept = []
     for e in events:
         prev = next((o for o in old_posts
-                     if e["type"] in ("성명", "논평") and host_key(e["hosts"]) & host_key(o["hosts"])
+                     if e["type"] in ("성명", "논평") and e.get("source") != "homepage" and host_key(e["hosts"]) & host_key(o["hosts"])
                      and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 5), None)
         if prev:
             log(f"[이전 발표({prev['date']}), 제외] {e['hosts']} | {e['title']}")
