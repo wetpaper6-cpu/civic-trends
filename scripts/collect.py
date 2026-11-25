@@ -43,8 +43,8 @@ def search_naver(org, keyword, since):
     url = ("https://naverapihub.apigw.ntruss.com/search/v1/news"
            f"?query={quote(query)}&display=100&sort=date")
     data = json.loads(fetch(url, {
-        "X-NCP-APIGW-API-KEY-ID": os.environ["NAVER_CLIENT_ID"],
-        "X-NCP-APIGW-API-KEY": os.environ["NAVER_CLIENT_SECRET"],
+        "X-NCP-APIGW-API-KEY-ID": os.environ["NAVER_CLIENT_ID"].strip(),
+        "X-NCP-APIGW-API-KEY": os.environ["NAVER_CLIENT_SECRET"].strip(),
     }))
     for it in data.get("items", []):
         try:
