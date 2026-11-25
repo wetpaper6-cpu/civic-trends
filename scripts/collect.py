@@ -291,6 +291,22 @@ def extract_llm(ev, text):
                                   thinking={"type": "disabled"}))
 
 
+def fix_date(text, pub):
+    """Claude가 쓴 날짜의 연도·요일을 기사 게시일 기준으로 바로잡음"""
+    from datetime import date as _d
+
+    def repl(m):
+        y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        try:
+            cand = _d(y, mo, d)
+            if abs((cand - pub.date()).days) > 180:
+                cand = _d(pub.year, mo, d)
+        except ValueError:
+            return m.group(0)
+        return fmt_date(cand)
+    return re.sub(r"(\d{4})\.\s?(\d{1,2})\.\s?(\d{1,2})\.?(?:\s?\([^)]*\))?", repl, text or "")
+
+
 def enrich(ev):
     main = ev["main"]
     text = article_text(main["url"]) or main["snippet"]
@@ -302,6 +318,7 @@ def enrich(ev):
                 log(f"[관련 없음, 제외] {main['title']}")
                 return None
             info.update({k: squash(str(v)) for k, v in llm.items() if k in info and v})
+            info["datetime"] = fix_date(info["datetime"], main["published"])
             if info["type"] not in ("기자회견", "집회"):
                 info["place"] = ""
         except Exception as e:
