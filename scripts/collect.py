@@ -317,13 +317,68 @@ def fix_date(text, pub):
     return re.sub(r"(\d{4})\.\s?(\d{1,2})\.\s?(\d{1,2})\.?(?:\s?\([^)]*\))?", repl, text or "")
 
 
+REGIONS = "부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|충청|전북|전남|전라|경북|경남|경상|제주|수원|창원|청주|전주|포항|김해|성남|고양|용인"
+REGIONAL_PLACE = re.compile(rf"^(?!서울)\S*({REGIONS})")
+REGIONAL_HOST = re.compile(rf"({REGIONS})\S*(참여연대|경실련|환경운동연합|환경연합|녹색연합|본부|지부|지역|연대|시민단체|시민사회)")
+PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래")
+
+
+def excluded(e):
+    """지방 행사·지역 조직·정당 주최는 제외 (Claude 판단을 한 번 더 확인)"""
+    if e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
+        return "지방 행사"
+    first_host = e["hosts"].split(",")[0].strip()
+    if REGIONAL_HOST.search(first_host):
+        return "지역 조직"
+    hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
+    if hosts and all(PARTIES.search(h) for h in hosts):
+        return "정당 주최"
+    return None
+
+
+DEDUPE_PROMPT = """아래는 같은 기간의 시민사회 기자회견·성명 목록입니다.
+같은 행사(같은 기자회견, 같은 성명)를 가리키는 항목끼리 번호를 묶어 주세요.
+JSON으로만 답하세요: {{"groups": [[번호, ...], ...]}}  (모든 번호를 한 번씩)
+
+{items}"""
+
+
+def dedupe_final(events):
+    """정리된 결과에서 같은 행사 한 번 더 합치기 (목록이 짧아 정확함)"""
+    lines = [f"{i}. [{e['type']}] {e['date']} {e['hosts']} | {e['title']} | {e['place']}"
+             for i, e in enumerate(events, 1)]
+    res = parse_json(call_claude(DEDUPE_PROMPT.format(items="\n".join(lines)),
+                                 CONFIG.get("model_daily", "claude-haiku-5-5"), 2000, 120,
+                                 thinking={"type": "disabled"}))
+    used, out = set(), []
+    for grp in res.get("groups", []):
+        ids = [i for i in grp if isinstance(i, int) and 1 <= i <= len(events) and i not in used]
+        if not ids:
+            continue
+        used.update(ids)
+        members = [events[i - 1] for i in ids]
+        best = max(members, key=lambda e: (len(e["sources"]), len(e["summary"])))
+        seen_urls = set()
+        best["sources"] = [s for m in members for s in m["sources"]
+                           if not (s["url"] in seen_urls or seen_urls.add(s["url"]))]
+        for m in members:
+            best["keywords"] += [k for k in m["keywords"] if k not in best["keywords"]]
+        out.append(best)
+    out += [e for i, e in enumerate(events, 1) if i not in used]
+    log(f"최종 중복 합치기: {len(events)}건 → {len(out)}건")
+    return out
+
+
 def enrich(ev):
     main = ev["main"]
     text = article_text(main["url"]) or main["snippet"]
     info = extract_rules(ev, text)
     if has_claude():
         try:
-            llm = extract_llm(ev, text)
+            try:
+                llm = extract_llm(ev, text)
+            except ValueError:  # 응답 형식이 깨졌으면 한 번 더
+                llm = extract_llm(ev, text)
             if llm.get("skip"):
                 log(f"[관련 없음, 제외] {main['title']}")
                 return None
@@ -332,6 +387,9 @@ def enrich(ev):
             if info["type"] not in ("기자회견", "집회"):
                 info["place"] = ""
         except Exception as e:
+            if ev["org"] == OTHER and has_claude():
+                log(f"[Claude 정리 실패, 제외] {main['title']}: {e}")
+                return None
             log(f"[Claude 정리 실패, 규칙 기반 사용] {main['title']}: {e}")
     # 행사일: Claude가 준 date → 일시 문구 → 기사 게시일 순으로 사용 (연도는 게시일 기준 보정)
     d = info.get("date", "")
@@ -459,7 +517,16 @@ def main():
         if not (start_day.isoformat() <= e["date"] <= today.isoformat()):
             log(f"[기간 밖, 제외] {e['date']} {e['title']}")
             continue
+        why = excluded(e)
+        if why:
+            log(f"[{why}, 제외] {e['hosts']} | {e['title']}")
+            continue
         events.append(e)
+    if has_claude() and len(events) > 1:
+        try:
+            events = dedupe_final(events)
+        except Exception as ex:
+            log(f"[최종 합치기 실패] {ex}")
     order = {t: i for i, t in enumerate(TYPES + ["집회"])}
     org_order = {o["name"]: i for i, o in enumerate(CONFIG["orgs"])}
     events.sort(key=lambda e: (order.get(e["type"], 9), org_order.get(e["org"], 99), e["published"]))
