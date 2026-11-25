@@ -83,14 +83,25 @@ def _call_claude(prompt, model, max_tokens, timeout):
         "max_tokens": max_tokens,
         "messages": [{"role": "user", "content": prompt}],
     }).encode()
-    res = json.loads(fetch("https://api.anthropic.com/v1/messages", {
+    raw = fetch("https://api.anthropic.com/v1/messages", {
         "x-api-key": "".join(os.environ["ANTHROPIC_API_KEY"].split()),
         "anthropic-version": "2023-06-01",
-        "content-type": "application/json"}, timeout=timeout, data=body))
-    return "".join(b.get("text", "") for b in res["content"])
+        "content-type": "application/json"}, timeout=timeout, data=body)
+    try:
+        res = json.loads(raw)
+    except ValueError:
+        log(f"[Claude 응답 해석 불가] {raw[:300]!r}")
+        raise
+    text = "".join(b.get("text", "") for b in res.get("content", []) if b.get("type") == "text")
+    if not text.strip():
+        log(f"[Claude 빈 응답] stop_reason={res.get('stop_reason')} "
+            f"blocks={[b.get('type') for b in res.get('content', [])]} model={res.get('model')}")
+    return text
 
 
 def parse_json(text):
+    if "{" not in text:
+        log(f"[Claude 응답에 JSON 없음] {text[:300]!r}")
     text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M)
     return json.loads(text[text.find("{"): text.rfind("}") + 1])
 
