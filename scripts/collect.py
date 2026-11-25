@@ -264,7 +264,7 @@ def extract_rules(ev, text):
     summary = " ".join(s.strip() for s in sents[:2] if s.strip())
     summary = (summary or main["snippet"])[:300]
 
-    return {"type": kind, "date": "", "title": main["title"], "datetime": when,
+    return {"type": kind, "date": "", "scope": "", "title": main["title"], "datetime": when,
             "place": place, "hosts": ", ".join(hosts), "summary": summary}
 
 
@@ -277,11 +277,12 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
  "hosts": "주최·발표 기관을 쉼표로 (공동주최 포함)",
+ "scope": "전국 또는 지역. 전국 = 국가 정책·법안·국회·중앙정부·전국적 사회문제를 다룸 (지역 단체가 지역에서 열었어도 전국). 지역 = 특정 지자체 정책·지역 시설·지역 인사 등 그 지역에 한정된 현안",
  "summary": "핵심 주장·요구를 1~2문장으로. 개조식 어미로 끝맺기(예: '~ 철회 촉구', '~ 요구', '~ 비판', '~ 지적'). '~했다', '~이다' 같은 서술형 금지. 문장이 둘이면 '~ 지적하며 ~ 촉구'처럼 잇거나 각각 명사형으로 끝맺기"}}
 
 다음 중 하나라도 해당하면 {{"skip": true}} 만 답하세요.
 - 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사 등)
-- 서울 이외 지역에서 열렸거나, 지역 조직(○○지역본부, ○○지부, 지역 경실련 등)이 주최·발표함
+- 서울 이외 지역의 지역 현안임 (지역 단체가 연 것이라도 국가 정책·법안 등 전국 이슈면 skip하지 말 것)
 - 정당·정당 소속 정치인·정부·지자체·기업이 주체임
 - 특정 기업·사업장 노동조합의 노사 현안임 (합병, 구조조정, 임금·단체협약, 파업, 본사 이전 등)
 - 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·종교·전문가 단체가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고, 그 밖의 것은 skip
@@ -326,11 +327,12 @@ PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당
 
 
 def excluded(e):
-    """지방 행사·지역 조직·정당 주최는 제외 (Claude 판단을 한 번 더 확인)"""
-    if e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
+    """지방의 지역 현안·정당 주최는 제외. 지방에서 열렸어도 전국 이슈(scope=전국)면 포함"""
+    national = e.get("scope") == "전국"
+    if not national and e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
         return "지방 행사"
     first_host = e["hosts"].split(",")[0].strip()
-    if REGIONAL_HOST.search(first_host):
+    if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
     if hosts and all(PARTIES.search(h) for h in hosts):
@@ -499,12 +501,17 @@ def main():
         log("NAVER_CLIENT_ID/SECRET 없음: 네이버 검색을 건너뜁니다.")
 
     # 홈페이지 새 글은 모두 본문을 읽어 날짜로 거름 (페이지당 최근 20개)
-    seen = set(load_json(SEEN_FILE)) if SEEN_FILE.exists() else set()
+    # 기록 형식: {주소: 처음 본 날짜}. 오늘 처음 본 글은 같은 날 다시 실행해도 다시 처리
+    raw = load_json(SEEN_FILE) if SEEN_FILE.exists() else {}
+    seen_dates = raw if isinstance(raw, dict) else {u: "0000-00-00" for u in raw}
+    ds_today = today.isoformat()
+    seen = {u for u, d in seen_dates.items() if d < ds_today}
     for org in CONFIG["orgs"]:
         for n, it in enumerate(scrape_homepage(org, keywords, seen, now)):
+            seen_dates.setdefault(it["url"], ds_today)
             if n < 20:
                 add(it)
-    SEEN_FILE.write_text(json.dumps(sorted(seen), ensure_ascii=False, indent=0))
+    save_json(SEEN_FILE, dict(sorted(seen_dates.items())))
 
     groups = group_events(list(items.values()))
     groups.sort(key=lambda g: len(g["articles"]), reverse=True)
