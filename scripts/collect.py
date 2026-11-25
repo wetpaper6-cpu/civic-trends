@@ -489,7 +489,7 @@ def enrich(ev):
             if info["type"] not in ("기자회견", "집회"):
                 info["place"] = ""
         except Exception as e:
-            if ev["org"] == OTHER and has_claude():
+            if has_claude():  # Claude가 판단하지 못한 건 기준 확인이 안 되므로 제외 (규칙 기반은 키가 없을 때만)
                 log(f"[Claude 정리 실패, 제외] {main['title']}: {e}")
                 return None
             log(f"[Claude 정리 실패, 규칙 기반 사용] {main['title']}: {e}")
