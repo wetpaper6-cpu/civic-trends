@@ -368,6 +368,18 @@ def is_party(h):
 NATIONAL_HINT = re.compile(r"개헌|헌법|국회|입법|법안|[가-힣]+법(?!원)[^,]{0,8}?(제정|개정|철회|저지|통과|처리|폐기|반대|폐지)")
 
 
+UNION_END = re.compile(r"(새노조|노조|노동조합|지부|지회|분회)$")
+UNION_WIDE = re.compile(r"^(전국|민주노총|한국노총|공공운수|금속노조|보건의료|언론노조|전교조|민주일반|공무원|국가공무원|교사|교수|대학노조|사무금융|서비스연맹|건설노조|화섬)|연맹|총연맹")
+
+
+def is_workplace_union(h):
+    """특정 기업·기관의 노조 (산별·총연맹 등 전국 단위 노조는 제외)"""
+    h = re.sub(r"\(.*?\)", "", h).strip()
+    if re.search(r"(지부|지회|분회)$", h.split()[-1] if h.split() else ""):
+        return True  # 금속노조 현대차지부, 언론노조 스카이라이프지부 등 사업장 단위
+    return bool(UNION_END.search(h)) and not UNION_WIDE.search(h)
+
+
 def excluded(e):
     """지방의 지역 현안·정당 주최는 제외. 지방에서 열렸어도 전국 이슈(scope=전국)면 포함"""
     national = e.get("scope") == "전국"
@@ -376,6 +388,8 @@ def excluded(e):
     first_host = e["hosts"].split(",")[0].strip()
     if REGIONAL_BRANCH.search(first_host):
         return "전국 조직의 지역본부"
+    if is_workplace_union(first_host):
+        return "기업·기관 노조"
     if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
     if not national and e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
@@ -462,9 +476,11 @@ def merge_similar(events):
             hk1, hk2 = host_key(e["hosts"]), host_key(o["hosts"])
             same_hosts = hk1 and hk2 and (hk1 & hk2) and len(hk1 & hk2) >= min(len(hk1), len(hk2)) / 2
             overlap = len(topic_grams(e["title"]) & topic_grams(o["title"]))
-            if e["date"] == o["date"] and e["type"] == o["type"] and (
-                    (same_hosts and overlap >= 2) or overlap >= 5):
-                keep, drop = (o, e) if len(o["sources"]) >= len(e["sources"]) else (e, o)
+            if e["date"] == o["date"] and (
+                    (e["type"] == o["type"] and ((same_hosts and overlap >= 2) or overlap >= 5))
+                    or (same_hosts and overlap >= 4)):  # 같은 단체가 같은 날 같은 주제로 낸 기자회견·성명
+                rank = {"기자회견": 0, "집회": 1, "성명": 2, "논평": 3}
+                keep, drop = sorted([o, e], key=lambda x: (rank.get(x["type"], 9), -len(x["sources"])))
                 if drop.get("scope") == "전국":
                     keep["scope"] = "전국"
                 if drop.get("source") == "homepage":
