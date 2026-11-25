@@ -16,7 +16,7 @@ from common import (as_list, as_text, BUILD_DIR, CONFIG, DATA_DIR, call_claude, 
                     now_kst, parse_json, period_label, report_date, save_json, build_index)
 
 PROMPT = """당신은 한국 시민사회 동향을 정리하는 정책 분석가입니다.
-아래는 {period} 동안 발표된 시민사회 기자회견·성명·논평 목록입니다.
+아래는 {period} 동안 열리거나 발표된 시민사회 기자회견·토론회·성명·논평 목록입니다.
 이 목록만을 근거로 'A4 두 페이지' 분량의 주간 시민사회 동향 보고서를 **개조식**으로 작성하세요.
 
 JSON으로만 답하세요:

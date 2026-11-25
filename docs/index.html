@@ -30,7 +30,7 @@
   .item h3 a { color:var(--ink); text-decoration:none; }
   .item h3 a:hover { color:var(--accent); }
   .badge { display:inline-block; font-size:12px; font-weight:700; color:#fff; background:var(--accent); border-radius:4px; padding:1px 7px; margin-right:6px; vertical-align:2px; }
-  .badge.성명 { background:#3d5a99; } .badge.논평 { background:#8a5a1f; } .badge.보도, .badge.집회 { background:#777; }
+  .badge.성명 { background:#3d5a99; } .badge.토론회 { background:#7a4d9c; } .badge.논평 { background:#8a5a1f; } .badge.보도, .badge.집회 { background:#777; }
   dl { display:grid; grid-template-columns:5.6em 1fr; gap:4px 10px; margin:10px 0 0; font-size:14px; }
   dt { color:var(--mute); white-space:nowrap; } dd { margin:0; line-height:1.5; }
   .src { font-size:12px; color:var(--mute); margin-top:8px; }
@@ -111,7 +111,7 @@ function renderWeekly() {
   const ul = bul;
   const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4>${ul(it.points || it.body)}`).join("") : "<p>-</p>";
   $("#view").innerHTML = downloads(w.files) + `<div class="report">
-    <div class="sub" style="margin-bottom:14px">${esc(w.period_label)} · 기자회견·성명·논평 등 ${w.count}건</div>
+    <div class="sub" style="margin-bottom:14px">${esc(w.period_label)} · 기자회견·토론회·성명·논평 등 ${w.count}건</div>
     <h2>1. 개요</h2>${ul(w.overview)}
     <h2>2. 주요 정책/기조 현안</h2>${issues(w.main_issues)}
     <h2>3. 그 외 주요 쟁점</h2>${issues(w.other_issues)}

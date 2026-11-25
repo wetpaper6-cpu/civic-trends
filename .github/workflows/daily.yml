@@ -10,6 +10,10 @@ on:
         description: "주간 동향도 만들기 (목요일이 아니어도 시험용으로)"
         type: boolean
         default: false
+      report_date:
+        description: "다시 만들 날짜 (예: 2026-11-25). 비우면 오늘"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -25,6 +29,7 @@ jobs:
       NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
       NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      REPORT_DATE: ${{ inputs.report_date }}
     steps:
       - uses: actions/checkout@v4
 
@@ -43,7 +48,8 @@ jobs:
 
       - name: 주간 동향 (목요일)
         run: |
-          if [ "$(date +%u)" = "4" ] || [ "${{ inputs.weekly }}" = "true" ]; then
+          D=${REPORT_DATE:-$(date +%F)}
+          if [ "$(date -d "$D" +%u)" = "4" ] || [ "${{ inputs.weekly }}" = "true" ]; then
             python scripts/weekly.py
           else
             echo "목요일이 아니라 주간 동향은 건너뜁니다."
@@ -58,7 +64,7 @@ jobs:
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add docs
           if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
-          git commit -m "동향: $(date +%F)"
+          git commit -m "동향: ${REPORT_DATE:-$(date +%F)}"
           git pull --rebase -X theirs origin main || git pull --rebase origin main  # 실행 중 저장소가 바뀐 경우
           git push
 
@@ -66,7 +72,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          D=$(date +%F)
+          D=${REPORT_DATE:-$(date +%F)}
           publish() {  # 태그, 제목파일, 노트파일, 첨부파일...
             tag=$1; title=$(cat "$2"); notes=$3; shift 3
             if gh release view "$tag" >/dev/null 2>&1; then

@@ -25,7 +25,8 @@ from common import (as_list, as_text, CONFIG, DATA_DIR, BUILD_DIR, KST, call_cla
                     report_date, save_json, build_index)
 
 SEEN_FILE = DATA_DIR / "seen_homepage.json"
-TYPES = ["기자회견", "성명", "논평"]  # 판별 우선순위
+TYPES = ["기자회견", "토론회", "성명", "논평"]  # 판별 우선순위
+PLACE_TYPES = ("기자회견", "집회", "토론회")  # 일시·장소를 적는 유형
 
 
 def strip_tags(s):
@@ -90,6 +91,32 @@ class LinkParser(HTMLParser):
             self._href = None
 
 
+def parse_feed(body, org, keywords, seen, now):
+    """단체가 공개한 RSS 피드에서 키워드가 들어간 새 글 (게시일 포함)"""
+    for item in re.findall(r"(?is)<item\b.*?</item>|<entry\b.*?</entry>", body):
+        t = re.search(r"(?is)<title[^>]*>(.*?)</title>", item)
+        l = re.search(r"(?is)<link[^>]*>(.*?)</link>|<link[^>]+href=[\"']([^\"']+)", item)
+        d = re.search(r"(?is)<pubDate>(.*?)</pubDate>|<published>(.*?)</published>", item)
+        if not (t and l):
+            continue
+        title = squash(strip_tags(re.sub(r"(?s)<!\[CDATA\[(.*?)\]\]>", r"\1", t.group(1))))
+        url = (l.group(1) or l.group(2) or "").strip()
+        hits = [k for k in keywords if k in title]
+        if not hits or not url or url in seen:
+            continue
+        seen.add(url)
+        listed = ""
+        if d:
+            raw = (d.group(1) or d.group(2) or "").strip()
+            try:
+                listed = parsedate_to_datetime(raw).astimezone(KST).date().isoformat()
+            except (TypeError, ValueError):
+                listed = raw[:10] if re.match(r"\d{4}-\d{2}-\d{2}", raw) else ""
+        yield {"source": "homepage", "org": org["name"], "keywords": hits, "listed_date": listed,
+               "title": title, "snippet": "", "url": url, "naver_url": None,
+               "press": org["name"] + " 홈페이지", "published": now}
+
+
 def scrape_homepage(org, keywords, seen, now):
     for page in org.get("pages", []):
         body = None
@@ -100,6 +127,10 @@ def scrape_homepage(org, keywords, seen, now):
             except Exception as e:
                 log(f"[홈페이지 실패 {attempt + 1}/3] {org['name']} {page}: {e}")
         if body is None:
+            continue
+        if re.search(r"<rss|<feed", body[:500]):  # RSS·Atom 피드
+            for it in parse_feed(body, org, keywords, seen, now):
+                yield it
             continue
         p = LinkParser()
         p.feed(body)
@@ -277,7 +308,7 @@ def extract_rules(ev, text):
             pass
 
     place = ""
-    if kind == "기자회견":
+    if kind in PLACE_TYPES:
         m = PLACE_RE.search(text)
         place = clean_place(m.group(1)) if m else "확인 필요"
 
@@ -296,17 +327,17 @@ def extract_rules(ev, text):
 LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단체 게시글)입니다.
 아래 JSON 형식으로만 답하세요. 다른 말은 쓰지 마세요.
 
-{{"type": "기자회견|성명|논평|집회 중 하나",
+{{"type": "기자회견|토론회|성명|논평|집회 중 하나 (토론회 = 시민사회가 주최·주관한 토론회·간담회·세미나·좌담회·포럼)",
  "date": "행사일(성명·논평은 단체가 처음 발표한 날), YYYY-MM-DD. 기사가 오늘 나왔어도 본문상 발표·행사가 그 전이면 그 날짜. 확인할 수 없으면 빈 문자열",
  "title": "사안을 나타내는 간결한 제목 (언론사 제목의 과장 표현은 빼고)",
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
- "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
+ "place": "기자회견·토론회·집회 장소. 성명·논평이거나 알 수 없으면 빈 문자열",
  "hosts": "주최·발표 기관을 쉼표로 (공동주최 포함)",
  "scope": "전국 또는 지역. 지역 = 특정 지역의 이익·지위·예산·사업·기관 유치·지역 인사를 요구하거나 다룸 (국회·중앙정부를 상대로 하거나 개헌·특별법 개정을 요구해도 지역. 예: 제주 헌법적 지위, 부산 해양수도 특별법, 지역 공항, 지역 교육감). 전국 = 전국에 적용되는 특정 정책·법안의 내용 자체를 문제 삼음 (지역 단체가 지역에서 했어도 전국. 예: 초광역특구법의 재벌 특혜 문제). 서울 밖에서 지역 단체가 기념일 행동 등 일반적인 사회문제를 다룬 것은 지역",
  "summary": "핵심 주장·요구를 1~2문장으로. 개조식 어미로 끝맺기(예: '~ 철회 촉구', '~ 요구', '~ 비판', '~ 지적'). '~했다', '~이다' 같은 서술형 금지. 문장이 둘이면 '~ 지적하며 ~ 촉구'처럼 잇거나 각각 명사형으로 끝맺기"}}
 
 다음 중 하나라도 해당하면 {{"skip": true}} 만 답하세요.
-- 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사 등)
+- 단체가 직접 연(주최·주관) 기자회견·토론회·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사, 단체 인사가 발제자·토론자로만 참여한 행사 등)
 - 전국 조직의 지역본부·지부(예: 민주노총 대전본부)가 주최·발표함 → 이 경우 hosts에 지역본부 이름을 그대로 적을 것
 - 서울 이외 지역의 지역 현안임 (위 scope 기준으로 '지역'인 것. '전국'이면 지역 단체가 했어도 skip하지 말 것)
 - 정당·정당 소속 정치인·정부·지자체·기업이 주체임
@@ -479,7 +510,7 @@ def merge_similar(events):
             if e["date"] == o["date"] and (
                     (e["type"] == o["type"] and ((same_hosts and overlap >= 2) or overlap >= 5))
                     or (same_hosts and overlap >= 4)):  # 같은 단체가 같은 날 같은 주제로 낸 기자회견·성명
-                rank = {"기자회견": 0, "집회": 1, "성명": 2, "논평": 3}
+                rank = {"기자회견": 0, "토론회": 1, "집회": 2, "성명": 3, "논평": 4}
                 keep, drop = sorted([o, e], key=lambda x: (rank.get(x["type"], 9), -len(x["sources"])))
                 if drop.get("scope") == "전국":
                     keep["scope"] = "전국"
@@ -515,7 +546,7 @@ def enrich(ev):
                 if k in info and v:
                     info[k] = as_text(v) if k == "summary" else squash(str(v))
             info["datetime"] = fix_date(info["datetime"], main["published"])
-            if info["type"] not in ("기자회견", "집회"):
+            if info["type"] not in PLACE_TYPES:
                 info["place"] = ""
         except Exception as e:
             if has_claude():  # Claude가 판단하지 못한 건 기준 확인이 안 되므로 제외 (규칙 기반은 키가 없을 때만)
@@ -689,7 +720,7 @@ def main():
     events = kept
     if len(events) < n_before:
         log(f"주최·제목 기준 추가 합치기: {n_before}건 → {len(events)}건")
-    order = {t: i for i, t in enumerate(TYPES + ["집회"])}
+    order = {t: i for i, t in enumerate(TYPES + ["집회"])}  # 기자회견 → 토론회 → 성명 → 논평 → 집회
     org_order = {o["name"]: i for i, o in enumerate(CONFIG["orgs"])}
     events.sort(key=lambda e: (order.get(e["type"], 9), org_order.get(e["org"], 99), e["published"]))
 

@@ -110,7 +110,7 @@ def weekly_docx(w, out):
     doc = new_doc()
     doc.add_heading("주간 시민사회 동향", 0)
     p = doc.add_paragraph()
-    r = p.add_run(f"{w['period_label']}  ·  기자회견·성명·논평 등 {w['count']}건")
+    r = p.add_run(f"{w['period_label']}  ·  기자회견·토론회·성명·논평 등 {w['count']}건")
     r.font.color.rgb = GREY
 
     doc.add_heading("1. 개요", 1)
@@ -212,7 +212,7 @@ def weekly_html(w):
     rows = "".join(
         f"<tr><td>{e(r['issue'])}</td><td>{e(r['actor'])}<small>{e(r.get('meta', ''))}</small></td>"
         f"<td>{e(r['claim'])}</td></tr>" for r in w["table"])
-    body = (f"<h1>주간 시민사회 동향</h1><div class='period'>{e(w['period_label'])} · 기자회견·성명·논평 등 {w['count']}건</div>"
+    body = (f"<h1>주간 시민사회 동향</h1><div class='period'>{e(w['period_label'])} · 기자회견·토론회·성명·논평 등 {w['count']}건</div>"
             "<h2>1. 개요</h2>" + ul(as_list(w["overview"]))
             + "<h2>2. 주요 정책/기조 현안</h2>" + issues(w["main_issues"])
             + "<h2>3. 그 외 주요 쟁점</h2>" + issues(w["other_issues"])
