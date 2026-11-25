@@ -43,7 +43,7 @@
 
 | 이름 | 용도 |
 |---|---|
-| `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` | 네이버 뉴스 검색 |
+| `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` | 네이버 뉴스 검색. 네이버 클라우드 플랫폼 **NAVER API HUB**의 Application 인증 정보(Client ID / Client Secret) |
 | `ANTHROPIC_API_KEY` | 기사 정리와 주간 동향 작성 (Claude). 없으면 일일 동향은 단순 규칙으로 정리하고, 주간 동향의 1~3번은 통계로만 채웁니다 |
 
 ## 파일 구조

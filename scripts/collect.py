@@ -39,11 +39,12 @@ def squash(s):
 # ================================================================ 수집
 def search_naver(org, keyword, since):
     query = f"{org['name']} {keyword}"
-    url = ("https://openapi.naver.com/v1/search/news.json"
+    # NAVER API HUB (네이버 클라우드 플랫폼). 기존 openapi.naver.com 검색 API는 이관됨
+    url = ("https://naverapihub.apigw.ntruss.com/search/v1/news"
            f"?query={quote(query)}&display=100&sort=date")
     data = json.loads(fetch(url, {
-        "X-Naver-Client-Id": os.environ["NAVER_CLIENT_ID"],
-        "X-Naver-Client-Secret": os.environ["NAVER_CLIENT_SECRET"],
+        "X-NCP-APIGW-API-KEY-ID": os.environ["NAVER_CLIENT_ID"],
+        "X-NCP-APIGW-API-KEY": os.environ["NAVER_CLIENT_SECRET"],
     }))
     for it in data.get("items", []):
         try:
