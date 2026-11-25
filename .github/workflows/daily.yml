@@ -59,6 +59,7 @@ jobs:
           git add docs
           if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
           git commit -m "동향: $(date +%F)"
+          git pull --rebase -X theirs origin main || git pull --rebase origin main  # 실행 중 저장소가 바뀐 경우
           git push
 
       - name: 릴리즈 게시
