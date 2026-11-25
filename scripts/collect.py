@@ -336,6 +336,17 @@ REGIONAL_BRANCH = re.compile(rf"({REGIONS})\S*(본부|지부|지회|지역본부
 PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래|더민초|당협|원내대표|국회의원|의원")
 
 
+CIVIC_WORDS = re.compile(r"시민|연대|행동|단체|본부|노조|노동조합|연합|협의회|네트워크|운동|모임|공동|유니온")
+
+
+def is_party(h):
+    """정당·정치인이 주체인 이름만 (시민행동 이름에 '민주당'이 들어간 경우 등은 제외)"""
+    if CIVIC_WORDS.search(h):
+        return False
+    return bool(re.match(r"^(국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래)", h)
+                or re.search(r"의원|더민초|당협|원내대표", h))
+
+
 def excluded(e):
     """지방의 지역 현안·정당 주최는 제외. 지방에서 열렸어도 전국 이슈(scope=전국)면 포함"""
     national = e.get("scope") == "전국"
@@ -349,7 +360,7 @@ def excluded(e):
     if e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
         return "지역 현안"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
-    if hosts and all(PARTIES.search(h) for h in hosts):
+    if hosts and all(is_party(h) for h in hosts):
         return "정당 주최"
     return None
 
@@ -376,6 +387,8 @@ def dedupe_final(events):
         used.update(ids)
         members = [events[i - 1] for i in ids]
         best = max(members, key=lambda e: (len(e["sources"]), len(e["summary"])))
+        if any(m.get("scope") == "전국" for m in members):
+            best["scope"] = "전국"
         seen_urls = set()
         best["sources"] = [s for m in members for s in m["sources"]
                            if not (s["url"] in seen_urls or seen_urls.add(s["url"]))]
@@ -422,6 +435,8 @@ def merge_similar(events):
             same_hosts = hk1 and hk2 and (hk1 & hk2) and len(hk1 & hk2) >= min(len(hk1), len(hk2)) / 2
             if e["date"] == o["date"] and same_hosts and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 2:
                 keep, drop = (o, e) if len(o["sources"]) >= len(e["sources"]) else (e, o)
+                if drop.get("scope") == "전국":
+                    keep["scope"] = "전국"
                 urls = {x["url"] for x in keep["sources"]}
                 keep["sources"] += [x for x in drop["sources"] if x["url"] not in urls]
                 if keep is e:
@@ -589,10 +604,6 @@ def main():
         if not (start_day.isoformat() <= e["date"] <= today.isoformat()):
             log(f"[기간 밖, 제외] {e['date']} {e['title']}")
             continue
-        why = excluded(e)
-        if why:
-            log(f"[{why}, 제외] {e['hosts']} | {e['title']}")
-            continue
         events.append(e)
     if has_claude() and len(events) > 1:
         try:
@@ -601,13 +612,23 @@ def main():
             log(f"[최종 합치기 실패] {ex}")
     n_before = len(events)
     events = merge_similar(events)
-    # 4. 단체 홈페이지에서 이전 날짜로 확인된 발표가 오늘 기사에 다시 나온 경우 제외
-    old_posts = [o for o in old_posts if o.get("source") == "homepage"]
+    # 지역·정당 필터는 합친 뒤에 (같은 행사 기사 중 하나라도 '전국'이면 전국 이슈)
+    kept = []
+    for e in events:
+        why = excluded(e)
+        if why:
+            log(f"[{why}, 제외] {e['hosts']} | {e['title']}")
+        else:
+            kept.append(e)
+    events = kept
+    # 4. 단체 홈페이지에서 이전 날짜로 확인된 성명·논평이 오늘 기사에 다시 나온 경우 제외
+    #    (기자회견은 미리 예고 글이 올라오는 경우가 많아 제외 대상에서 뺌)
+    old_posts = [o for o in old_posts if o.get("source") == "homepage" and o["type"] in ("성명", "논평")]
     kept = []
     for e in events:
         prev = next((o for o in old_posts
-                     if o["type"] == e["type"] and host_key(e["hosts"]) & host_key(o["hosts"])
-                     and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 3), None)
+                     if e["type"] in ("성명", "논평") and host_key(e["hosts"]) & host_key(o["hosts"])
+                     and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 5), None)
         if prev:
             log(f"[이전 발표({prev['date']}), 제외] {e['hosts']} | {e['title']}")
         else:
