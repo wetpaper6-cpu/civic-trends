@@ -281,7 +281,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 아래 JSON 형식으로만 답하세요. 다른 말은 쓰지 마세요.
 
 {{"type": "기자회견|성명|논평|집회 중 하나",
- "date": "행사일(성명·논평은 발표일), YYYY-MM-DD. 본문에서 확인할 수 없으면 빈 문자열",
+ "date": "행사일(성명·논평은 단체가 처음 발표한 날), YYYY-MM-DD. 기사가 오늘 나왔어도 본문상 발표·행사가 그 전이면 그 날짜. 확인할 수 없으면 빈 문자열",
  "title": "사안을 나타내는 간결한 제목 (언론사 제목의 과장 표현은 빼고)",
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
@@ -294,7 +294,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 - 서울 이외 지역의 지역 현안임 (지역 단체가 연 것이라도 국가 정책·법안 등 전국 이슈면 skip하지 말 것)
 - 정당·정당 소속 정치인·정부·지자체·기업이 주체임
 - 특정 기업·사업장 노동조합의 노사 현안임 (합병, 구조조정, 임금·단체협약, 파업, 본사 이전 등)
-- 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·종교·전문가 단체가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고, 그 밖의 것은 skip
+- 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·청년·종교·전문가·직능 단체(소상공인연합회 등)가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고(정당이 함께 주최해도 포함), 그 밖의 것은 skip
 
 기준 단체: {org}
 기사 게시 시각: {published}
@@ -331,7 +331,8 @@ def fix_date(text, pub):
 
 REGIONS = "부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|충청|전북|전남|전라|경북|경남|경상|제주|수원|창원|청주|전주|포항|김해|성남|고양|용인"
 REGIONAL_PLACE = re.compile(rf"^(?!서울)\S*({REGIONS})")
-REGIONAL_HOST = re.compile(rf"^({REGIONS})|({REGIONS})\S*(본부|지부|지역)")  # 대구참여연대, 부산경실련, ○○지역본부
+REGIONAL_HOST = re.compile(rf"^({REGIONS})")  # 대구참여연대, 부산경실련 등 지역 단체
+REGIONAL_BRANCH = re.compile(rf"({REGIONS})\S*(본부|지부|지회|지역본부)")  # 민주노총 대전본부 등 전국 조직의 지역 조직
 PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래|더민초|당협|원내대표|국회의원|의원")
 
 
@@ -341,6 +342,8 @@ def excluded(e):
     if not national and e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
         return "지방 행사"
     first_host = e["hosts"].split(",")[0].strip()
+    if REGIONAL_BRANCH.search(first_host):
+        return "전국 조직의 지역본부"
     if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
     if e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
@@ -471,7 +474,7 @@ def enrich(ev):
         if pos:
             org = min(pos)[1]
     sources = [{"title": a["title"], "url": a["url"], "press": a["press"]} for a in ev["articles"]]
-    return {**info, "org": org, "keywords": ev["keywords"],
+    return {**info, "org": org, "source": main["source"], "keywords": ev["keywords"],
             "published": main["published"].isoformat(timespec="minutes"),
             "url": main["url"], "sources": sources}
 
@@ -575,10 +578,12 @@ def main():
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=6) as pool:
         enriched = list(pool.map(enrich, groups[:CONFIG.get("max_events", 200)]))
-    events = []
+    events, old_posts = [], []
     for e in enriched:
         if not e:
             continue
+        if e["date"] < start_day.isoformat():
+            old_posts.append(e)  # 이전 날짜 발표: 오늘 기사에 다시 나온 같은 발표를 거르는 데 씀
         if e["type"] not in TYPES + ["집회"]:  # 단순 보도는 제외
             continue
         if not (start_day.isoformat() <= e["date"] <= today.isoformat()):
@@ -596,6 +601,18 @@ def main():
             log(f"[최종 합치기 실패] {ex}")
     n_before = len(events)
     events = merge_similar(events)
+    # 4. 단체 홈페이지에서 이전 날짜로 확인된 발표가 오늘 기사에 다시 나온 경우 제외
+    old_posts = [o for o in old_posts if o.get("source") == "homepage"]
+    kept = []
+    for e in events:
+        prev = next((o for o in old_posts
+                     if o["type"] == e["type"] and host_key(e["hosts"]) & host_key(o["hosts"])
+                     and len(topic_grams(e["title"]) & topic_grams(o["title"])) >= 3), None)
+        if prev:
+            log(f"[이전 발표({prev['date']}), 제외] {e['hosts']} | {e['title']}")
+        else:
+            kept.append(e)
+    events = kept
     if len(events) < n_before:
         log(f"주최·제목 기준 추가 합치기: {n_before}건 → {len(events)}건")
     order = {t: i for i, t in enumerate(TYPES + ["집회"])}
