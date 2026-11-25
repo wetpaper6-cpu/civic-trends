@@ -191,6 +191,10 @@ def article_text(url, limit=4000):
     page = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", page)
     m = re.search(r'(?is)<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']+)', page)
     og = html.unescape(m.group(1)) if m else ""
+    m = (re.search(r'(?is)<meta[^>]+(?:article:published_time|og:regDate|pubdate|date)["\'][^>]+content=["\']([^"\']+)', page)
+         or re.search(r'(?is)<time[^>]+datetime=["\']([^"\']+)', page))
+    if m:
+        og = f"[게시일 {m.group(1)[:10]}] {og}"
     paras = [squash(strip_tags(p)) for p in re.findall(r"(?is)<p[^>]*>(.*?)</p>", page)]
     body = " ".join(p for p in paras if len(p) > 30)
     if len(body) < 200:  # <p>를 안 쓰는 언론사: 기사 영역 통째로
@@ -268,7 +272,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 아래 JSON 형식으로만 답하세요. 다른 말은 쓰지 마세요.
 
 {{"type": "기자회견|성명|논평|집회 중 하나",
- "date": "행사일(성명·논평은 발표일), YYYY-MM-DD",
+ "date": "행사일(성명·논평은 발표일), YYYY-MM-DD. 본문에서 확인할 수 없으면 빈 문자열",
  "title": "사안을 나타내는 간결한 제목 (언론사 제목의 과장 표현은 빼고)",
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·집회 장소. 그 외 유형이거나 알 수 없으면 빈 문자열",
@@ -278,7 +282,9 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 다음 중 하나라도 해당하면 {{"skip": true}} 만 답하세요.
 - 단체가 직접 연 기자회견·집회나 직접 발표한 성명·논평이 아님 (일정 목록, 단순 언급·해설 기사 등)
 - 서울 이외 지역에서 열렸거나, 지역 조직(○○지역본부, ○○지부, 지역 경실련 등)이 주최·발표함
-- 기준 단체가 '{other}'인데 전국적 관심사가 아니거나, 정당·정부·기업이 주체임
+- 정당·정당 소속 정치인·정부·지자체·기업이 주체임
+- 특정 기업·사업장 노동조합의 노사 현안임 (합병, 구조조정, 임금·단체협약, 파업, 본사 이전 등)
+- 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·종교·전문가 단체가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고, 그 밖의 것은 skip
 
 기준 단체: {org}
 기사 게시 시각: {published}
@@ -289,7 +295,9 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 def extract_llm(ev, text):
     main = ev["main"]
     prompt = LLM_PROMPT.format(
-        org=ev["org"], other=OTHER, published=main["published"].strftime("%Y-%m-%d %H:%M"),
+        org=ev["org"], other=OTHER,
+        published=("알 수 없음 (단체 홈페이지 게시글: 본문의 날짜로 판단)" if main["source"] == "homepage"
+                   else main["published"].strftime("%Y-%m-%d %H:%M")),
         title=main["title"], text=text or main["snippet"])
     return parse_json(call_claude(prompt, CONFIG.get("model_daily", "claude-haiku-5-5"), 1000, 60,
                                   thinking={"type": "disabled"}))
@@ -389,6 +397,9 @@ def enrich(ev):
             log(f"[Claude 정리 실패, 규칙 기반 사용] {main['title']}: {e}")
     # 행사일: Claude가 준 date → 일시 문구 → 기사 게시일 순으로 사용 (연도는 게시일 기준 보정)
     d = info.get("date", "")
+    if main["source"] == "homepage" and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
+        log(f"[홈페이지 글 날짜 확인 불가, 제외] {main['title']}")
+        return None
     if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
         d = fix_date(d.replace("-", "."), main["published"])
     else:
@@ -487,11 +498,11 @@ def main():
     else:
         log("NAVER_CLIENT_ID/SECRET 없음: 네이버 검색을 건너뜁니다.")
 
+    # 홈페이지 새 글은 모두 본문을 읽어 날짜로 거름 (페이지당 최근 20개)
     seen = set(load_json(SEEN_FILE)) if SEEN_FILE.exists() else set()
-    first_run = not SEEN_FILE.exists()
     for org in CONFIG["orgs"]:
-        for it in scrape_homepage(org, keywords, seen, now):
-            if not first_run:  # 첫 실행 땐 기존 글을 '본 것'으로만 기록
+        for n, it in enumerate(scrape_homepage(org, keywords, seen, now)):
+            if n < 20:
                 add(it)
     SEEN_FILE.write_text(json.dumps(sorted(seen), ensure_ascii=False, indent=0))
 
