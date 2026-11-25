@@ -4,8 +4,8 @@
  "period_start": "2026-11-25",
  "period_end": "2026-11-25",
  "period_label": "2026.11.25(수)",
- "generated_at": "2026-11-25T18:23+09:00",
- "count": 80,
+ "generated_at": "2026-11-25T18:32+09:00",
+ "count": 32,
  "keywords": [
   "청와대",
   "분수대",
@@ -24,11 +24,11 @@
  "events": [
   {
    "type": "기자회견",
-   "title": "같은 치료인데 최대 1만5000배 가격 차이… 경실련 “정부의 정책 실패”",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "경실련",
-   "summary": "같은 통증 치료라도 어느 의원에 가느냐에 따라 가격이 최대 1만5000배 차이 나는 것으로 나타났다. 이처럼 건강보험이 적용되지 않는 비급여 치료의 가격이 의료기관마다 제각각인 것으로 드러나면서 관리제도를 강화해야 한다는 지적이 나왔다.",
+   "title": "비급여 통증 치료 가격 실태 발표 및 개선 촉구",
+   "datetime": "2026.11.24(화) 오전",
+   "place": "서울 종로구 경실련 강당",
+   "hosts": "경실련(경제정의실천시민연합)",
+   "summary": "근골격계 비급여 통증 치료 5개 항목의 가격이 의료기관마다 최대 1만5000배까지 차이 나며, 이 중 다수가 의학적 권고 등급을 받지 못했음에도 진료비가 연간 약 1조6000억원에 달한다고 지적했다. 경실련은 현행 비급여 관리제도의 보고 주기가 길어 현황 파악이 어렵다며 모든 비급여 항목의 12개월치 진료내역 보고 의무화를 촉구했다.",
    "org": "경실련",
    "keywords": [
     "기자회견"
@@ -40,16 +40,31 @@
      "title": "같은 치료인데 최대 1만5000배 가격 차이… 경실련 “정부의 정책 실패”",
      "url": "https://www.joongang.co.kr/article/25481564",
      "press": "joongang.co.kr"
+    },
+    {
+     "title": "도수치료 제한에 ‘풍선효과’ 현실화…근골격계 비급여 12% 상승",
+     "url": "https://www.kmib.co.kr/article/20261124501916",
+     "press": "kmib.co.kr"
+    },
+    {
+     "title": "도수치료 막자 체외충격파로 쏠렸다… 의원마다 가격 200배 차 '천차만별...",
+     "url": "https://www.hankookilbo.com/news/article/A2026112415190002132?did=NA",
+     "press": "hankookilbo.com"
+    },
+    {
+     "title": "근골격계 비급여 치료비 최대 1만5천 배 차이… 경실련 \"깜깜이 의료비 ...",
+     "url": "https://www.ngonews.kr/news/articleView.html?idxno=244030",
+     "press": "ngonews.kr"
     }
    ]
   },
   {
    "type": "기자회견",
-   "title": "인천 등 항만공사 노조·시민단체 \"짜맞추기 통합 용역 중단해야\"",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "경실련",
-   "summary": "인천항만공사 노동조합과 인천항발전협의회, 인천경실련을 비롯한 전국 4개 항만공사 노조와 시민사회단체가 정부의 공사 통합 관련 용역을 규탄하고 즉각적인 철회를 요구했다.이들 단체는 24일 국회에서 신장식 조국혁신당 대표와 함께 기자회견을 열고 “정부는 국정감사에서 여야 의원들이 제기한 통합의 실익과 타당성 문제와 항만업계·시민사회 등 지속적 우려에도 객관적인 검증 없이 통합 추진에 속도를 내고 있다”며 밝혔다.이들은 지난 16일부터 오는 27일까지 이뤄지는 해양수산부의 ‘항만공사 통합 로드맵 수립 및 법·제도 정비 방안 연구’ 긴급용",
+   "title": "항만공사 통합 전제 용역 중단 촉구",
+   "datetime": "2026.11.24(월)",
+   "place": "국회",
+   "hosts": "인천항만공사 노동조합, 인천항발전협의회, 인천경실련, 전국 4개 항만공사 노조 및 시민사회단체",
+   "summary": "단체들은 해양수산부가 통합의 필요성과 타당성 검증 없이 통합을 전제로 한 '항만공사 통합 로드맵 수립 및 법·제도 정비 방안 연구' 긴급용역을 추진하고 있다며 즉각 철회를 요구했다. 이들은 통합 외 대안을 포함한 독립적 타당성 검증과 국회·지역사회가 참여하는 공개적 논의체계 마련을 촉구했다.",
    "org": "경실련",
    "keywords": [
     "기자회견"
@@ -71,149 +86,22 @@
      "title": "항만공사 노조*시민단체 등 공사 통합 용역 중단 촉구",
      "url": "https://news.knn.co.kr/news/article/194864",
      "press": "news.knn.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "항만공사 통합 반발 확산…울산 등 4개 지역 공동 대응",
-   "datetime": "2026.11.24(화)",
-   "place": "국회 소통관",
-   "hosts": "경실련",
-   "summary": "부산·인천·울산·여수광양 4개 지역 항만발전협의회와 4개 항만공사 노동조합, 부산경실련 등 시민사회단체는 24일 국회 소통관에서 신장식 조국혁신당 대표와 공동 기자회견을 하고 정부가 추진 중인 항만공사 통합을 철회하라고 재차 촉구했다.이들은 “통합이 필요한지 검증하라는 요구에 정부는 상단영역",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T17:20+09:00",
-   "url": "https://www.iusm.co.kr/news/articleView.html?idxno=1070976",
-   "sources": [
+    },
     {
      "title": "항만공사 통합 반발 확산…울산 등 4개 지역 공동 대응",
      "url": "https://www.iusm.co.kr/news/articleView.html?idxno=1070976",
      "press": "iusm.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "4개 항만공사 노조·시민단체, 통합 타당성 사전 검증 요구",
-   "datetime": "2026.11.24(화)",
-   "place": "국회 소통관",
-   "hosts": "경실련",
-   "summary": "정부의 항만공사 통합 추진을 놓고 항만별 산업 특성과 운영 효율성에 대한 사전 검증이 필요하다는 목소리가 나오고 있다.부산·인천·울산·여수광양 항만발전협의회, 4개 항만공사 노조, 부산경실련은 24일 국회 소통관에서 신장식 조국혁신당 대표와 공동 기자회견을 열고 정부에 통합 계획 철회를 재차 요구했다.정부는 지난 9월 3일 발표한 잠깐! 현재 Internet Explorer 8이하 버전을 이용중이십니다. 최신 브라우저(Browser) 사용을 권장드립니다! 정부의 항만공사 통합 추진을 놓고 항만별 산업 특성과 운영 효율성에 대한 사전",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T17:36+09:00",
-   "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=507623",
-   "sources": [
+    },
     {
      "title": "4개 항만공사 노조·시민단체, 통합 타당성 사전 검증 요구",
      "url": "https://www.pinpointnews.co.kr/news/articleView.html?idxno=507623",
      "press": "pinpointnews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "4개 항만공사 노조 “타당성 검증 빠진 통합 추진 중단하라”",
-   "datetime": "2026.11.24(화) 오전 11시 40분",
-   "place": "국회 소통관",
-   "hosts": "경실련",
-   "summary": "부산과 인천, 울산, 여수·광양 등 전국 4개 주요 항만 지역 시민사회단체와 노동조합이 정부의 항만공사 통합 추진을 졸속 행정으로 규정하고 즉각적인 중단을 요구했다.4개 지역 항만발전협의회와 항만공사 노동조합, 부산·인천경실련, 광양시민연대 항만공사 통합반대 추진위원회 등은 24일 오전 11시 40분 국회 소통관에서 신장식 조국혁신당 대표와 공동 기자회견을 4개 지역 항만발전협의회와 항만공사 노동조합, 부산·인천경실련, 광양시민연대 항만공사 통합반대 추진위원회 등은 24일 오전 11시 40분 국회 소통관에서 신장식 조국혁신당 대표와",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T18:29+09:00",
-   "url": "https://www.dailian.co.kr/news/view/1719212/?sc=Naver",
-   "sources": [
+    },
     {
      "title": "4개 항만공사 노조 “타당성 검증 빠진 통합 추진 중단하라”",
      "url": "https://www.dailian.co.kr/news/view/1719212/?sc=Naver",
      "press": "dailian.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "도수치료 제한에 ‘풍선효과’ 현실화…근골격계 비급여 12% 상승",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "경실련",
-   "summary": "경실련, 비급여 가격실태 분석 결과 공개 사지관절 부위 증식치료 가격 차이 1만배 “전체 비급여 진료내역 보고 의무화해야” 경제정의실천시민연합이 24일 서울 종로구 경실련 강당에서 ‘천차만별 비급여 가격실태 발표 및 개선촉구 기자회견’을 열고 있다. 뉴시스 도수치료의 가격과 횟수를 제한하는 관리급여가 시행된 가운데, 근골격계 질환에 쓰이는 다른 비급여 치료의 공개가격이 의원에 따라 최대 1만5000배 차이 난다는 시민단체 조사 결과가 나왔다.",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T18:34+09:00",
-   "url": "https://www.kmib.co.kr/article/20261124501916",
-   "sources": [
-    {
-     "title": "도수치료 제한에 ‘풍선효과’ 현실화…근골격계 비급여 12% 상승",
-     "url": "https://www.kmib.co.kr/article/20261124501916",
-     "press": "kmib.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "도수치료 막자 체외충격파로 쏠렸다… 의원마다 가격 200배 차 '천차만별...",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "경실련",
-   "summary": "① 체외충격파치료와 증식치료 등 근골격계 비급여 치료 가격이 병원마다 200배에서 1500배까지 차이 났습니다. ② 정부가 2026년 7월 도수치료에 관리급여를 도입하자 비슷한 비급여 치료로 수요가 옮겨가는 현상이 나타났습니다.",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T18:36+09:00",
-   "url": "https://www.hankookilbo.com/news/article/A2026112415190002132?did=NA",
-   "sources": [
-    {
-     "title": "도수치료 막자 체외충격파로 쏠렸다… 의원마다 가격 200배 차 '천차만별...",
-     "url": "https://www.hankookilbo.com/news/article/A2026112415190002132?did=NA",
-     "press": "hankookilbo.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "근골격계 비급여 치료비 최대 1만5천 배 차이… 경실련 \"깜깜이 의료비 ...",
-   "datetime": "2026.11.25(수)",
-   "place": "확인 필요",
-   "hosts": "경실련",
-   "summary": "같은 질환을 치료받더라도 어느 의료기관을 찾느냐에 따라 환자가 부담하는 비용이 수백 배에서 최대 1만5천 배까지 벌어지는 것으로 나타났다.경제정의실천시민연합(경실 같은 질환을 치료받더라도 어느 의료기관을 찾느냐에 따라 환자가 부담하는 비용이 수백 배에서 최대 1만5천 배까지 벌어지는 것으로 나타났다. 경제정의실천시민연합(경실련)은 24일 서울 종로구 경실련 강당에서 기자회견을 열고 근골격계 비급여 진료 5개 항목의 가격과 이용 실태를 공개했다.",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T08:10+09:00",
-   "url": "https://www.ngonews.kr/news/articleView.html?idxno=244030",
-   "sources": [
-    {
-     "title": "근골격계 비급여 치료비 최대 1만5천 배 차이… 경실련 \"깜깜이 의료비 ...",
-     "url": "https://www.ngonews.kr/news/articleView.html?idxno=244030",
-     "press": "ngonews.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "항만단체·노조, 정부 항만공사 통합 추진 규탄…타당성 검증 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 소통관",
-   "hosts": "경실련",
-   "summary": "(울산=국제뉴스) 주영곤 기자 = 부산·인천·울산·여수광양 4개 지역 항만발전협의회와 4개 항만공사 노동조합, 부산경실련 등 시민사회단체는 지난 24일 오전 국회 소통관에서 신장식 조국혁신당 대표와 함께 정부의 항만공사 통합 추진을 강하게 비판하는 기자회견을 개최했다.이들 단체는 정부가 지난 9월 3일 항만공사 통합 방침을 발표한 이후, 국정감사와 항만업계, 시민사회, 노동조합의 지속적인 우려에도 불구하고 객관적인 검증 없이 통합을 서두르고 있다고 지적했다.특히 2011년 정부 연구에서 통합의 경제적 실익이 미미하고 효율성 저하 가",
-   "org": "경실련",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T09:02+09:00",
-   "url": "https://www.gukjenews.com/news/articleView.html?idxno=3762219",
-   "sources": [
+    },
     {
      "title": "항만단체·노조, 정부 항만공사 통합 추진 규탄…타당성 검증 촉구",
      "url": "https://www.gukjenews.com/news/articleView.html?idxno=3762219",
@@ -223,53 +111,11 @@
   },
   {
    "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 처리 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "민주노총, 한국노총",
-   "summary": "양대 노총은 65세 법정 정년연장을 올해 안에 입법 처리할 것을 국회에 촉구했다. 이재진 민주노총 비상대책위원장이 이날 기자회견에서 발언했다.",
-   "org": "민주노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:20+09:00",
-   "url": "https://www.news1.kr/photos/8231811",
-   "sources": [
-    {
-     "title": "발언하는 이재진 민주노총 비대위원장",
-     "url": "https://www.news1.kr/photos/8231811",
-     "press": "news1.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 촉구",
-   "datetime": "2026.11.25(수) 오전",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "민주노총, 한국노총(양대노총)",
-   "summary": "양대노총은 65세 법정 정년연장을 올해 안에 입법 처리할 것을 국회에 촉구했다. 이재진 민주노총 비상대책위원장은 기자회견에서 법정 정년연장 입법을 요구했다.",
-   "org": "민주노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:44+09:00",
-   "url": "https://www.newspim.com/news/view/20261125000615",
-   "sources": [
-    {
-     "title": "'65세 정년연장 입법 촉구'",
-     "url": "https://www.newspim.com/news/view/20261125000615",
-     "press": "newspim.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "공공운수노조, ILO 협약 비준 촉구…\"폭력 없는 일터 보장해야\"",
-   "datetime": "2026.11.25(수) 12시 47분",
+   "title": "ILO 제190호 협약 비준 촉구, 일터 내 폭력·괴롭힘 근절",
+   "datetime": "2025.11.25(화) 오전",
    "place": "서울 여의도 국회의사당 앞",
-   "hosts": "민주노총",
-   "summary": "(서울=연합뉴스) 김채린 기자 = 민주노총 공공운수노조가 25일 세계 여성폭력 추방의 날을 맞아 일터 내 성폭력과 괴롭힘 근절을 촉구했다. (서울=연합뉴스) 김채린 기자 = 민주노총 공공운수노조가 25일 세계 여성폭력 추방의 날을 맞아 일터 내 성폭력과 괴롭힘 근절을 촉구했다.",
+   "hosts": "민주노총 공공운수노조",
+   "summary": "공공운수노조는 세계 여성폭력 추방의 날을 맞아 일터 내 성폭력과 괴롭힘 근절을 촉구하며, 고용형태와 무관하게 노동자를 보호하는 ILO 제190호 협약의 즉각적인 비준을 요구했다. 비정규직·특수고용·플랫폼 노동자와 5인 미만 사업장 노동자의 법적 사각지대 해소, 피해자 보호와 예방 교육, 신고체계 강화를 주장했다.",
    "org": "민주노총",
    "keywords": [
     "기자회견"
@@ -291,32 +137,59 @@
   },
   {
    "type": "기자회견",
-   "title": "이 땅에서 태어난 모든 아이는 등록되고 보호받아야 한다",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "참여연대",
-   "summary": "한국 땅에서 태어났지만 부모의 미등록 체류 신분 탓에 출생신고조차 하지 못한 이주아동들은 그동안 ‘그림자 아동’으로 불리며 공적 안전망 밖으로 밀려나 있었습니다. 지난 8월 27일, 헌법재판소는 이주아동의 출생등록을 규율할 법률을 두지 않은 입법부작위에 대해 위헌을 확인했습니다.",
-   "org": "참여연대",
+   "title": "노들섬 글로벌 예술섬 조성 사업비 533억 원 전액 삭감 촉구",
+   "datetime": "2026.11.25(화) 오전 9시 30분",
+   "place": "서울시의회 서소문별관 앞",
+   "hosts": "민주노총 서울본부, 불평등을 넘어 새로운 서울을 만드는 사람들(너머서울), 서울환경연합, 노동당 서울시당, 진보당 서울시당",
+   "summary": "서울시의 2027년도 본예산안에 편성된 노들 글로벌 예술섬 조성 사업비 533억 원을 전액 삭감하고, 기존 공간의 운영 성과를 먼저 검토해 본공사의 필요성과 규모를 재검토해야 한다고 주장했다. 단체들은 공중보행로 건설로 생태환경이 훼손되고 민생·복지 예산이 오세훈 시장의 치적 사업에 낭비된다고 비판했다. 이들은 사업 중단과 예산 전액 삭감을 거듭 요구했다.",
+   "org": "민주노총",
    "keywords": [
     "기자회견"
    ],
-   "published": "2026-11-24T18:40+09:00",
-   "url": "https://slownews.kr/170117",
+   "published": "2026-11-25T14:40+09:00",
+   "url": "http://worknworld.kctu.org/news/articleView.html?idxno=510382",
    "sources": [
     {
-     "title": "이 땅에서 태어난 모든 아이는 등록되고 보호받아야 한다",
-     "url": "https://slownews.kr/170117",
-     "press": "slownews.kr"
+     "title": "서울지역 시민사회단체, \"노들섬 개발 533억, 시의회가 전액 삭감하라\"",
+     "url": "http://worknworld.kctu.org/news/articleView.html?idxno=510382",
+     "press": "worknworld.kctu.org"
     }
    ]
   },
   {
    "type": "기자회견",
-   "title": "금융사 해킹 피해 전액 보상한다지만 실제 배상은 '0'...피해 사실 직접...",
-   "datetime": "2026.11.25(수)",
+   "title": "대구가톨릭대병원 노조 파업 돌입: 인력 충원·처우 개선 요구",
+   "datetime": "2026.11.25(화) 오전",
+   "place": "대구가톨릭대의료원 스텔라관 1층 로비",
+   "hosts": "민주노총 공공운수노조 의료연대본부 대구지역지부, 대구가톨릭대의료원분회",
+   "summary": "민주노총 공공운수노조 의료연대본부 대구지역지부 대구가톨릭대의료원분회가 파업 출정식과 기자회견을 열고 총파업에 돌입했다. 노조는 인력 충원과 처우 개선을 핵심 요구로 내세우며 노사 간 쟁점을 두고 교섭을 이어가고 있다.",
+   "org": "민주노총",
+   "keywords": [
+    "기자회견",
+    "성명"
+   ],
+   "published": "2026-11-25T14:52+09:00",
+   "url": "https://www.newsmin.co.kr/news/139240/",
+   "sources": [
+    {
+     "title": "대구가톨릭대병원 노조 8년 만에 파업···인력 충원·처우 개선 놓고 ...",
+     "url": "https://www.newsmin.co.kr/news/139240/",
+     "press": "newsmin.co.kr"
+    },
+    {
+     "title": "대구가톨릭대의료원 노조 \"처참한 노동 조건에 총파업 돌입\"",
+     "url": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044899",
+     "press": "docdocdoc.co.kr"
+    }
+   ]
+  },
+  {
+   "type": "기자회견",
+   "title": "금융사 해킹 정보유출 피해 배상 기준 마련 및 집단소송제 확대 촉구",
+   "datetime": "2026.11.17",
    "place": "확인 필요",
-   "hosts": "참여연대, 경실련",
-   "summary": "최근 금융권에 인공지능(AI) 기술을 악용한 해킹 공격이 잇따르는 가운데 정보유출 금융사들이 선(先) 보상안을 마련하고 손해를 보상하겠다는 입장을 밝히고 있지만 피해 보상이 지극히 제한적인 데다 피해 규모 특정이 어려워 선언적 수준이라는 지적이 제기되고 있다. 금융회사들이 제시한 선 보상안 역시 수수료 면제 등의 부가적인 고객 지원책에 집중돼 실질적인 피해 보상책으로는 한계가 있다는 의견도 제기되고 있다.◆ 2차 피해 전액 보상 방침에도... 피해자 인과관계 증명 어려워 지난 10월 국회 정무위원회의 금융감독원 국정감사에서 이환주 ",
+   "hosts": "경실련, 금융정의연대, 민변 디지털정보위원회·민생경제위원회, 참여연대 경제금융센터",
+   "summary": "금융권 해킹으로 인한 개인정보 유출에 대해 금융당국과 국회가 배상 기준을 마련하고, 2차 피해의 인과관계 추정과 금융회사의 자료 제출 의무를 제도화해야 한다고 요구했다. 아울러 징벌적 손해배상 제도의 실효성을 높이고 집단소송제를 금융소비자 피해 전반으로 확대할 것을 촉구했다.",
    "org": "참여연대",
    "keywords": [
     "기자회견"
@@ -333,11 +206,11 @@
   },
   {
    "type": "기자회견",
-   "title": "삼성바이오로직스 노사 갈등 새 국면… 삼바노조, 한국노총 업고 교섭력...",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "한국노총",
-   "summary": "[일요서울ㅣ박대윤 기자] 삼성바이오로직스 노동조합이 한국노동조합총연맹(한국노총)에 가입하면서 장기화한 노사 갈등이 새로운 국면을 맞았다. 임금·단체협약 교섭이 난항을 겪는 가운데 노조가 상급단체의 조직적 지원을 확보하면서 향후 교섭 구도에 변화가 생길지 주목된다.25일 바이오업계에 따르면 삼성바이오로직스 상생노동조합은 지난 18일 서울 여의도 한국노총 회관에서 기자회견을 열고 한국노총 가입을 공식 발표했다.지난 14일부터 18일까지 진행된 조합원 총투표에는 선거인 3794명 가운데 3172명이 참여해 83.61%의 투표율을 기록했다",
+   "title": "삼성바이오로직스 상생노동조합 한국노총 가입 발표",
+   "datetime": "2026.11.18(수)",
+   "place": "서울 여의도 한국노총 회관",
+   "hosts": "삼성바이오로직스 상생노동조합, 한국노총",
+   "summary": "삼성바이오로직스 상생노동조합이 조합원 총투표(찬성 87.83%)를 거쳐 한국노총 가입을 공식 발표했다. 노조는 기업별 노조의 한계를 넘어 파업 조합원 보호를 위해 상급단체와 연대하겠다고 밝혔으며, 한국노총 산하 화학노련도 가입을 인준하고 공동 대응 방침을 밝혔다.",
    "org": "한국노총",
    "keywords": [
     "성명"
@@ -355,13 +228,15 @@
   {
    "type": "기자회견",
    "title": "65세 법정 정년 연장 연내 입법 촉구",
-   "datetime": "2026.11.25(수)",
+   "datetime": "2026.11.25(화)",
    "place": "국회 본청 앞",
    "hosts": "한국노총, 민주노총",
-   "summary": "양대 노총은 이번 정기국회 심사가 65세 법정 정년 연장의 연내 입법 여부를 가를 중대 분수령이라며, 더불어민주당이 27일 정년연장 특별위원회에서 실질적 입법안을 마련하고 국회가 지체 없이 심사에 착수할 것을 요구했다. 또한 정부에는 구체적이고 책임 있는 입법 대책을, 여야에는 올해 안 법안 처리를 촉구했으며, 연내 입법이 불발되면 정부와 국회가 책임져야 하고 관철될 때까지 투쟁하겠다고 밝혔다.",
+   "summary": "한국노총과 민주노총은 65세 법정 정년 연장 법안의 연내 처리를 촉구했다. 양대 노총은 더불어민주당의 정년 연장 특별위원회에서 실질적 입법안을 마련하고 국회가 지체 없이 심사에 착수할 것을 요구했다. 또한 정부에는 구체적인 입법 대책을, 여야에는 올해 안 처리를 요구하며 입법이 관철될 때까지 투쟁하겠다고 밝혔다.",
    "org": "한국노총",
    "keywords": [
-    "기자회견"
+    "기자회견",
+    "성명",
+    "청와대"
    ],
    "published": "2026-11-25T10:32+09:00",
    "url": "https://www.fnnews.com/news/202611251024343077",
@@ -373,22 +248,22 @@
     },
     {
      "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
-     "url": "https://www.mk.co.kr/article/12217856",
-     "press": "mk.co.kr"
-    },
-    {
-     "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
      "url": "https://www.mk.co.kr/article/12217858",
      "press": "mk.co.kr"
     },
     {
      "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
-     "url": "https://www.mk.co.kr/article/12217855",
+     "url": "https://www.mk.co.kr/article/12217854",
      "press": "mk.co.kr"
     },
     {
      "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
-     "url": "https://www.mk.co.kr/article/12217854",
+     "url": "https://www.mk.co.kr/article/12217856",
+     "press": "mk.co.kr"
+    },
+    {
+     "title": "양대 노총 “65세 정년 연장 연내 입법해야”",
+     "url": "https://www.mk.co.kr/article/12217855",
      "press": "mk.co.kr"
     },
     {
@@ -418,12 +293,12 @@
     },
     {
      "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
-     "url": "https://www.yna.co.kr/view/PYH20261125062300013?input=1196m",
+     "url": "https://www.yna.co.kr/view/PYH20261125062400013?input=1196m",
      "press": "yna.co.kr"
     },
     {
      "title": "양대 노총 , 65세 정년연장 연내 입법 촉구",
-     "url": "https://www.yna.co.kr/view/PYH20261125062400013?input=1196m",
+     "url": "https://www.yna.co.kr/view/PYH20261125062300013?input=1196m",
      "press": "yna.co.kr"
     },
     {
@@ -432,8 +307,8 @@
      "press": "seoul.co.kr"
     },
     {
-     "title": "양대 노총 , 65세 정년연장 연내 입법 처리 촉구 기자회견",
-     "url": "https://www.news1.kr/photos/8231808",
+     "title": "65세 정년 연내 입법 촉구하는 양대 노총",
+     "url": "https://www.news1.kr/photos/8231812",
      "press": "news1.kr"
     },
     {
@@ -442,13 +317,13 @@
      "press": "news1.kr"
     },
     {
-     "title": "65세 정년 연내 입법 촉구하는 양대 노총",
-     "url": "https://www.news1.kr/photos/8231812",
+     "title": "'65세 정년, 연내 입법'",
+     "url": "https://www.news1.kr/photos/8231809",
      "press": "news1.kr"
     },
     {
-     "title": "'65세 정년, 연내 입법'",
-     "url": "https://www.news1.kr/photos/8231809",
+     "title": "양대 노총 , 65세 정년연장 연내 입법 처리 촉구 기자회견",
+     "url": "https://www.news1.kr/photos/8231808",
      "press": "news1.kr"
     },
     {
@@ -460,11 +335,6 @@
      "title": "‘65세 정년연장’ 연내 입법 촉구…국회 앞 모인 양대 노총 [쿠키포토]",
      "url": "https://www.kukinews.com/article/view/kuk202611250090",
      "press": "kukinews.com"
-    },
-    {
-     "title": "'65세 정년 연내 입법'",
-     "url": "https://www.newspim.com/news/view/20261125000612",
-     "press": "newspim.com"
     },
     {
      "title": "65세 정년연장 촉구하는 양대 노총",
@@ -479,6 +349,11 @@
     {
      "title": "양대 노총 \"65세 법정정년연장 지금 당장 입법\"",
      "url": "https://www.newspim.com/news/view/20261125000616",
+     "press": "newspim.com"
+    },
+    {
+     "title": "'65세 정년 연내 입법'",
+     "url": "https://www.newspim.com/news/view/20261125000612",
      "press": "newspim.com"
     },
     {
@@ -555,67 +430,65 @@
      "title": "양대 노총 \"65세 정년 연장, 지금 당장 입법\"",
      "url": "https://www.laborplus.co.kr/news/articleView.html?idxno=41908",
      "press": "laborplus.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "정년연장 입법 촉구 및 정부·여당 결단 요구",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞 계단",
-   "hosts": "한국노동조합총연맹, 전국민주노동조합총연맹",
-   "summary": "양대노총은 2년간 입법을 지연해 노동자의 생계와 노후소득 보장을 방치하고 있다며 정부와 여당에 정년연장 여부를 올해 안에 분명히 답하라고 요구했다. 법정 65세 정년 보장과 양질의 청년 일자리 대책 병행을 요구하고, 올해 안에 입법이 이뤄지지 않으면 더 이상 대화하지 않겠다고 경고했다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T10:38+09:00",
-   "url": "https://www.fnnews.com/news/202611251031476089",
-   "sources": [
-    {
-     "title": "양대 노총 \"정년연장, 당정 결단해야…해 넘기면 정부·국회 책임\"",
-     "url": "https://www.fnnews.com/news/202611251031476089",
-     "press": "fnnews.com"
     },
     {
-     "title": "양대 노총 , 정년연장 연내 입법 촉구…\"해 넘기면 정부·국회에 책임\"",
-     "url": "https://www.mt.co.kr/society/2026/11/25/2026112511163427932",
-     "press": "mt.co.kr"
+     "title": "65세 법정 정년연장 입법 촉구하는 양대 노총",
+     "url": "https://www.news1.kr/photos/8231817",
+     "press": "news1.kr"
     },
     {
-     "title": "양대 노총 , 정년연장 입법 촉구‥\"해 넘기면 정부와 국회 책임\"",
-     "url": "https://imnews.imbc.com/news/2026/society/article/6868450_36918.html",
-     "press": "imnews.imbc.com"
+     "title": "양대 노총 '65세 법정 정년연장, 지금 당장 입법하라'",
+     "url": "https://www.news1.kr/photos/8231813",
+     "press": "news1.kr"
     },
     {
-     "title": "양대 노총 , 정년연장 입법 촉구…\"해 넘기면 정부와 국회 책임\"",
-     "url": "https://www.kbsm.net/news/view.php?idx=543272",
-     "press": "kbsm.net"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "국회 앞 법정 정년 연장 연대 입법 처리 촉구 기자회견",
-   "datetime": "2026.11.25(수) 10시 55분",
-   "place": "국회 본관 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "(서울=연합뉴스) 이동해 기자 = 민주노총과 한국노총 조합원 등 참석자들이 25일 국회 본관 앞에서 65세 법정 정년연장 연내 입법 처리를 촉구... (서울=연합뉴스) 이동해 기자 = 민주노총과 한국노총 조합원 등 참석자들이 25일 국회 본관 앞에서 65세 법정 정년연장 연내 입법 처리를 촉구하는 기자회견을 하고 있다. 2026.11.25 제보는 카카오톡 okjebo <저작권자(c) 연합뉴스, 무단 전재-재배포, AI 학습 및 활용 금지> 2026/11/25 10:55 송고 2026년11월25일 10시55분 송고 中후난성 군수공장 ",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T10:55+09:00",
-   "url": "https://www.yna.co.kr/view/PYH20261125062000013?input=1196m",
-   "sources": [
+     "title": "65세 법정 정년 연장 입법 촉구…양대 노총 \"올해 안에 반드시 통과시켜...",
+     "url": "https://www.cbci.co.kr/news/articleView.html?idxno=630550",
+     "press": "cbci.co.kr"
+    },
     {
-     "title": "국회 앞 법정 정년 연장 연대 입법 처리 촉구 기자회견",
-     "url": "https://www.yna.co.kr/view/PYH20261125062000013?input=1196m",
-     "press": "yna.co.kr"
+     "title": "[포토] \"65세 법정 정년 연장\" 촉구하는 민주 노총 - 한국노총",
+     "url": "https://www.newscj.com/news/articleView.html?idxno=3451938",
+     "press": "newscj.com"
+    },
+    {
+     "title": "김동명 \"65세 법정 정년연장 입법 처리 촉구\"",
+     "url": "https://www.newspim.com/news/view/20261125000609",
+     "press": "newspim.com"
+    },
+    {
+     "title": "양대 노총 \"65세 법정정년연장 지금 당장 입법하라\"",
+     "url": "https://www.newspim.com/news/view/20261125000617",
+     "press": "newspim.com"
+    },
+    {
+     "title": "양대 노총 , 소득 공백 해소 위한 65세 정년 연장 입법 촉구",
+     "url": "https://www.etoday.co.kr/news/view/2652853",
+     "press": "etoday.co.kr"
+    },
+    {
+     "title": "양대 노총 , 국회 본청 앞에서 '65세 법정 정년연장 연내 입법' 촉구 [뉴시...",
+     "url": "https://www.newsis.com/view/NISX20261125_0003882724",
+     "press": "newsis.com"
+    },
+    {
+     "title": "양대 노총 '65세 법정 정년연장, 지금 당장 입법하라'",
+     "url": "https://www.gukjenews.com/news/articleView.html?idxno=3762818",
+     "press": "gukjenews.com"
+    },
+    {
+     "title": "양대 노총 \"소득절벽 10년째\" 65세 정년연장 입법 촉구",
+     "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084180",
+     "press": "newsclaim.co.kr"
     },
     {
      "title": "국회 앞 법정 정년 연장 연대 입법 처리 촉구 기자회견",
      "url": "https://www.yna.co.kr/view/PYH20261125062100013?input=1196m",
+     "press": "yna.co.kr"
+    },
+    {
+     "title": "국회 앞 법정 정년 연장 연대 입법 처리 촉구 기자회견",
+     "url": "https://www.yna.co.kr/view/PYH20261125062000013?input=1196m",
      "press": "yna.co.kr"
     },
     {
@@ -637,293 +510,26 @@
      "title": "법정 정년 연장 연내 입법 처리 촉구 기자회견",
      "url": "https://www.newspim.com/news/view/20261125000618",
      "press": "newspim.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "양대 노총 \"정년연장 연내 입법\"… 인구절벽에 고용 방식 전환 과제",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[중앙이코노미뉴스 엄현식] 한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)이 25일 국회 본청 앞에서 공동 기자회견을 열고 65세 법정 정년 연장 [중앙이코노미뉴스 엄현식] 한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)이 25일 국회 본청 앞에서 공동 기자회견을 열고 65세 법정 정년 연장 입법을 올해 안에 마무리하라고 촉구했다. 양대 노총은 “이번 정기국회 법안 심사가 연내 입법 여부를 가를 중대 분수령”이라며 “더불어민주당 정년연장특위가 오는 27일 실질적인 입법안을 마련하고 국회가 지체 없이 심사",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:04+09:00",
-   "url": "https://www.joongangenews.com/news/articleView.html?idxno=566466",
-   "sources": [
-    {
-     "title": "양대 노총 \"정년연장 연내 입법\"… 인구절벽에 고용 방식 전환 과제",
-     "url": "https://www.joongangenews.com/news/articleView.html?idxno=566466",
-     "press": "joongangenews.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본관 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "한국노총과 민주노총은 65세 법정 정년연장의 연내 입법 처리를 요구하며 정부와 국회를 압박했다. 올해도 입법이 무산되면 더 이상 대화하지 않겠다고 경고했다. 27일 예정된 민주당 특위를 앞두고 연내 입법을 촉구하는 자리였다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:06+09:00",
-   "url": "https://www.nocutnews.co.kr/news/6612317?utm_source=naver&utm_medium=article&utm_campaign=20261125110512",
-   "sources": [
-    {
-     "title": "양대 노총 \"정년연장 또 해 넘기면 더 이상 대화 없다\"",
-     "url": "https://www.nocutnews.co.kr/news/6612317?utm_source=naver&utm_medium=article&utm_campaign=20261125110512",
-     "press": "nocutnews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "양대 노총 \"법정정년 65세로 연장, 올해 안에 입법 완료하라\"",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[서울이코노미뉴스 박미연 기자] 한국노총과 민주노총은 25일 국회 본청 앞에서 공동 기자회견을 갖고 정부와 국회가 65세 법정 정년 연장 입법을 올해 안에 완료하라고 촉구했다.양대 노총은 \"이번 정기국회 법안심사는 65세 법정 정년 연장의 연내 입법 여부를 결정할 중대 분수령\"이라면서 \"더불어민주당은 오는 27일 정년 연장 특위에서 실질적인 입법을 마련하고, 국회는 지체 없이 법안 심사에 착수하라\"고 요구했다.이어 \"정부는 입법을 위한 책임 있는 대책을 제시하고, 여야는 정년 연장 법안을 올해 안에 반드시 통과시켜야 한다\"고 강조했",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:10+09:00",
-   "url": "http://www.seouleconews.com/news/articleView.html?idxno=95240",
-   "sources": [
-    {
-     "title": "양대 노총 \"법정정년 65세로 연장, 올해 안에 입법 완료하라\"",
-     "url": "http://www.seouleconews.com/news/articleView.html?idxno=95240",
-     "press": "seouleconews.com"
     },
     {
-     "title": "양대 노총 \"법정 정년 65세 연장 입법 연내 완료해야\"",
-     "url": "https://www.kado.net/news/articleView.html?idxno=2087164",
-     "press": "kado.net"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "한국노총과 민주노총은 법정 정년을 65세로 연장하는 법안을 연내에 입법 처리할 것을 국회에 촉구했다. 양대노총은 정년연장이 소득 공백을 해소하는 데 필요하다며 즉각적인 입법을 요구했다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:20+09:00",
-   "url": "https://www.news1.kr/photos/8231813",
-   "sources": [
-    {
-     "title": "양대 노총 '65세 법정 정년연장, 지금 당장 입법하라'",
-     "url": "https://www.news1.kr/photos/8231813",
-     "press": "news1.kr"
+     "title": "양대 노총 \"정년연장, 당정 결단해야…해 넘기면 정부·국회 책임\"",
+     "url": "https://www.fnnews.com/news/202611251031476089",
+     "press": "fnnews.com"
     },
     {
-     "title": "65세 법정 정년연장 입법 촉구하는 양대 노총",
-     "url": "https://www.news1.kr/photos/8231817",
-     "press": "news1.kr"
+     "title": "양대 노총 , 정년연장 연내 입법 촉구…\"해 넘기면 정부·국회에 책임\"",
+     "url": "https://www.mt.co.kr/society/2026/11/25/2026112511163427932",
+     "press": "mt.co.kr"
     },
     {
-     "title": "“65세 정년연장 당장 입법하라!”",
-     "url": "https://m.skyedaily.com/news_view.html?ID=315198",
-     "press": "m.skyedaily.com"
+     "title": "양대 노총 , 정년연장 입법 촉구‥\"해 넘기면 정부와 국회 책임\"",
+     "url": "https://imnews.imbc.com/news/2026/society/article/6868450_36918.html",
+     "press": "imnews.imbc.com"
     },
     {
-     "title": "양대 노총 \"65세 법정정년연장 지금 당장 입법하라\"",
-     "url": "https://www.newspim.com/news/view/20261125000617",
-     "press": "newspim.com"
-    },
-    {
-     "title": "양대 노총 '65세 법정 정년연장, 지금 당장 입법하라'",
-     "url": "https://www.gukjenews.com/news/articleView.html?idxno=3762818",
-     "press": "gukjenews.com"
-    },
-    {
-     "title": "[영상] 민주 노총 · 한국노총 \"65세 정년 연장 당장 입법하라\"",
-     "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288338&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
-     "press": "ohmynews.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 정년연장 연내 입법 촉구하는 김동명 한국노총 위원장",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총",
-   "summary": "김동명 한국노총 위원장이 25일 서울 여의도 국회 본청 앞에서 열린 양대 노총 65세 법정 정년연장 연내 입법 처리 촉구 기자회견 에서 발언하고 있다. 2026.11.25/뉴스1",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:20+09:00",
-   "url": "https://www.news1.kr/photos/8231807",
-   "sources": [
-    {
-     "title": "65세 정년연장 연내 입법 촉구하는 김동명 한국노총 위원장",
-     "url": "https://www.news1.kr/photos/8231807",
-     "press": "news1.kr"
-    },
-    {
-     "title": "65세 법정 정년연장 촉구히는 김동명 한국노총 위원장",
-     "url": "https://www.newspim.com/news/view/20261125000606",
-     "press": "newspim.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "구호 외치는 노동자들 '65세 정년연장 입법 촉구'",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총",
-   "summary": "한국노총 , 민주 노총 조합원들이 25일 서울 여의도 국회 본청 앞에서 열린 양대 노총 65세 법정 정년연장 연내 입법 처리 촉구 기자회견 에서 구호를 외치고 있다. 2026.11.25/뉴스1",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:20+09:00",
-   "url": "https://www.news1.kr/photos/8231816",
-   "sources": [
-    {
-     "title": "구호 외치는 노동자들 '65세 정년연장 입법 촉구'",
-     "url": "https://www.news1.kr/photos/8231816",
-     "press": "news1.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "양대노총 조합원들은 정년 이후 소득공백으로 인한 생존권 위기를 해소하기 위해 65세 법정 정년연장을 촉구했다. 이들은 정년연장 법안을 연내에 입법 처리할 것을 요구했다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:20+09:00",
-   "url": "https://www.news1.kr/photos/8231818",
-   "sources": [
-    {
-     "title": "'소득공백, 생존권 위기' 정년연장 촉구하는 노동자들",
-     "url": "https://www.news1.kr/photos/8231818",
-     "press": "news1.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년 연장 입법 촉구…양대 노총 \"올해 안에 반드시 통과시켜...",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[CBC뉴스] 65세 법정 정년 연장 입법 촉구에 나선 한국노총과 민주노총이 정부와 국회에 연내 법안 처리를 요구했다. 양대노총은 오는 27일 더불어민주당 정년 연장 특별위원회에서 실질적인 입법안을 마련하고 국회가 지체 없이 법안 심사에 착수해야 한다고 강조했다.한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)은 25일 국회 본청 앞에서 공동 기자회견을 열었다.이날 기자회견에서 양대노총은 65세 법정 정년 연장 입법 촉구와 함께 정부와 국회의 책임 있는 대응을 주문했다.양대노총은 이번 정기국회의 법안 심사가 65세 법정",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:30+09:00",
-   "url": "https://www.cbci.co.kr/news/articleView.html?idxno=630550",
-   "sources": [
-    {
-     "title": "65세 법정 정년 연장 입법 촉구…양대 노총 \"올해 안에 반드시 통과시켜...",
-     "url": "https://www.cbci.co.kr/news/articleView.html?idxno=630550",
-     "press": "cbci.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "양대 노총 \"정년 65세 연장 더는 못 미뤄\"…연내 입법 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "확인 필요",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[서울=뉴스핌] 나병주 기자 = 한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)이 현행 60세인 법정 정년을 65세로 연장하는 법안을 올해 안에 처리할 것을 촉구했다.양대노총은 25일 오전 서울 여의도 국회 본청 앞 계단에서 기자회견을 열고 정부 뉴스핌을 선호 출처로 추가 가 가 프린트 ※ 본문 글자 크기 조정 가 더 작게 가 작게 가 보통 가 크게 가 더 크게 닫기 ※ 번역할 언어 선택 -- 선택 -- 닫기 AI 핵심 요약 beta 분석 중... 양대노총은 25일 법정 정년을 65세로 연장하는 입법을 촉구했다 국민연",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:31+09:00",
-   "url": "https://www.newspim.com/news/view/20261125000568",
-   "sources": [
-    {
-     "title": "양대 노총 \"정년 65세 연장 더는 못 미뤄\"…연내 입법 촉구",
-     "url": "https://www.newspim.com/news/view/20261125000568",
-     "press": "newspim.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "양대 노총 \"올해 안에 65세 정년 연장 완료해야…통과될 때까지 투쟁\"",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)이 오늘(25일) 국회 본청 앞에서 공동 기자회견을 열고, 정부와 국회가 65세 법정 정년 연장 입법을 올해 안에 완료하라고 촉구했습니다. 양대 노총은 “이번 정기국회 법안심사는 65세 법정 정년 연장의 연내 기사 읽어주기 서비스는 크롬기반의 브라우저에서만 사용하실 수 있습니다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:38+09:00",
-   "url": "http://www.yonhapnewstv.co.kr/news/AKR20261125113751Kdk",
-   "sources": [
-    {
-     "title": "양대 노총 \"올해 안에 65세 정년 연장 완료해야…통과될 때까지 투쟁\"",
-     "url": "http://www.yonhapnewstv.co.kr/news/AKR20261125113751Kdk",
-     "press": "yonhapnewstv.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "60세에 퇴직하면 연금까지 5년… 양대 노총 , 정년연장 더는 못 기다린다",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총",
-   "summary": "■ 지난해 못한 입법, 올해도 법안 제출 못 해 한국노총 과 민주 노총 은 25일 서울 여의도 국회 본청 앞에서 공동 기자회견 을 열고 65세 법정 정년연장의 연내 입법을 촉구했습니다. 오는 27일 열리는 더불어민주당...",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:40+09:00",
-   "url": "https://www.jibs.co.kr/news/articles/articlesDetail/67916?feed=na",
-   "sources": [
-    {
-     "title": "60세에 퇴직하면 연금까지 5년… 양대 노총 , 정년연장 더는 못 기다린다",
-     "url": "https://www.jibs.co.kr/news/articles/articlesDetail/67916?feed=na",
-     "press": "jibs.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "[포토] \"65세 법정 정년 연장\" 촉구하는 민주 노총 - 한국노총",
-   "datetime": "2026.11.25(수)",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[천지일보=박준성 기자] 전국민주노동조합총연맹(민주노총)과 한국노동조합총연맹(한국노총)이 25일 서울 여의도 국회 본청 앞에서 공동 기자회견을 열고 65세 법정 정년 연장 입법을 촉구하고 있다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:42+09:00",
-   "url": "https://www.newscj.com/news/articleView.html?idxno=3451938",
-   "sources": [
-    {
-     "title": "[포토] \"65세 법정 정년 연장\" 촉구하는 민주 노총 - 한국노총",
-     "url": "https://www.newscj.com/news/articleView.html?idxno=3451938",
-     "press": "newscj.com"
+     "title": "양대 노총 , 정년연장 입법 촉구…\"해 넘기면 정부와 국회 책임\"",
+     "url": "https://www.kbsm.net/news/view.php?idx=543272",
+     "press": "kbsm.net"
     },
     {
      "title": "[포토] 민주 노총 - 한국노총 \"65세 법정 정년 연장하라\"",
@@ -939,199 +545,222 @@
      "title": "[포토] \"65세 법정 정년 연장하라\" 구호 외치는 민주 노총 - 한국노총",
      "url": "https://www.newscj.com/news/articleView.html?idxno=3451959",
      "press": "newscj.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "한국노총 , 연내 정년연장 ‘경고’…사회적 대화 중단 시사",
-   "datetime": "2026.11.25(수)",
-   "place": "전국민주노동조합총연맹과 국회 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "제1노총인 한국노동조합총연맹이 연내 65세 법정 정년연장 입법이 완료되지 않을 경우 사회적 대화 중단을 시사했다. 초광역특구법 관련 노사정 협의와 경제사회노동위원회 등 노동계를 대표해 참여 중인 사회적 대화를 중단할 수 있다는 의미다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:42+09:00",
-   "url": "https://www.sedaily.com/article/20118731?ref=naver",
-   "sources": [
+    },
     {
-     "title": "한국노총 , 연내 정년연장 ‘경고’…사회적 대화 중단 시사",
-     "url": "https://www.sedaily.com/article/20118731?ref=naver",
-     "press": "sedaily.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "'재고용 아니고 정년연장' 양대 노총 , 연내 안 하면 '강력 투쟁'",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "[양대노총, 65세 정년연장 연내 입법 촉구 (사진=연합뉴스)]한국노동조합총연맹(한국노총)과 전국민주노동조합총연맹(민주노총)은 25일 국회 본청 앞에서 공동 기자회견을 열고 정부와 국회가 65세 법정 정년 연장 입법을 올해 안에 완료하라고 촉구했습니다.양대 노총은 \"이번 정기국회 법안심사는 65세 법정 정년 연장의 연내 입법 여부…",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:42+09:00",
-   "url": "https://biz.sbs.co.kr/article_hub/20000348778?division=NAVER",
-   "sources": [
+     "title": "양대 노총 \"법정정년 65세로 연장, 올해 안에 입법 완료하라\"",
+     "url": "http://www.seouleconews.com/news/articleView.html?idxno=95240",
+     "press": "seouleconews.com"
+    },
+    {
+     "title": "양대 노총 \"법정 정년 65세 연장 입법 연내 완료해야\"",
+     "url": "https://www.kado.net/news/articleView.html?idxno=2087164",
+     "press": "kado.net"
+    },
+    {
+     "title": "65세 정년연장 연내 입법 촉구하는 김동명 한국노총 위원장",
+     "url": "https://www.news1.kr/photos/8231807",
+     "press": "news1.kr"
+    },
+    {
+     "title": "65세 법정 정년연장 촉구히는 김동명 한국노총 위원장",
+     "url": "https://www.newspim.com/news/view/20261125000606",
+     "press": "newspim.com"
+    },
+    {
+     "title": "“65세 정년연장 당장 입법하라!”",
+     "url": "https://m.skyedaily.com/news_view.html?ID=315198",
+     "press": "m.skyedaily.com"
+    },
+    {
+     "title": "[영상] 민주 노총 · 한국노총 \"65세 정년 연장 당장 입법하라\"",
+     "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288338&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+     "press": "ohmynews.com"
+    },
+    {
+     "title": "양대 노총 \"정년연장 연내 입법\"… 인구절벽에 고용 방식 전환 과제",
+     "url": "https://www.joongangenews.com/news/articleView.html?idxno=566466",
+     "press": "joongangenews.com"
+    },
+    {
+     "title": "양대 노총 \"정년연장 또 해 넘기면 더 이상 대화 없다\"",
+     "url": "https://www.nocutnews.co.kr/news/6612317?utm_source=naver&utm_medium=article&utm_campaign=20261125110512",
+     "press": "nocutnews.co.kr"
+    },
+    {
+     "title": "구호 외치는 노동자들 '65세 정년연장 입법 촉구'",
+     "url": "https://www.news1.kr/photos/8231816",
+     "press": "news1.kr"
+    },
+    {
+     "title": "'소득공백, 생존권 위기' 정년연장 촉구하는 노동자들",
+     "url": "https://www.news1.kr/photos/8231818",
+     "press": "news1.kr"
+    },
+    {
+     "title": "발언하는 이재진 민주노총 비대위원장",
+     "url": "https://www.news1.kr/photos/8231811",
+     "press": "news1.kr"
+    },
+    {
+     "title": "양대 노총 \"정년 65세 연장 더는 못 미뤄\"…연내 입법 촉구",
+     "url": "https://www.newspim.com/news/view/20261125000568",
+     "press": "newspim.com"
+    },
+    {
+     "title": "양대 노총 \"올해 안에 65세 정년 연장 완료해야…통과될 때까지 투쟁\"",
+     "url": "http://www.yonhapnewstv.co.kr/news/AKR20261125113751Kdk",
+     "press": "yonhapnewstv.co.kr"
+    },
+    {
+     "title": "60세에 퇴직하면 연금까지 5년… 양대 노총 , 정년연장 더는 못 기다린다",
+     "url": "https://www.jibs.co.kr/news/articles/articlesDetail/67916?feed=na",
+     "press": "jibs.co.kr"
+    },
     {
      "title": "'재고용 아니고 정년연장' 양대 노총 , 연내 안 하면 '강력 투쟁'",
      "url": "https://biz.sbs.co.kr/article_hub/20000348778?division=NAVER",
      "press": "biz.sbs.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "65세 법정 정년연장 연내 입법 처리 촉구",
-   "datetime": "2026.11.25(수) 오전",
-   "place": "서울 여의도 국회 본청 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "양대노총은 65세 법정 정년연장 법안을 올해 안에 국회에서 입법 처리할 것을 촉구했다. 김동명 한국노총 위원장은 기자회견에서 발언하며 국회의 신속한 처리를 요구했다.",
-   "org": "한국노총",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T11:44+09:00",
-   "url": "https://www.newspim.com/news/view/20261125000609",
-   "sources": [
+    },
     {
-     "title": "김동명 \"65세 법정 정년연장 입법 처리 촉구\"",
-     "url": "https://www.newspim.com/news/view/20261125000609",
+     "title": "한국노총 , 연내 정년연장 ‘경고’…사회적 대화 중단 시사",
+     "url": "https://www.sedaily.com/article/20118731?ref=naver",
+     "press": "sedaily.com"
+    },
+    {
+     "title": "정년연장 입법 처리 촉구하는 이재진 민주노총 비상대책위원장",
+     "url": "https://www.newspim.com/news/view/20261125000610",
      "press": "newspim.com"
+    },
+    {
+     "title": "'65세 정년연장 입법 촉구'",
+     "url": "https://www.newspim.com/news/view/20261125000615",
+     "press": "newspim.com"
+    },
+    {
+     "title": "연말 코앞인데 '정년연장' 노사 평행선...'연내 입법' 접점 찾을까",
+     "url": "https://www.straightnews.co.kr/news/articleView.html?idxno=316174",
+     "press": "straightnews.co.kr"
+    },
+    {
+     "title": "노동계 “정년연장 연내 입법 관철 때까지 투쟁”",
+     "url": "https://www.munhwa.com/article/11634044?ref=naver",
+     "press": "munhwa.com"
+    },
+    {
+     "title": "[이로운체크] 정년 65세, 어디까지 왔나...27일 특위 앞두고 '연장 방식...",
+     "url": "https://www.eroun.net/news/articleView.html?idxno=96452",
+     "press": "eroun.net"
+    },
+    {
+     "title": "[포토] 양대 노총 “법으로 보장하는 65세 정년 연장이어야”",
+     "url": "https://www.ilyosisa.co.kr/news/article.html?no=259189",
+     "press": "ilyosisa.co.kr"
+    },
+    {
+     "title": "양대 노총 “정년 연장, 연내 입법” 최후통첩…정부·여당에 결단 촉구...",
+     "url": "https://www.khan.co.kr/article/202611251342001",
+     "press": "khan.co.kr"
+    },
+    {
+     "title": "김동명 위원장, “올해 안에 정년연장 입법 이뤄지지 않으면, 더 이상의...",
+     "url": "http://news.inochong.org/detail.php?number=6701&thread=22r19",
+     "press": "news.inochong.org"
+    },
+    {
+     "title": "\"정년연장 연내 입법 없으면 대화 끊는다\"…양대 노총 초강수(종합)",
+     "url": "https://www.news1.kr/economy/employment-labor/6365587",
+     "press": "news1.kr"
+    },
+    {
+     "title": "양대 노총 , 정년연장 연내 입법 촉구…\"퇴직 후 소득공백 방치하면 안 돼...",
+     "url": "https://www.fnnews.com/news/202611251238370459",
+     "press": "fnnews.com"
+    },
+    {
+     "title": "연금은 65세, 정년은 60세…정년연장 공백 두고 노사 충돌",
+     "url": "https://www.gukjenews.com/news/articleView.html?idxno=3762650",
+     "press": "gukjenews.com"
+    },
+    {
+     "title": "정년연장, 국민연금 68세설의 진실",
+     "url": "https://www.topstarnews.net/news/articleView.html?idxno=16285837",
+     "press": "topstarnews.net"
+    },
+    {
+     "title": "노후 소득 공백 우려…노동계 \"정년 65세로 늘려달라\"",
+     "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5087704",
+     "press": "shinailbo.co.kr"
+    },
+    {
+     "title": "양대 노총 ‘정년 연장’ 압박...“연내 입법 안 되면 대화 없다”",
+     "url": "https://www.jasm.co.kr/news/view/326457/?sc=Naver",
+     "press": "jasm.co.kr"
+    },
+    {
+     "title": "양대 노총 \"연내 정년 연장 입법되지 않으면 모든 대화 중단\"",
+     "url": "https://www.newsgn.com/news/articleView.html?idxno=588073",
+     "press": "newsgn.com"
+    },
+    {
+     "title": "연내 정년연장 입법 여부 '관심'",
+     "url": "http://www.jejunews.com/news/articleView.html?idxno=2229065",
+     "press": "jejunews.com"
+    },
+    {
+     "title": "中企 고용 질 하락…중장년 1인 가구, 정년연장 늦장에 '한숨'",
+     "url": "https://www.1conomynews.co.kr/news/articleView.html?idxno=51556",
+     "press": "1conomynews.co.kr"
+    },
+    {
+     "title": "노동계, 정년연장 \"연내 입법\" 최후통첩… 노사 간극 해소될까",
+     "url": "https://www.hankookilbo.com/news/article/A2026112516300004530?did=NA",
+     "press": "hankookilbo.com"
+    },
+    {
+     "title": "[포토] 마사회노조, '본사·경마공원 동반 이전' '세제 지원' 촉구",
+     "url": "https://www.laborplus.co.kr/news/articleView.html?idxno=41909",
+     "press": "laborplus.co.kr"
+    },
+    {
+     "title": "정년 연장에 재고용 의무화…\"청년 고용 위축\"",
+     "url": "https://www.hankyung.com/article/2026112502921",
+     "press": "hankyung.com"
+    },
+    {
+     "title": "2029년부터 정년 61세로…2년마다 1세씩 연장 추진",
+     "url": "https://www.hankyung.com/article/2026112503621",
+     "press": "hankyung.com"
     }
    ]
   },
   {
    "type": "기자회견",
-   "title": "양대 노총 , 소득 공백 해소 위한 65세 정년 연장 입법 촉구",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본관 앞",
-   "hosts": "한국노총, 민주노총",
-   "summary": "▲민주노총과 한국노총 조합원 등 참석자들이 25일 국회 본관 앞에서 65세 법정 정년연장 연내 입법 처리를 촉구하는 기자회견을 하고 있다. (연합뉴스 \"해 넘기면 정부와 국회 책임\" ▲민주노총과 한국노총 조합원 등 참석자들이 25일 국회 본관 앞에서 65세 법정 정년연장 연내 입법 처리를 촉구하는 기자회견을 하고 있다.",
+   "title": "법정 정년 65세 연내 입법 촉구",
+   "datetime": "2026.11.25(화) 오전",
+   "place": "서울 여의도 국회 본청 앞 계단",
+   "hosts": "한국노동조합총연맹(한국노총), 전국민주노동조합총연맹(민주노총)",
+   "summary": "양대 노총은 법정 정년을 60세에서 65세로 연장하는 법안을 올해 안에 처리할 것을 요구하며, 정부와 국회가 정년연장 입법을 지연하고 있다고 규탄했다. 기업의 선별적 재고용이 아닌 법으로 보장하는 65세 정년이 필요하며, 연내 입법이 이뤄지지 않을 경우 강도 높은 투쟁을 예고했다.",
    "org": "한국노총",
    "keywords": [
     "기자회견"
    ],
-   "published": "2026-11-25T14:46+09:00",
-   "url": "https://www.etoday.co.kr/news/view/2652853",
+   "published": "2026-11-25T15:30+09:00",
+   "url": "http://www.00news.co.kr/news/articleView.html?idxno=108353",
    "sources": [
     {
-     "title": "양대 노총 , 소득 공백 해소 위한 65세 정년 연장 입법 촉구",
-     "url": "https://www.etoday.co.kr/news/view/2652853",
-     "press": "etoday.co.kr"
-    },
-    {
-     "title": "양대 노총 \"소득절벽 10년째\" 65세 정년연장 입법 촉구",
-     "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084180",
-     "press": "newsclaim.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "광주 SRF 2134억 중재 분쟁 '숨통'…운영비 78억으로 조정",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "전남광주통합특별시가 최대 2000억원대 재정 부담으로 이어질 수 있었던 광주 가연성폐기물연료화시설(SRF) 운영비 중재 분쟁에서 해결의 실마리를 찾았다. 운영사 전남광주통합특별시가 최대 2000억원대 재정 부담으로 이어질 수 있었던 광주 가연성폐기물연료화시설(SRF) 운영비 중재 분쟁에서 해결의 실마리를 찾았다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T16:40+09:00",
-   "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000086198",
-   "sources": [
-    {
-     "title": "광주 SRF 2134억 중재 분쟁 '숨통'…운영비 78억으로 조정",
-     "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000086198",
-     "press": "jnilbo.com"
-    },
-    {
-     "title": "2134억 광주 SRF 분쟁, 78억으로 물꼬 텄다",
-     "url": "http://www.gjdream.com/news/articleView.html?idxno=674630",
-     "press": "gjdream.com"
-    },
-    {
-     "title": "2,134억 광주 SRF 분쟁 첫 합의…과거 운영비 78억으로 한정",
-     "url": "https://view.asiae.co.kr/article/2026112417305918801",
-     "press": "view.asiae.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "광주 SRF 분쟁 돌파구 찾았다…운영비 손실분 2134억→78억 한정키로",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "포스코이앤씨, 민·관·정 협의체서 대승적 합의…미래 손실분·단가 인상 등 불씨 여전 광주 SRF 분쟁 돌파구 찾았다…운영비 손실분 2134억→78억 한정키로 포스코이앤씨, 민·관·정 협의체서 대승적 합의…미래 손실분·단가 인상 등 불씨 여전 2134억원까지 치솟았던 '광주 SRF(고형폐기물연료) 발전시설' 운영비 분쟁이 극적인 돌파구를 찾았다. 분쟁 당사자인 포스코이앤씨가 전남광주통합특별시 출범을 계기로 과거 손실분에 대한 요구액을 최초 신청했던 78억 원으로 되돌리는 대승적 결단을 내리면서다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T16:55+09:00",
-   "url": "https://www.pressian.com/pages/articles/2026112416495333124?utm_source=naver&utm_medium=search",
-   "sources": [
-    {
-     "title": "광주 SRF 분쟁 돌파구 찾았다…운영비 손실분 2134억→78억 한정키로",
-     "url": "https://www.pressian.com/pages/articles/2026112416495333124?utm_source=naver&utm_medium=search",
-     "press": "pressian.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "광주 SRF 운영비 분쟁 해결 실마리…과거 손실분 78억 원 합의",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "2천억 원대 운영비 갈등을 빚어온 광주 가연성폐기물연료화시설(SRF) 분쟁이 해결의 실마리를 찾았다. 포스코이앤씨, 2017~2024년 운영비 손실분 최초 신청금액으로 한정 2025년 이후 운영비·손해배상 문제는 중재판정부 판단 받기로 전남광주통합특별시 제공 2천억 원대 운영비 갈등을 빚어온 광주 가연성폐기물연료화시설(SRF) 분쟁이 해결의 실마리를 찾았다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T17:04+09:00",
-   "url": "https://www.nocutnews.co.kr/news/6611972?utm_source=naver&utm_medium=article&utm_campaign=20261124170304",
-   "sources": [
-    {
-     "title": "광주 SRF 운영비 분쟁 해결 실마리…과거 손실분 78억 원 합의",
-     "url": "https://www.nocutnews.co.kr/news/6611972?utm_source=naver&utm_medium=article&utm_campaign=20261124170304",
-     "press": "nocutnews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "폐기물시설 운영비 2000억대 분쟁…전남광주·포스코E&C 합의 실마리",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "광주지역 생활폐기물을 태워 고형연료(SRF)로 만드는 시설의 운영비 부담을 놓고 2000억원대 분쟁을 벌여온 전남광주통합특별시와 포스코이앤씨가 일부 쟁점에 합의했다. 과거 운영 손실분에 대한 포스코이앤씨의 요구액을 당초 청구액인 78억원으로 한정하기로 하면서 장기화한 ‘광주SRF 분쟁해결협의체’ 위원들이 24일 전남광주통합특별시 광주청사에서 브리핑을 열어 가연성폐기물연료화시설 운영비를 놓고 갈등을 빚고 있는 전남광주시와 포스코 이앤씨의 합의안을 설명하고 있다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T17:16+09:00",
-   "url": "https://www.hani.co.kr/arti/area/honam/1288878.html",
-   "sources": [
-    {
-     "title": "폐기물시설 운영비 2000억대 분쟁…전남광주·포스코E&C 합의 실마리",
-     "url": "https://www.hani.co.kr/arti/area/honam/1288878.html",
-     "press": "hani.co.kr"
+     "title": "정년연장 공회전에 뿔난 노동계 '최후통첩'",
+     "url": "http://www.00news.co.kr/news/articleView.html?idxno=108353",
+     "press": "00news.co.kr"
     }
    ]
   },
   {
    "type": "기자회견",
    "title": "진주시 개발행위허가 경사도 기준 완화 추진 중단 촉구",
-   "datetime": "2026.11.23(월)",
+   "datetime": "2026.11.23",
    "place": "진주시청 앞",
    "hosts": "진주기후위기비상행동, 진주환경운동연합",
-   "summary": "진주시가 검토 중인 개발행위허가 경사도 기준(현행 12도 미만) 완화는 산림 훼손과 산사태 등 기후재난 위험을 키워 자연환경과 시민 안전에 치명적일 수 있다고 주장했다. 단체는 경사도 기준 완화 추진을 중단하고, 산림 생태계 보전과 재해 예방을 우선하는 도시계획 기준과 원도심 활성화 방안을 마련할 것을 요구했다.",
+   "summary": "진주시가 검토 중인 개발행위허가 경사도 기준(현행 12도 미만) 완화에 반대하며, 산림 훼손과 산사태 등 기후재난 위험이 커질 수 있다고 주장했다. 단체는 현행 기준 유지와 산림 생태계 보전·재해 예방 중심의 도시계획 마련, 원도심 활성화 방안 우선 수립을 요구했다.",
    "org": "환경운동연합",
    "keywords": [
     "기자회견"
@@ -1143,71 +772,7 @@
      "title": "산림 생태축 지키자는 환경 단체, 개발 규제 풀자는 진주시의회",
      "url": "http://www.dandinews.com/news/articleView.html?idxno=17929",
      "press": "dandinews.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "포항 바이오매스 발전소 재추진 논란…민주당 시의원들 “행정절차 중단...",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "2024·2025년 두 차례 시유지 매각 불허에도 사업 재추진…행정 판단 변화 도마 위 포항 바이오매스 발전소 재추진 논란…민주당 시의원들 “행정절차 중단하라” 2024·2025년 두 차례 시유지 매각 불허에도 사업 재추진…행정 판단 변화 도마 위 경북 포항 영일만3일반산업단지에 추진 중인 바이오매스 발전소 사업이 재추진되면서 주민 반발과 정치권의 비판이 거세지고 있다. 포항시는 2024년과 2025년 주민 수용성 부족과 환경성·경제성 문제 등을 이유로 사업부지 매각을 두 차례 불허했다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "성명",
-    "기자회견"
-   ],
-   "published": "2026-11-24T19:22+09:00",
-   "url": "https://www.pressian.com/pages/articles/2026112419205405888?utm_source=naver&utm_medium=search",
-   "sources": [
-    {
-     "title": "포항 바이오매스 발전소 재추진 논란…민주당 시의원들 “행정절차 중단...",
-     "url": "https://www.pressian.com/pages/articles/2026112419205405888?utm_source=naver&utm_medium=search",
-     "press": "pressian.com"
     },
-    {
-     "title": "포항 민주당의원들, 바이오매스발전소 재추진 중단 촉구",
-     "url": "https://www.newsis.com/view/NISX20261125_0003882926",
-     "press": "newsis.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "‘2천억대’ 광주 SRF 분쟁 새 국면…손실 보전액 축소",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "전남광주통합특별시는 24일 광주 SRF 분쟁해결협의체 2차 회의 후 광주청사에서 기자회견 을 열어 2017-2024년... 조진상 광주 환경운동연합 공동대표는 “2017년부터 2024년까지의 운영비 요구액을 최대 78억원으로 한정한...",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T19:36+09:00",
-   "url": "http://www.kjdaily.com/article.php?aid=1795515626693432002",
-   "sources": [
-    {
-     "title": "‘2천억대’ 광주 SRF 분쟁 새 국면…손실 보전액 축소",
-     "url": "http://www.kjdaily.com/article.php?aid=1795515626693432002",
-     "press": "kjdaily.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "title": "진주시 경사도 기준 조례개정 놓고 \"완화 vs 유지\"",
-   "datetime": "2026.11.24(화)",
-   "place": "확인 필요",
-   "hosts": "환경운동연합",
-   "summary": "진주시 개발행위허가 경사도 기준을 두고 지역 내 찬반 논란이 이어지고 있다.일부 시민들은 타지자체 대비 과도한 규제라며 기준 완화를 주장하는 반면 환경단체는 산림",
-   "org": "환경운동연합",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-24T19:56+09:00",
-   "url": "https://www.gnnews.co.kr/news/articleView.html?idxno=650258",
-   "sources": [
     {
      "title": "진주시 경사도 기준 조례개정 놓고 \"완화 vs 유지\"",
      "url": "https://www.gnnews.co.kr/news/articleView.html?idxno=650258",
@@ -1217,146 +782,36 @@
   },
   {
    "type": "기자회견",
-   "title": "[오늘의 주요일정]부산(11월25일 수요일)",
-   "datetime": "2026.11.25(수)",
-   "place": "국회 본청 앞",
-   "hosts": "환경운동연합",
-   "summary": "[부산=뉴시스] ▲오전 8시, 연제구청장, 민관경 합동 아동학대 예방 캠페인, 연제초▲오전 9시10분, 부산시장, 주간정책회의, 시청 영상회의실▲오전 10시, 부산진구청장, 한국자유총연맹 여성회 사랑의 김장 나누기, 자총 회의실▲오전 10시40분, 부산시장, 제15회 한중장학생 장학증서 전달식, 시청 국제회의실▲오전 11시, 동래구청장, 구민감사관 활동 보.. Copyright © NEWSIS.COM, 무단 전재 및 재배포 금지 양대노총, 국회 본청 앞에서 '65세 법정 정년연장 연내 입법' 촉구 \"10조원대 '증안펀드' 확대 추진",
+   "title": "목포 산정농공단지 40MW AI 데이터센터 건립 관련 사업계획 공개 요구",
+   "datetime": "2026.11.25(화) 오전 (기사 게시일 기준 전일 발표된 기자회견, 정확한 시각 미확인)",
+   "place": "확인 필요",
+   "hosts": "목포시민주권행동(목포환경운동연합 등 목포시민단체 연합)",
+   "summary": "사업자 ㈜엘리스그룹이 건축허가 신청 시 용도를 '창고시설'로 기재해 사전 검증을 피하려 했다고 주장하며, 사업계획과 자료 공개를 요구했다. 또한 목포시의 사전고지 공고문에 대지면적과 최대 전력 규모가 빠졌고 고지 범위(500m 이내 아파트 4곳)가 부적절하다고 비판했다.",
    "org": "환경운동연합",
    "keywords": [
     "기자회견"
    ],
-   "published": "2026-11-25T05:00+09:00",
-   "url": "https://www.newsis.com/view/NISX20261124_0003880962",
+   "published": "2026-11-25T14:32+09:00",
+   "url": "https://www.womennews.co.kr/news/articleView.html?idxno=284929",
    "sources": [
     {
-     "title": "[오늘의 주요일정]부산(11월25일 수요일)",
-     "url": "https://www.newsis.com/view/NISX20261124_0003880962",
-     "press": "newsis.com"
-    },
-    {
-     "title": "[위클리오늘] 부산 주요 일정 11월 25일 (수요일)",
-     "url": "http://www.weeklytoday.com/news/articleView.html?idxno=803356",
-     "press": "weeklytoday.com"
+     "title": "목포 도심에 40MW AI 데이터센터 추진… 주민들 “사업계획 공개하라”",
+     "url": "https://www.womennews.co.kr/news/articleView.html?idxno=284929",
+     "press": "womennews.co.kr"
     }
    ]
   },
   {
    "type": "성명",
-   "title": "與, 조희대 탄핵 명분 쌓기…김민석 \"헌재서 인용될 것\"",
-   "datetime": "2026.11.24(화)",
+   "title": "조희대 대법원장 탄핵 추진에 대한 재고 촉구",
+   "datetime": "2026.11.24",
    "place": "",
    "hosts": "경실련",
-   "summary": "더불어민주당이 24일 한덕수 전 국무총리에 대한 대법원 판결을 주제로 긴급토론회를 열고 조희대 대법원장 탄핵소추안의 신속한 발의와 처리를 예고했다.김민석 대표는 이날 오후 국회에서 열린 잠깐! 현재 Internet Explorer 8이하 버전을 이용중이십니다. 최신 브라우저(Browser) 사용을 권장드립니다! 더불어민주당이 24일 한덕수 전 국무총리에 대한 대법원 판결을 주제로 긴급토론회를 열고 조희대 대법원장 탄핵소추안의 신속한 발의와 처리를 예고했다.",
+   "summary": "경실련은 조희대 대법원장 탄핵 추진에 대해 '공감 없는 탄핵은 보복이란 꼬리표를 떼기 어렵다'며 여당의 재고를 촉구했다. 해당 기사는 대한변호사협회 및 현직 판사의 우려와 함께 이를 보도했다.",
    "org": "경실련",
    "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T16:56+09:00",
-   "url": "https://www.straightnews.co.kr/news/articleView.html?idxno=316109",
-   "sources": [
-    {
-     "title": "與, 조희대 탄핵 명분 쌓기…김민석 \"헌재서 인용될 것\"",
-     "url": "https://www.straightnews.co.kr/news/articleView.html?idxno=316109",
-     "press": "straightnews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "커지는 '조희대 탄핵 반대'… 경실련 \"보복 꼬리표 못 뗄 것\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "더불어민주당이 조희대 대법원장에 대한 탄핵을 추진중인 가운데 경제정의실천시민연합(경실련)은 “공감 없이 밀어붙이는 탄핵은 ‘보복’이란 꼬리표를 떼기 어렵다”며 반 잠깐! 현재 Internet Explorer 8이하 버전을 이용중이십니다. 최신 브라우저(Browser) 사용을 권장드립니다! 더불어민주당이 조희대 대법원장에 대한 탄핵을 추진중인 가운데 경제정의실천시민연합(경실련)은 “공감 없이 밀어붙이는 탄핵은 ‘보복’이란 꼬리표를 떼기 어렵다”며 반대 의사를 표명했다.",
-   "org": "경실련",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T17:01+09:00",
-   "url": "https://www.sisajournal.com/news/articleView.html?idxno=395110",
-   "sources": [
-    {
-     "title": "커지는 '조희대 탄핵 반대'… 경실련 \"보복 꼬리표 못 뗄 것\"",
-     "url": "https://www.sisajournal.com/news/articleView.html?idxno=395110",
-     "press": "sisajournal.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "[이슈] '조희대 탄핵' 법원 안팎 \"행동나서야, 재고해야\" 반발…與 \"헌재...",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "지난 19일 대법원이 한덕수 전 국무총리의 내란 중요임무 종사 혐의 사건을 일부 무죄 취지로 파기환송하자 여당인 더불어민주당은 조희대 대법원장 탄핵을 추진하기로 지난 19일 대법원이 한덕수 전 국무총리의 내란 중요임무 종사 혐의 사건을 일부 무죄 취지로 파기환송하자 여당인 더불어민주당은 조희대 대법원장 탄핵을 추진하기로 했다. 민주당은 심리 과정의 절차상 하자 등을 검토해 오는 12월 안에 탄핵소추안을 국회에서 의결한다는 방침이다.",
-   "org": "경실련",
-   "keywords": [
-    "청와대",
-    "성명"
-   ],
-   "published": "2026-11-24T17:07+09:00",
-   "url": "https://www.polinews.co.kr/news/articleView.html?idxno=749123",
-   "sources": [
-    {
-     "title": "[이슈] '조희대 탄핵' 법원 안팎 \"행동나서야, 재고해야\" 반발…與 \"헌재...",
-     "url": "https://www.polinews.co.kr/news/articleView.html?idxno=749123",
-     "press": "polinews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "경실련 \"민주당, 대법원장 탄핵 다시 생각해야\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "\"판결 마음에 안 든다고?…공감 없이 밀어붙이면 '보복' 꼬리표\" \"판결 마음에 안 든다고?…공감 없이 밀어붙이면 '보복' 꼬리표\" 시민단체 '경제정의실천시민연합'(경실련)은 24일 더불어민주당이 조희대 대법원장 탄핵 추진 당론을 정한 데 대해 \"여당은 탄핵 추진을 다시 생각해야 한다\"며 \"법관 탄핵은 답이 아니다\"라고 우려하는 성명을 냈다. 경실련은 이날 \"민심도 이번 탄핵에 호응하지 않는다\"는 점을 지적했다.",
-   "org": "경실련",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T19:03+09:00",
-   "url": "https://www.pressian.com/pages/articles/2026112412140393398?utm_source=naver&utm_medium=search",
-   "sources": [
-    {
-     "title": "경실련 \"민주당, 대법원장 탄핵 다시 생각해야\"",
-     "url": "https://www.pressian.com/pages/articles/2026112412140393398?utm_source=naver&utm_medium=search",
-     "press": "pressian.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "\"오류·편향 달성군 의정비 여론조사...재실시하라\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "TBC가 보도한 대구 달성군의 엉터리 의정비 여론조사와 관련해 시민단체들이 잇따라 성명을 내고 의정비 인상 결정 철회와 여론조사 재실시를 촉구했습니다. 우리복지시민연... 뉴스",
-   "org": "경실련",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T21:14+09:00",
-   "url": "https://www.tbc.co.kr/news/view?pno=20261124135656AE09052&id=213734",
-   "sources": [
-    {
-     "title": "\"오류·편향 달성군 의정비 여론조사...재실시하라\"",
-     "url": "https://www.tbc.co.kr/news/view?pno=20261124135656AE09052&id=213734",
-     "press": "tbc.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "변협· 경실련 \"탄핵 재고해야\"…현직판사 \"계엄만큼 역사에 오점\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "변협·경실련 \"탄핵 재고해야\"…현직판사 \"계엄만큼 역사에 오점\"[앵커]민주당이 조희대 대법원장 탄핵을 추진하.. [앵커] 민주당이 조희대 대법원장 탄핵을 추진하는데 대해 대한변호사협회가 재고를 촉구했고, 경실련도 같은 목소리입니다. 한 현직 판사는 대법원장 탄핵을 계엄에 비유하며 역사에 오점으로 남을 수 있다고 경고했습니다.",
-   "org": "경실련",
-   "keywords": [
-    "성명"
+    "성명",
+    "청와대"
    ],
    "published": "2026-11-24T21:40+09:00",
    "url": "https://news.tvchosun.com/site/data/html_dir/2026/11/24/2026112490288.html",
@@ -1370,106 +825,41 @@
      "title": "변협· 경실련 \"탄핵 재고해야\"…현직판사 \"계엄만큼 역사에 오점\"",
      "url": "https://news.tvchosun.com/site/data/html_dir/2026/11/25/2026112590022.html",
      "press": "news.tvchosun.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "\"절차적 공정성 훼손... 달성군의회 의정비 인상안 철회해야\"",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "대구 9개 기초의회 중 가장 높은 월정수당 인상률을 결정한 달성군의회의 의정비 인상 근거가 된 주민 여론조사가 객관성과 공정성을 상실한 것으로 알려져 사실상 요식행위에 불과했다는 비판이 나오고 있다.달성군 의정심의위원회는 지난",
-   "org": "경실련",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T09:42+09:00",
-   "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288066&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
-   "sources": [
-    {
-     "title": "\"절차적 공정성 훼손... 달성군의회 의정비 인상안 철회해야\"",
-     "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288066&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
-     "press": "ohmynews.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "與 법사위 \"이용철, 형사사법체계 안착·사법개혁 완수시킬 적임자\"",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "경실련",
-   "summary": "국회 법제사법위원회 소속 더불어민주당 의원들은 전날 인사청문회를 마친 이용철 법무부 장관 후보자를 향해 “새로운 형사사법체계 안착과 사법개혁을 완수할 ... Google 검색에서 아주경제 기사를 더 자주 볼 수 있습니다. 국회 법제사법위원회 소속 더불어민주당 의원들은 전날 인사청문회를 마친 이용철 법무부 장관 후보자를 향해 “새로운 형사사법체계 안착과 사법개혁을 완수할 자질과 뚝심을 보여줬다”고 평가했다.",
-   "org": "경실련",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T10:06+09:00",
-   "url": "https://www.ajunews.com/view/20261125095715460",
-   "sources": [
-    {
-     "title": "與 법사위 \"이용철, 형사사법체계 안착·사법개혁 완수시킬 적임자\"",
-     "url": "https://www.ajunews.com/view/20261125095715460",
-     "press": "ajunews.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "대경 녹색연합 “TK신공항, 2028년 총선까지 기다릴 수 없다”",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "녹색연합",
-   "summary": "대구경북녹색연합이 대구경북통합신공항 군공항 이전을 국가재정사업으로 전환하고, 현 국회 임기 안에 토지보상 재원을 확보하라고 정부와 국회에 촉구했다. 내년도 예산에서 초기 보상비 확보가 어려울 경우 대구시가 지방채 발행 특례를 활용해 보상에 먼저 착수하는 방안도 제안했다 군공항 이전 국가재정사업 전환 촉구…“국비 막히면 지방채로 보상 착수” 대구경북녹색연합 로고. /대구경북녹색연합 제공 대구경북녹색연합이 대구경북통합신공항 군공항 이전을 국가재정사업으로 전환하고, 현 국회 임기 안에 토지보상 재원을 확보하라고 정부와 국회에 촉구했다.",
-   "org": "녹색연합",
-   "keywords": [
-    "논평",
-    "성명"
-   ],
-   "published": "2026-11-25T10:48+09:00",
-   "url": "https://www.kbmaeil.com/article/20261125500193",
-   "sources": [
-    {
-     "title": "대경 녹색연합 “TK신공항, 2028년 총선까지 기다릴 수 없다”",
-     "url": "https://www.kbmaeil.com/article/20261125500193",
-     "press": "kbmaeil.com"
     },
     {
-     "title": "대구경북 녹색연합 \"통합신공항, 2028년 총선까지 기다릴 수 없다\"",
-     "url": "https://www.dkilbo.com/news/articleView.html?idxno=562132",
-     "press": "dkilbo.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "“대구경북통합신공항, 2028년 총선까지 못 기다려…토지보상 조기 착수...",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "녹색연합",
-   "summary": "【브레이크뉴스 대구 】이성현 기자=지역 시민단체가 대구경북통합신공항 건설 사업의 지연을 우려하며 군공항 이전 방식의 국가재정사업 전환과 지방 시작페이지로 l 즐겨찾기 l RSS l 편집 2026.11.25 [18:20] 【브레이크뉴스 대구 】이성현 기자=지역 시민단체가 대구경북통합신공항 건설 사업의 지연을 우려하며 군공항 이전 방식의 국가재정사업 전환과 지방채 특례를 활용한 조기 토지 보상 착수를 정부와 정치권에 촉구했다. (사)대.경녹색연합은 25일 성명을 내고 “대구경북통합신공항 건설이 정치적 상황이나 선거 일정에 따라 미뤄져서",
-   "org": "녹색연합",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T11:06+09:00",
-   "url": "http://www.breaknews.com/1253741",
-   "sources": [
+     "title": "커지는 '조희대 탄핵 반대'… 경실련 \"보복 꼬리표 못 뗄 것\"",
+     "url": "https://www.sisajournal.com/news/articleView.html?idxno=395110",
+     "press": "sisajournal.com"
+    },
     {
-     "title": "“대구경북통합신공항, 2028년 총선까지 못 기다려…토지보상 조기 착수...",
-     "url": "http://www.breaknews.com/1253741",
-     "press": "breaknews.com"
+     "title": "與, 조희대 탄핵 명분 쌓기…김민석 \"헌재서 인용될 것\"",
+     "url": "https://www.straightnews.co.kr/news/articleView.html?idxno=316109",
+     "press": "straightnews.co.kr"
+    },
+    {
+     "title": "[이슈] '조희대 탄핵' 법원 안팎 \"행동나서야, 재고해야\" 반발…與 \"헌재...",
+     "url": "https://www.polinews.co.kr/news/articleView.html?idxno=749123",
+     "press": "polinews.co.kr"
+    },
+    {
+     "title": "경실련 \"민주당, 대법원장 탄핵 다시 생각해야\"",
+     "url": "https://www.pressian.com/pages/articles/2026112412140393398?utm_source=naver&utm_medium=search",
+     "press": "pressian.com"
+    },
+    {
+     "title": "'與 조희대 탄핵' 반대 목소리 확산…부산변호사회 \"정치적 목적 의심\"",
+     "url": "https://www.sisajournal.com/news/articleView.html?idxno=395212",
+     "press": "sisajournal.com"
     }
    ]
   },
   {
    "type": "성명",
-   "title": "민주노총 전북본부 \"세아베스틸 5명 노동자 죽었는데 경영책임자는 집행...",
+   "title": "세아베스틸 중대재해 경영책임자 집행유예 판결 규탄",
    "datetime": "2026.11.24(화)",
    "place": "",
-   "hosts": "민주노총",
-   "summary": "중대재해 처벌 등에 관한 법률 위반 시행 이후 2년여 동안 노동자 5명이 숨진 특수강 제조업체인 세아베스틸의 전 대표가 징역형의 집행유예를 선고받은데 대해 지역 노동계가 잠깐! 현재 Internet Explorer 8이하 버전을 이용중이십니다. 최신 브라우저(Browser) 사용을 권장드립니다! 중대재해 처벌 등에 관한 법률 위반 시행 이후 2년여 동안 노동자 5명이 숨진 특수강 제조업체인 세아베스틸의 전 대표가 징역형의 집행유예를 선고받은데 대해 지역 노동계가 '봐주기 판결'이라며 거세게 반발했다.",
+   "hosts": "민주노총 전북본부",
+   "summary": "2022년 중대재해처벌법 시행 이후 세아베스틸 군산공장에서 4건의 중대재해로 노동자 5명이 숨졌으나, 전 대표에게 집행유예가 선고된 것은 명백한 사업주 봐주기 판결이라고 비판했다. 경영책임자에 대한 엄중한 처벌 없이는 중대재해처벌법의 실효성을 담보할 수 없다며 공소청의 즉각적인 항소를 요구했다.",
    "org": "민주노총",
    "keywords": [
     "성명"
@@ -1481,111 +871,41 @@
      "title": "민주노총 전북본부 \"세아베스틸 5명 노동자 죽었는데 경영책임자는 집행...",
      "url": "http://www.jbsori.com/news/articleView.html?idxno=18251",
      "press": "jbsori.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "세아베스틸 김철희 전 대표 징역 2년·집행유예 3년…노동계 반발",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "(PPSS 정성남 기자)중대재해처벌법 시행 이후 잇따른 노동자 사망사고로 재판에 넘겨진 세아베스틸 김철희 전 대표이사가 1심에서 징역형의 집행유예를 선고받았다.동 (PPSS 정성남 기자)중대재해처벌법 시행 이후 잇따른 노동자 사망사고로 재판에 넘겨진 세아베스틸 김철희 전 대표이사가 1심에서 징역형의 집행유예를 선고받았다. 동일 사업장에서 중대재해가 반복적으로 발생했음에도 경영책임자에 대한 실형 선고가 이뤄지지 않으면서 노동계를 중심으로 중대재해처벌법의 실효성에 대한 문제가 다시 제기되고 있다.",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T16:36+09:00",
-   "url": "https://www.ppss.kr/news/articleView.html?idxno=322722",
-   "sources": [
+    },
     {
      "title": "세아베스틸 김철희 전 대표 징역 2년·집행유예 3년…노동계 반발",
      "url": "https://www.ppss.kr/news/articleView.html?idxno=322722",
      "press": "ppss.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "'중처법 위반 혐의' 세아베스틸 전 대표에 '집행유예'…\"봐주기 판결\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "[금융소비자뉴스 백종국 기자] 2년간 5명의 노동자가 사망해 중대재해처벌법 위반 혐의로 재판에 넘겨진 세아베스틸 김철희 전 대표가 집행유예를 선고받자 노동계와 경영계의 시각이 엇갈렸다.전주지법 군산지원 형사2단독(이유영 부장판사)은 24일 김 전 대표와 산업안전보건법 위반 혐의 등으로 재판받은 세아베스틸 전 군산 공장장 A(53)씨에게 징역 2년에 집행유예 3년을 각각 선고했다고 연합뉴스가 전했다. 중대재해 발생 사업장인 세아베스틸은 벌금 2억5000만원을 부과받았다.민주노총 전북본부는 이날일 성명을 내고 \"중대재해 처벌 등에 관한",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T17:46+09:00",
-   "url": "http://www.newsfc.co.kr/news/articleView.html?idxno=82716",
-   "sources": [
+    },
     {
      "title": "'중처법 위반 혐의' 세아베스틸 전 대표에 '집행유예'…\"봐주기 판결\"",
      "url": "http://www.newsfc.co.kr/news/articleView.html?idxno=82716",
      "press": "newsfc.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "\"사업자 봐주기 판결\" …5명 숨진 세아베스틸 재판 '집유'",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "특수강 제조업체 세아베스틸에서 발생한 중대재해 사건의 경영 책임자들이 모두 실형을 피했다.전주지법 군산지원 형사2단독(이유영 부장판사)은 24일 김철희 전 세아베스틸 대표이사의 중대재해처벌법 위반 혐의와 세아베스틸 전 군산 공장장 A(53)씨의 산업안전보건법 위반 혐의에 대해 징역 2년에 집행유예 3년을 각각 선고했다.이어 중대재해 발생 사업장인 세아베스틸에 벌금 2억 5,000만 원을 내렸다.또 세아베스틸 안전관리 담당자 등 직원 3명에게는 금고 8개월에 집행유예 2년, 숨진 노동자들이 속했던 협력업체들에는 각각 최소 200만 원",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T18:46+09:00",
-   "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1058193",
-   "sources": [
+    },
     {
      "title": "\"사업자 봐주기 판결\" …5명 숨진 세아베스틸 재판 '집유'",
      "url": "http://www.jjn.co.kr/news/articleView.html?idxno=1058193",
      "press": "jjn.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "[경인일보 뉴스 후] AI 커닝이 드러낸 ‘입시·학벌 만능’ 시험의 한계",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "인공지능(AI) 기술을 활용한 시험 부정행위 논란이 확산하면서 교육당국이 시험의 공정성을 확보하기 위한 대책 마련에 고심하고 있다. 전자기기를 차단하고 시험장 감독을 강화하는 임시 방편으로는 진화하는 AI 기술을 악용한 부정행위를 막을 수 없다는 전문가들의 지적도 나온 AI 브리핑은 때때로 실수할 수 있고 잘못된 정보가 포함될 수 있습니다.",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T20:00+09:00",
-   "url": "https://www.kyeongin.com/article/1775339",
-   "sources": [
-    {
-     "title": "[경인일보 뉴스 후] AI 커닝이 드러낸 ‘입시·학벌 만능’ 시험의 한계",
-     "url": "https://www.kyeongin.com/article/1775339",
-     "press": "kyeongin.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "노동자 5명 숨졌는데, 세아베스틸 전 대표 '집유'",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "노동자 5명이 잇따라 숨진 특수강 제조 기업인 세아베스틸의 전 대표이사가 1심에서 실형을 면했다. 재판부는 안전조치 의무 위반과 노동자 사망 사이의 인과관계를 인정하면서도 사측의 재발 방지 노력을 양형에 참작했다.",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T06:34+09:00",
-   "url": "https://www.labortoday.co.kr/news/articleView.html?idxno=237907",
-   "sources": [
+    },
     {
      "title": "노동자 5명 숨졌는데, 세아베스틸 전 대표 '집유'",
      "url": "https://www.labortoday.co.kr/news/articleView.html?idxno=237907",
      "press": "labortoday.co.kr"
+    },
+    {
+     "title": "4명 숨진 세아베스틸 집행유예.. 이러고도 중대재해 처벌?",
+     "url": "http://www.jmbc.co.kr/news/view/70020",
+     "press": "jmbc.co.kr"
+    },
+    {
+     "title": "2년동안 5명이 숨졌는데…경영책임자 집행유예에 \"봐주기\" 반발",
+     "url": "https://www.nocutnews.co.kr/news/6612229?utm_source=naver&utm_medium=article&utm_campaign=20261125103012",
+     "press": "nocutnews.co.kr"
+    },
+    {
+     "title": "[중대해재 사각지대] 세아베스틸 노동자 5명 사망에도 집행유예…'중처...",
+     "url": "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065577586312858",
+     "press": "megaeconomy.co.kr"
     }
    ]
   },
@@ -1613,137 +933,32 @@
   },
   {
    "type": "성명",
-   "title": "4명 숨진 세아베스틸 집행유예.. 이러고도 중대재해 처벌?",
-   "datetime": "2026.11.25(수)",
+   "title": "돌봄 노동자 처우 개선 예산 증액 촉구",
+   "datetime": "2026.11.25",
    "place": "",
-   "hosts": "민주노총",
-   "summary": "중대재해처벌법 시행 이후 전주지법에서 진행된 관련 재판 11건 가운데 6명이 징역형을 선고 … 중대재해처벌법 시행 이후 전주지법에서 진행된 관련 재판 11건 가운데 6명이 징역형을 선고받았지만, 이들 모두 집행 유예가 선고돼 중처법의 실효성 논란이 제기되고 있습니다. 전주지방법원 군산지원은 어제(24일) 중대재해처벌법 위반 혐의로 기소된 '세아베스틸' 김철희 전 대표와 군산공장장에게 징역 2년에 집행유예 3년 등을 선고하고 법인에는 벌금 2억 5천만 원을 선고했습니다.",
+   "hosts": "민주노총 대전본부",
+   "summary": "민주노총 대전본부는 돌봄 노동자의 처우 개선을 위한 예산을 증액 편성할 것을 국회에 촉구했다. 기사 본문이 대부분 잘려 있어 구체적인 근거와 세부 요구는 확인되지 않는다.",
    "org": "민주노총",
    "keywords": [
-    "성명"
+    "기자회견"
    ],
-   "published": "2026-11-25T10:12+09:00",
-   "url": "http://www.jmbc.co.kr/news/view/70020",
+   "published": "2026-11-25T13:09+09:00",
+   "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8722150&ref=A",
    "sources": [
     {
-     "title": "4명 숨진 세아베스틸 집행유예.. 이러고도 중대재해 처벌?",
-     "url": "http://www.jmbc.co.kr/news/view/70020",
-     "press": "jmbc.co.kr"
+     "title": "민주노총 “돌봄 노동자 처우 개선 예산 증액해야”",
+     "url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8722150&ref=A",
+     "press": "news.kbs.co.kr"
     }
    ]
   },
   {
    "type": "성명",
-   "title": "2년동안 5명이 숨졌는데…경영책임자 집행유예에 \"봐주기\" 반발",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "민주노총",
-   "summary": "세아베스틸 군산공장에서 노동자 5명이 숨진 중대재해와 관련해 경영책임자에게 집행유예가 선고되자 노동계가 강하게 반발했다. 세아베스틸 경영책임자에 집행유예…\"명백한 봐주기 판결\" \"유족 합의·개선 조치 이유로 처벌 가볍게 해…즉각 항소해야\" 세아베스틸 전경. 세아베스틸 제공 세아베스틸 군산공장에서 노동자 5명이 숨진 중대재해와 관련해 경영책임자에게 집행유예가 선고되자 노동계가 강하게 반발했다.",
-   "org": "민주노총",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T10:29+09:00",
-   "url": "https://www.nocutnews.co.kr/news/6612229?utm_source=naver&utm_medium=article&utm_campaign=20261125103012",
-   "sources": [
-    {
-     "title": "2년동안 5명이 숨졌는데…경영책임자 집행유예에 \"봐주기\" 반발",
-     "url": "https://www.nocutnews.co.kr/news/6612229?utm_source=naver&utm_medium=article&utm_campaign=20261125103012",
-     "press": "nocutnews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "제2 대구의료원 건립 미뤄지자 시민단체 등 반발",
-   "datetime": "2026.11.24(화) 16시 44분",
-   "place": "",
-   "hosts": "참여연대",
-   "summary": "(대구=연합뉴스) 박세진 기자 = 대구참여연대는 24일 성명을 내고 \"대구시는 제2 대구의료원 설립을 중장기 과제로 미루는 방침을 즉각 철회하라... (대구=연합뉴스) 박세진 기자 = 대구참여연대는 24일 성명을 내고 \"대구시는 제2 대구의료원 설립을 중장기 과제로 미루는 방침을 즉각 철회하라\"고 촉구했다. 정의당 대구시당도 성명을 내고 \"제2대구의료원 건립 사업이 최근 중장기과제로 전환됐다\"며 \"추경호 시장은 공약 파기에 대한 입장을 내놓아야 한다\"고 주장했다.",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T16:44+09:00",
-   "url": "https://www.yna.co.kr/view/AKR20261124154300053?input=1195m",
-   "sources": [
-    {
-     "title": "제2 대구의료원 건립 미뤄지자 시민단체 등 반발",
-     "url": "https://www.yna.co.kr/view/AKR20261124154300053?input=1195m",
-     "press": "yna.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "제2 대구의료원 설립 조속한 재추진 촉구",
+   "title": "제2의료원 중장기 과제 전환 철회 촉구",
    "datetime": "2026.11.24(화)",
    "place": "",
    "hosts": "대구참여연대",
-   "summary": "대구참여연대는 홍준표 전 시장의 의료원 설립 백지화에 이어 대구시가 의료원 설립을 중장기 과제로 분류한 것은 추경호 시장 임기 내 예산 투입이나 착공을 하지 않겠다는 선언이라고 비판했다. 필수 의료 붕괴와 지역 의료 공백을 막는 공공병원의 가치를 경제성 잣대로 재단해서는 안 된다고 지적했다. 이에 따라 대구시에 의료원 건립을 선거 공약대로 추진하기 위한 구체적인 로드맵과 예산 확보 방안을 제시할 것을 요구했다.",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T17:47+09:00",
-   "url": "https://dgmbc.com/NewsArticle/875117",
-   "sources": [
-    {
-     "title": "대구 참여연대 \"제2 대구의료원 설립 조속히 재추진해야\"",
-     "url": "https://dgmbc.com/NewsArticle/875117",
-     "press": "dgmbc.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "‘조희대 탄핵’ 두고 민주당 “사유 합치면 중대성 넘쳐” vs ‘무리수...",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "참여연대",
-   "summary": "더불어민주당이 조희대 대법원장 탄핵을 추진하며 내세운 탄핵 사유가 헌법재판소의 인용 기준인 ‘헌법과 법률의 중대한 위반’에 해당하는지를 두고 논란이 계속되고 있다. 24일 민주당 탄핵소추 추진단장인 양부남 단장은 “대법관 후보 재제청 거부 등 6가지 사유를 합치면 중대 김민석 더불어민주당 대표(오른쪽)가 24일 오후 국회에서 열린 ‘한덕수 대법원 판결, 무엇이 문제인가’ 긴급토론회에 참석하고 있다.",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T18:46+09:00",
-   "url": "https://www.hani.co.kr/arti/politics/politics_general/1288922.html",
-   "sources": [
-    {
-     "title": "‘조희대 탄핵’ 두고 민주당 “사유 합치면 중대성 넘쳐” vs ‘무리수...",
-     "url": "https://www.hani.co.kr/arti/politics/politics_general/1288922.html",
-     "press": "hani.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "대구 정의당· 참여연대 \"제2대구의료원 공약 지켜야\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "참여연대",
-   "summary": "정의당 대구시당과 대구참여연대가 제2대구의료원 건립을 중장기 과제로 미루려는 대구시 방침에 반발하며 공약 이행을 촉구했습니다.정의당은 오늘(24일) 성명에서 추경 정의당 대구시당과 대구참여연대가 제2대구의료원 건립을 중장기 과제로 미루려는 대구시 방침에 반발하며 공약 이행을 촉구했습니다. 정의당은 오늘(24일) 성명에서 추경호 시장이 후보 시절 약속한 사업을 재정 부담을 이유로 미루는 것은 사실상 공약 포기이자 공공의료 확충 포기라고 비판했습니다.",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T19:00+09:00",
-   "url": "https://news.skbroadband.com/news/articleView.html?idxno=244143",
-   "sources": [
-    {
-     "title": "대구 정의당· 참여연대 \"제2대구의료원 공약 지켜야\"",
-     "url": "https://news.skbroadband.com/news/articleView.html?idxno=244143",
-     "press": "news.skbroadband.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "제2의료원 중장기 과제 전환 철회 촉구 잇따라",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "참여연대",
-   "summary": "대구시가 제2의료원 건립을 중장기 과제로 전환하기로 했다는 KBS의 보도와 관련해 대구참여연대가 방침 철... 읽어주기 기능은 크롬기반의 브라우저에서만 사용하실 수 있습니다. [날씨] 대구·경북 내일 아침 다시 영하권 추위…곳곳 강풍 주의 댓글 이용시 소셜계정으로 로그인하셔야 하며 로그인하시면 소셜회원으로 표시됩니다.",
+   "summary": "대구시가 제2의료원 건립을 중장기 과제로 전환하기로 한 방침에 대해 대구참여연대가 철회를 촉구하고 있다. 기사 본문이 대부분 잘려 있어 구체적인 주장과 근거는 확인하기 어렵다.",
    "org": "참여연대",
    "keywords": [
     "성명"
@@ -1765,16 +980,36 @@
      "title": "대구 참여연대 , 제2의료원 중장기 과제 철회 촉구",
      "url": "https://www.tbc.co.kr/news/view?pno=20261124162004AE09068&id=213746",
      "press": "tbc.co.kr"
+    },
+    {
+     "title": "제2 대구의료원 건립 미뤄지자 시민단체 등 반발",
+     "url": "https://www.yna.co.kr/view/AKR20261124154300053?input=1195m",
+     "press": "yna.co.kr"
+    },
+    {
+     "title": "대구 참여연대 \"제2 대구의료원 설립 조속히 재추진해야\"",
+     "url": "https://dgmbc.com/NewsArticle/875117",
+     "press": "dgmbc.com"
+    },
+    {
+     "title": "대구 정의당· 참여연대 \"제2대구의료원 공약 지켜야\"",
+     "url": "https://news.skbroadband.com/news/articleView.html?idxno=244143",
+     "press": "news.skbroadband.com"
+    },
+    {
+     "title": "대구시, 제2대구의료원 건립 중장기 과제로... 정당·시민단체 반발",
+     "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288073&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
+     "press": "ohmynews.com"
     }
    ]
   },
   {
    "type": "성명",
-   "title": "참여연대 \"기초연금 졸속 개편 안 돼\"…노후보장 원칙부터 다시 세워야",
-   "datetime": "2026.11.24(화)",
+   "title": "기초연금 개편안 국회 심의 중단 촉구",
+   "datetime": "2026.11.24(월)",
    "place": "",
-   "hosts": "참여연대",
-   "summary": "정부가 추진하는 기초연금 개편을 놓고 시민사회의 반발이 커지고 있다. 노인빈곤을 줄이겠다는 정책 취지와 달리 수급자 간 급여 격차를 확대하고 제도의 보편성을 훼손 정부가 추진하는 기초연금 개편을 놓고 시민사회의 반발이 커지고 있다.",
+   "hosts": "참여연대 사회복지위원회",
+   "summary": "정부의 기초연금 개편안은 소득에 따라 급여를 차등화해 수급자 간 격차를 키우고 제도의 보편성을 훼손할 수 있다고 비판했다. 이에 따라 졸속 추진을 멈추고 국회 심의를 중단하며, 정책 효과에 대한 객관적 검증과 공론화, 법률에 의한 명확한 규정을 요구했다. 아울러 국민연금과 기초생활보장제도를 포함한 전체 노후소득보장체계를 함께 고려해 공적연금의 보장 수준을 높여야 한다고 주장했다.",
    "org": "참여연대",
    "keywords": [
     "성명"
@@ -1791,74 +1026,11 @@
   },
   {
    "type": "성명",
-   "title": "대구시, 제2대구의료원 건립 중장기 과제로... 정당·시민단체 반발",
-   "datetime": "2026.11.25(수)",
+   "title": "성남 금토2 공공주택지구 개발 전면 재검토 요구",
+   "datetime": "2026.11.24",
    "place": "",
-   "hosts": "참여연대",
-   "summary": "추경호 대구시장이 지난 6.3 지방선거에서 공약한 제2대구의료원 건립 사업을 대구시가 재정 부담을 이유로 중장기 과제로 전환하기로 하면서 지역 정당과 시민단체가 반발하고 나섰다.대구시는 최근 제2대구의료원 건립 사업을 중장기 과",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T01:42+09:00",
-   "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288073&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
-   "sources": [
-    {
-     "title": "대구시, 제2대구의료원 건립 중장기 과제로... 정당·시민단체 반발",
-     "url": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003288073&CMPT_CD=P0010&utm_source=naver&utm_medium=newsearch&utm_campaign=naver_news",
-     "press": "ohmynews.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "시민단체 4곳 “강은희 대구교육감 선거법 위반 혐의 신속 기소해야”",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "참여연대, 경실련",
-   "summary": "【브레이크뉴스 대구】진예솔 기자=대구지역 시민단체들이 강은희 대구시교육감의 공직선거법 위반 혐의 사건에 대한 경찰의 기소의견 송치를 환영하 시작페이지로 l 즐겨찾기 l RSS l 편집 2026.11.25 [18:20] ▲ 대한민국교육감협의회 강은희 대구시교육감 ©대한민국교육감협의회 【브레이크뉴스 대구】진예솔 기자=대구지역 시민단체들이 강은희 대구시교육감의 공직선거법 위반 혐의 사건에 대한 경찰의 기소의견 송치를 환영하며 신속한 기소와 엄중한 처벌을 촉구했다. 대구경제정의실천시민연합과 대구참여연대, 우리복지시민연합, 대구시민단체연대회",
-   "org": "참여연대",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T11:06+09:00",
-   "url": "http://www.breaknews.com/1253736",
-   "sources": [
-    {
-     "title": "시민단체 4곳 “강은희 대구교육감 선거법 위반 혐의 신속 기소해야”",
-     "url": "http://www.breaknews.com/1253736",
-     "press": "breaknews.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "용인 반도체 국가산단 착공 발표와 법정 답변서 내용 상충 논란",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "경기환경운동연합",
-   "summary": "국토교통부와 LH가 국민에게는 착공을 선언하고 법원에는 토지 수용이 끝나지 않아 공사에 착수할 수 없다고 답변했다며, 명백한 대국민 기만이라고 비판했다. 이들은 사업 추진 실태의 투명한 공개, 사법부 판단 전까지 벌목 등 현장 작업 중단, 이율배반적 태도에 대한 사과를 요구했다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T17:06+09:00",
-   "url": "https://www.incheonilbo.com/news/articleView.html?idxno=1337686",
-   "sources": [
-    {
-     "title": "용인 반도체 국가산단 '착공' 논란…법정선 \"공사 준비 단계\"",
-     "url": "https://www.incheonilbo.com/news/articleView.html?idxno=1337686",
-     "press": "incheonilbo.com"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "성남 금토2지구 개발 제동 요구…\"생태조사·누적 환경 영향 검토 미흡\"",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "환경운동연합",
-   "summary": "성남시 환경단체와 주민들은 금토2 공공주택지구 개발 전면 재검토를 국토교통부에 요구했다. 이들은 생태조사와 누적 환경영향 평가가 부실한 점을 문제 삼았다.성남환경 성남시 환경단체와 주민들은 금토2 공공주택지구 개발 전면 재검토를 국토교통부에 요구했다.",
+   "hosts": "성남환경운동연합, 금토2지구 대책위원회",
+   "summary": "성남환경운동연합과 금토2지구 대책위원회는 금토2 공공주택지구의 전략환경영향평가가 충분한 생태조사와 대안 검토 없이 진행됐다며 국토교통부에 사업 추진 절차 중단을 요구했다. 이들은 멸종위기 야생생물 맹꽁이 발견 사실이 공청회 이후에야 전달된 점과 기존 개발 및 광역도로를 포함한 누적 환경영향 평가 미흡을 문제 삼았다. 남측 계획지구 제척과 사업구역 축소 등 대안 검토를 요구했다.",
    "org": "환경운동연합",
    "keywords": [
     "성명"
@@ -1870,44 +1042,7 @@
      "title": "성남 금토2지구 개발 제동 요구…\"생태조사·누적 환경 영향 검토 미흡\"",
      "url": "https://www.kihoilbo.co.kr/news/articleView.html?idxno=3042016",
      "press": "kihoilbo.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "국민엔 “착공” 법원엔 “준비”…용인 반도체산단 ‘말 바꾼 정부’",
-   "datetime": "2026.11.24(화)",
-   "place": "",
-   "hosts": "환경운동연합",
-   "summary": "정부가 경기 용인 반도체 국가산업단지 조성 공사에 착수했다고 공식 발표해놓고 정작 관련 재판에서는 국민엔 “착공” 법원엔 “준비”…용인 반도체산단 ‘말 바꾼 정부’ 정부가 경기 용인 반도체 국가산업단지 조성 공사에 착수했다고 공식 발표해놓고 정작 관련 재판에서는 '아직 본격적인 공사를 시작하지 않았다'고 주장한 것으로 확인됐다. 24일 환경운동연합에 따르면 용인 반도체 국가산단 계획 승인처분 집행정지 신청 사건과 관련해 국토교통부와 한국토지주택공사는 지난 19일 서울고등법원에 제출한 답변서에서 산단 조성 공사가 아직 본격적인 착공 ",
-   "org": "환경운동연합",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-24T21:01+09:00",
-   "url": "https://www.khan.co.kr/article/202611242101015",
-   "sources": [
-    {
-     "title": "국민엔 “착공” 법원엔 “준비”…용인 반도체산단 ‘말 바꾼 정부’",
-     "url": "https://www.khan.co.kr/article/202611242101015",
-     "press": "khan.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "성명",
-   "title": "“성남금토2 공공주택지구 전면 재검토하라”",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "환경운동연합",
-   "summary": "주민대책위·성남환경련 공동성명 환경영향평가 부실·녹지훼손 우려 경기 성남시 금토동 주민들과 환경단체가 성남금토2 공공주택지구 지정 절차를 중단하고 사업을 전면 재검토하라고 촉구했다. 생태조사가 충분히 이뤄지지 않은 데다 주변 개발사업에 따른 환경 악화, 개발제한구역(그린벨트) 보전 필요성 등에 대한 검토가 부실하다는 이유에서다.",
-   "org": "환경운동연합",
-   "keywords": [
-    "성명"
-   ],
-   "published": "2026-11-25T08:12+09:00",
-   "url": "https://www.naeil.com/news/read/609954?ref=naver",
-   "sources": [
+    },
     {
      "title": "“성남금토2 공공주택지구 전면 재검토하라”",
      "url": "https://www.naeil.com/news/read/609954?ref=naver",
@@ -1916,12 +1051,54 @@
    ]
   },
   {
+   "type": "성명",
+   "title": "포항 바이오매스 발전소 재추진 관련 행정절차 중단 및 시유지 매각계획 철회 요구",
+   "datetime": "2026.11.24",
+   "place": "",
+   "hosts": "더불어민주당 포항시의원 일동",
+   "summary": "포항시가 2024·2025년 두 차례 시유지 매각을 불허했음에도 영일만3일반산업단지 110㎿ 바이오매스 발전소 사업을 재추진하고 있어 이를 비판하며, 행정절차 중단과 시유지 매각계획 철회를 요구했다. 또한 사업자의 자본구조와 수행능력 검증, 행정지원 경위 및 의사결정 과정의 공개를 촉구했다. 포항환경운동연합 역시 2019년 환경영향평가만으로 현재의 환경적 안전성을 판단할 수 없다며 누적 대기오염과 주민 건강영향의 재검토를 요구했다.",
+   "org": "환경운동연합",
+   "keywords": [
+    "성명",
+    "기자회견"
+   ],
+   "published": "2026-11-24T19:22+09:00",
+   "url": "https://www.pressian.com/pages/articles/2026112419205405888?utm_source=naver&utm_medium=search",
+   "sources": [
+    {
+     "title": "포항 바이오매스 발전소 재추진 논란…민주당 시의원들 “행정절차 중단...",
+     "url": "https://www.pressian.com/pages/articles/2026112419205405888?utm_source=naver&utm_medium=search",
+     "press": "pressian.com"
+    },
+    {
+     "title": "포항 민주당의원들, 바이오매스발전소 재추진 중단 촉구",
+     "url": "https://www.newsis.com/view/NISX20261125_0003882926",
+     "press": "newsis.com"
+    },
+    {
+     "title": "국민엔 “착공” 법원엔 “준비”…용인 반도체산단 ‘말 바꾼 정부’",
+     "url": "https://www.khan.co.kr/article/202611242101015",
+     "press": "khan.co.kr"
+    },
+    {
+     "title": "용인 반도체 국가산단 '착공' 논란…법정선 \"공사 준비 단계\"",
+     "url": "https://www.incheonilbo.com/news/articleView.html?idxno=1337686",
+     "press": "incheonilbo.com"
+    },
+    {
+     "title": "시민단체, 원전 수명연장 반발…원전 공론화는 첫 토론부터 무산",
+     "url": "https://www.kukinews.com/article/view/kuk202611250125",
+     "press": "kukinews.com"
+    }
+   ]
+  },
+  {
    "type": "논평",
-   "title": "녹색연합 , COP31 성과 없는 기후협상 질타…\"화석연료 퇴출 약속마저 사...",
-   "datetime": "2026.11.24(화)",
+   "title": "COP31 기후협상 결과 비판 및 한국 정부 기후정책 개선 촉구",
+   "datetime": "2026.11.23",
    "place": "",
    "hosts": "녹색연합",
-   "summary": "기후위기 대응을 위한 국제사회의 협력이 또다시 벽에 부딪혔다. 화석연료 감축과 기후재원 마련 등 핵심 현안이 합의에 이르지 못하면서 국제 기후정책의 실효성에 대한 기후위기 대응을 위한 국제사회의 협력이 또다시 벽에 부딪혔다.",
+   "summary": "튀르키예 안탈리아에서 열린 COP31이 화석연료 단계적 퇴출과 기후재원 마련에 실질적 합의 없이 끝났다며 국제사회의 책임 있는 행동을 촉구했다. 한국 정부에는 석탄발전 조기 폐쇄, 정의로운 에너지 전환을 위한 법적 기반 마련, 전력수요 확대 억제, 기후재원 확대를 요구했다.",
    "org": "녹색연합",
    "keywords": [
     "논평"
@@ -1938,54 +1115,126 @@
   },
   {
    "type": "논평",
-   "title": "대구경북 녹색연합 \"신공항 건설, 선거 일정에 밀려선 안 돼…국가재정사...",
-   "datetime": "2026.11.25(수)",
+   "title": "TK신공항 군공항 이전 국가재정사업 전환 및 초기 토지보상 재원 확보 촉구",
+   "datetime": "2026.11.25(화)",
    "place": "",
-   "hosts": "녹색연합",
-   "summary": "사단법인 대구경북녹색연합은 오늘(25일) 논평을 통해 대구경북통합신공항 건설이 정치적 상황이나 선거 일정에 따라 지연되어서는 안 된다며, 군공항 이전의 국가재정사업 전환과 토지보상 조기 착수를 강력히 촉구했습니다.대경 녹색연합은 최은석 국회의원이 어제 한 라디오 방송 인터뷰에서 기부대 잠깐! 현재 Internet Explorer 8이하 버전을 이용중이십니다. 최신 브라우저(Browser) 사용을 권장드립니다! 사단법인 대구경북녹색연합은 오늘(25일) 논평을 통해 대구경북통합신공항 건설이 정치적 상황이나 선거 일정에 따라 지연되어서는",
+   "hosts": "대구경북녹색연합",
+   "summary": "대구경북녹색연합은 대구경북통합신공항 군공항 이전을 기부대양여 방식에서 국가재정사업으로 전환하고, 관련 특별법 개정안을 현 국회 임기 안에 신속히 처리할 것을 정부와 국회에 촉구했다. 국비 확보가 어려울 경우 대구시가 지방채 발행 특례를 활용해 초기 토지보상(약 3000억원)에 먼저 착수하고 국가가 사후 보전할 것을 제안했다. 사업 지연으로 인한 주민 피해와 비용 증가를 막기 위해 2028년 총선 이후로 해법을 미루지 말 것을 주장했다.",
    "org": "녹색연합",
    "keywords": [
-    "논평"
+    "논평",
+    "성명"
    ],
-   "published": "2026-11-25T09:40+09:00",
-   "url": "https://news.bbsi.co.kr/news/articleView.html?idxno=4120731",
+   "published": "2026-11-25T10:48+09:00",
+   "url": "https://www.kbmaeil.com/article/20261125500193",
    "sources": [
+    {
+     "title": "대경 녹색연합 “TK신공항, 2028년 총선까지 기다릴 수 없다”",
+     "url": "https://www.kbmaeil.com/article/20261125500193",
+     "press": "kbmaeil.com"
+    },
+    {
+     "title": "대구경북 녹색연합 \"통합신공항, 2028년 총선까지 기다릴 수 없다\"",
+     "url": "https://www.dkilbo.com/news/articleView.html?idxno=562132",
+     "press": "dkilbo.com"
+    },
     {
      "title": "대구경북 녹색연합 \"신공항 건설, 선거 일정에 밀려선 안 돼…국가재정사...",
      "url": "https://news.bbsi.co.kr/news/articleView.html?idxno=4120731",
      "press": "news.bbsi.co.kr"
+    },
+    {
+     "title": "“대구경북통합신공항, 2028년 총선까지 못 기다려…토지보상 조기 착수...",
+     "url": "http://www.breaknews.com/1253741",
+     "press": "breaknews.com"
+    },
+    {
+     "title": "대구경북 녹색연합 , 대구 군공항 이전 국가사업 전환·토지보상 착수 촉...",
+     "url": "https://www.news1.kr/local/daegu-gyeongbuk/6365493",
+     "press": "news1.kr"
+    },
+    {
+     "title": "대구경북신공항, 2028년 총선까지 미룰 수 없다…\"국가가 책임지고 보상...",
+     "url": "https://www.hidomin.com/news/articleView.html?idxno=730995",
+     "press": "hidomin.com"
     }
    ]
   },
   {
    "type": "논평",
-   "title": "파업 전날, 정원을 쥔 서울시는 교섭장 밖에",
+   "title": "AI 커닝이 드러낸 입시·학벌 중심 교육제도의 한계",
    "datetime": "2026.11.24(화)",
    "place": "",
-   "hosts": "참여연대",
-   "summary": "[데일리 큐레이션] 2026년 11월 24일(화) 민중언론 참세상 전체기사 이슈 오피니언 광장 특별페이지 멈춰라 3대 메가 한국과 학살자금 후원하기 로그인 전체 기사 이슈 오피니언 광장 특별페이지 멈춰라 3대 메가 한국과 학살자금 후원하기 로그인 파업 전날, 정원을 쥔 서울시는 교섭장 밖에 share bookmark print [데일리 큐레이션] 2026년 11월 24일(화) 국제 노동 정치 참세상 편집국 2026.11.24 16:50 11/23 16시 — 11/24 16시의 세계를 민중의 관점으로 골라 전합니다. 「서울 지하철 파",
-   "org": "참여연대",
+   "hosts": "투명가방끈, 민주노총 전국특성화고노동조합 인천지부",
+   "summary": "AI 활용 시험 부정행위 논란을 계기로 시험의 공정성 확보에만 집중할 것이 아니라, 시험 결과에 따라 삶의 등급과 기회가 차등되는 입시·학벌 중심 구조 자체를 돌아봐야 한다고 주장한다. 다양한 삶의 경로가 존중받는 사회가 되어야 하나의 길을 향한 경쟁 압박도 줄어든다고 강조하며, 수능의 영향력을 단계적으로 줄일 필요가 있다고 말한다.",
+   "org": "민주노총",
    "keywords": [
-    "청와대",
-    "논평"
+    "성명"
    ],
-   "published": "2026-11-24T16:52+09:00",
-   "url": "https://newscham.net/130214/",
+   "published": "2026-11-24T20:00+09:00",
+   "url": "https://www.kyeongin.com/article/1775339",
    "sources": [
     {
-     "title": "파업 전날, 정원을 쥔 서울시는 교섭장 밖에",
-     "url": "https://newscham.net/130214/",
-     "press": "newscham.net"
+     "title": "[경인일보 뉴스 후] AI 커닝이 드러낸 ‘입시·학벌 만능’ 시험의 한계",
+     "url": "https://www.kyeongin.com/article/1775339",
+     "press": "kyeongin.com"
+    },
+    {
+     "title": "\"오류·편향 달성군 의정비 여론조사...재실시하라\"",
+     "url": "https://www.tbc.co.kr/news/view?pno=20261124135656AE09052&id=213734",
+     "press": "tbc.co.kr"
     }
    ]
   },
   {
    "type": "논평",
-   "title": "빈곤층 3년 새 69만명 급증…왜?",
+   "title": "이 땅에서 태어난 모든 아이는 등록되고 보호받아야 한다",
+   "datetime": "2026.11.24",
+   "place": "",
+   "hosts": "참여연대",
+   "summary": "헌법재판소가 2026년 8월 27일 이주아동의 출생등록될 권리를 인정하고 이를 규율할 법률을 두지 않은 입법부작위를 위헌으로 확인한 결정을 환영한다. 국회는 국적이나 체류 자격과 무관하게 국내에서 태어난 모든 아동이 출생과 동시에 등록되고 보호받을 수 있도록 보편적 출생등록제 입법을 즉각 완수해야 한다.",
+   "org": "참여연대",
+   "keywords": [
+    "기자회견"
+   ],
+   "published": "2026-11-24T18:40+09:00",
+   "url": "https://slownews.kr/170117",
+   "sources": [
+    {
+     "title": "이 땅에서 태어난 모든 아이는 등록되고 보호받아야 한다",
+     "url": "https://slownews.kr/170117",
+     "press": "slownews.kr"
+    }
+   ]
+  },
+  {
+   "type": "논평",
+   "title": "조희대 대법원장 탄핵 사유의 중대성 논란과 한덕수 대법원 판결 평가",
    "datetime": "2026.11.24(화)",
    "place": "",
    "hosts": "참여연대",
-   "summary": "기준 중위소득 50% 이하 빈곤층이 3년 새 69만명 늘어난 것으로 나타났다. 반면 같은 기간 기초생활보장 수급자는 30만명 느는 데 그쳤다.",
+   "summary": "참여연대 사법감시센터 유승익 소장은 한덕수 전 국무총리 내란 사건 대법원 판결을 두고, 판결을 근거로 한 탄핵은 위헌·위법성 논증과 강제수사가 어려워 정치적 부담이 크다고 지적했다. 또한 대법원이 계엄 전 국무회의 건의를 무죄 취지로 판단한 것은 내란의 본질을 가린 것이라고 평가했다.",
+   "org": "참여연대",
+   "keywords": [
+    "성명"
+   ],
+   "published": "2026-11-24T18:46+09:00",
+   "url": "https://www.hani.co.kr/arti/politics/politics_general/1288922.html",
+   "sources": [
+    {
+     "title": "‘조희대 탄핵’ 두고 민주당 “사유 합치면 중대성 넘쳐” vs ‘무리수...",
+     "url": "https://www.hani.co.kr/arti/politics/politics_general/1288922.html",
+     "press": "hani.co.kr"
+    }
+   ]
+  },
+  {
+   "type": "논평",
+   "title": "기초생활보장 종합계획(2027∼2029)에 대한 논평",
+   "datetime": "2026.11.24(화)",
+   "place": "",
+   "hosts": "참여연대 사회복지위원회",
+   "summary": "정부가 발표한 수치로도 제도 밖 빈곤이 제도 내 보호보다 빠르게 늘고 있으나 대책은 이에 상응하지 못한다고 지적한다. 생계급여 35% 기준은 계획 기간 밖인 2030년에야 도달하고, 부양의무자 기준 폐지로 새로 보호받는 2만가구는 빈곤층 증가 규모에 비해 작으며, 상당수 과제가 '검토'에 머물고 소요 재정도 제시되지 않았다고 비판한다.",
    "org": "참여연대",
    "keywords": [
     "논평"
@@ -1997,40 +1246,25 @@
      "title": "빈곤층 3년 새 69만명 급증…왜?",
      "url": "https://www.segye.com/newsView/20261124513572?OutUrl=naver",
      "press": "segye.com"
-    }
-   ]
-  },
-  {
-   "type": "논평",
-   "title": "참여연대 \"민주당, 당권 다툼에 민생 실종\"…개인정보 유출·자영업·전...",
-   "datetime": "2026.11.25(수)",
-   "place": "",
-   "hosts": "참여연대",
-   "summary": "집권여당인 더불어민주당이 당내 갈등으로 시간을 보내는 사이 국민 생활과 직결된 민생 현안은 국회에서 제대로 다뤄지지 않고 있다는 비판이 제기됐다.참여연대 민생희망 집권여당인 더불어민주당이 당내 갈등으로 시간을 보내는 사이 국민 생활과 직결된 민생 현안은 국회에서 제대로 다뤄지지 않고 있다는 비판이 제기됐다. 참여연대 민생희망본부는 23일 논평을 내고 민주당 지도부를 향해 당내 권력 다툼을 멈추고 개인정보 보호와 자영업자 지원, 세입자 주거 안정 등 시급한 민생 입법에 나설 것을 촉구했다.",
-   "org": "참여연대",
-   "keywords": [
-    "논평"
-   ],
-   "published": "2026-11-25T10:20+09:00",
-   "url": "https://www.ngonews.kr/news/articleView.html?idxno=244039",
-   "sources": [
+    },
     {
-     "title": "참여연대 \"민주당, 당권 다툼에 민생 실종\"…개인정보 유출·자영업·전...",
-     "url": "https://www.ngonews.kr/news/articleView.html?idxno=244039",
-     "press": "ngonews.kr"
+     "title": "생계급여 선정기준 35% 목표, 또 2030년으로…부양의무자·재산 기준은 ...",
+     "url": "https://www.beminor.com/news/articleView.html?idxno=30787",
+     "press": "beminor.com"
     }
    ]
   },
   {
    "type": "논평",
-   "title": "국방 AI·첨단무기 법안 입법 졸속 우려",
-   "datetime": "2026.11.24(화)",
+   "title": "국방 AI 및 첨단전력사업 법안 입법 졸속 우려",
+   "datetime": "2026.11.24",
    "place": "",
    "hosts": "참여연대 평화군축센터",
-   "summary": "국방인공지능법안과 국방첨단전력사업법안 공청회는 법 제정 필요성을 강조하는 진술인 8명으로만 구성되어 다양한 의견을 반영하지 못했다고 비판했다. 참여연대는 군사 AI의 통제력 약화, 책임 소재 불명확성, 방산기업 특례와 검증·감독 체계 부족, 국회 보고 의무 미비 등을 문제로 지적했다. 이에 국회에 시민사회와 인권·국제법·AI 안전 전문가의 의견을 추가로 수렴하고, 기술 발전을 이유로 한 무조건적 규제 완화를 피할 것을 요구했다.",
+   "summary": "국회 국방위원회 공청회의 진술인 8명이 모두 법안 제정 찬성 입장이었고 시민사회 의견이 배제되었다며, 국방 AI 법안과 첨단전력사업 법안의 입법이 지나치게 서두르고 있다고 비판했다. 참여연대는 군사 AI의 인간 최종 통제권과 책임 소재, 첨단무기의 안전성 검증, 국회 보고 의무 등이 충분히 마련되어야 한다며 시민사회·인권·국제법·AI 안전 전문가의 의견 추가 수렴을 요구했다.",
    "org": "참여연대",
    "keywords": [
-    "논평"
+    "논평",
+    "기자회견"
    ],
    "published": "2026-11-25T11:02+09:00",
    "url": "https://www.ngonews.kr/news/articleView.html?idxno=244072",
@@ -2039,6 +1273,203 @@
      "title": "참여연대 \"국방 AI 입법 졸속 우려\"…안전·책임·민주적 통제 '실종'",
      "url": "https://www.ngonews.kr/news/articleView.html?idxno=244072",
      "press": "ngonews.kr"
+    },
+    {
+     "title": "\"특수고용직, 성추행 사각지대\"…노조, ILO 협약 비준 촉구",
+     "url": "https://news.tf.co.kr/read/life/2393163.htm",
+     "press": "news.tf.co.kr"
+    },
+    {
+     "title": "“일터 여성폭력은 노동권 침해”…ILO 190호 협약 비준 촉구",
+     "url": "https://newscham.net/130219/",
+     "press": "newscham.net"
+    },
+    {
+     "title": "여성폭력추방의 날 \"ILO 제190호 협약 비준하라\"",
+     "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084164",
+     "press": "newsclaim.co.kr"
+    },
+    {
+     "title": "일터 폭력과 괴롭힘으로부터 자유롭게 일할 권리, 보장하라!",
+     "url": "http://worknworld.kctu.org/news/articleView.html?idxno=510384",
+     "press": "worknworld.kctu.org"
+    },
+    {
+     "title": "“일터 여성폭력은 노동권 침해”…ILO 190호 협약 비준 촉구",
+     "url": "https://newscham.net/130219/",
+     "press": "newscham.net"
+    }
+   ]
+  },
+  {
+   "type": "논평",
+   "title": "강은희 대구교육감 공직선거법 위반 혐의 신속 기소 촉구",
+   "datetime": "2026.11.25(화)",
+   "place": "",
+   "hosts": "대구경제정의실천시민연합, 대구참여연대, 우리복지시민연합, 대구시민단체연대회의",
+   "summary": "대구 4개 시민단체는 대구경찰청이 강은희 대구시교육감의 공직선거법 위반(허위사실공표) 혐의 사건을 기소의견으로 송치한 데 환영을 표하며, 신속한 기소와 엄중한 처벌을 촉구했다. 단체들은 강 교육감이 후보자 등록 시 위니텍 비상장주식의 명의신탁 사실을 재산신고에서 누락하고 선거운동 중 이를 부인한 점을 문제 삼았으며, 유죄 확정 시 교육감직 상실 가능성도 강조했다.",
+   "org": "참여연대",
+   "keywords": [
+    "성명"
+   ],
+   "published": "2026-11-25T11:06+09:00",
+   "url": "http://www.breaknews.com/1253736",
+   "sources": [
+    {
+     "title": "시민단체 4곳 “강은희 대구교육감 선거법 위반 혐의 신속 기소해야”",
+     "url": "http://www.breaknews.com/1253736",
+     "press": "breaknews.com"
+    },
+    {
+     "title": "대구경실련 등 4개 시민단체, 강은희 대구교육감 엄중처벌 촉구 성명 서...",
+     "url": "https://www.pressian.com/pages/articles/2026112514593693488?utm_source=naver&utm_medium=search",
+     "press": "pressian.com"
+    },
+    {
+     "title": "대구 지역 시민단체들 \"강은희 대구교육감 엄벌 촉구\"",
+     "url": "https://dgmbc.com/NewsArticle/875359",
+     "press": "dgmbc.com"
+    }
+   ]
+  },
+  {
+   "type": "논평",
+   "title": "온라인 플랫폼법·배달수수료 상한제 정기국회 내 처리 촉구",
+   "datetime": "2026.11.25(화)",
+   "place": "",
+   "hosts": "참여연대 민생희망본부",
+   "summary": "국회 정무위 법안심사 소위에서 온라인 플랫폼법과 배달수수료 상한제가 상정조차 되지 않은 것을 비판하며, 여야가 민생 문제를 이유로 정기국회 내 처리를 요구했다. 민주당의 당론 채택과 대선 공약, 국정과제 포함 사실을 들어 '기다려 달라'는 입장은 무책임한 핑계라고 지적했다.",
+   "org": "참여연대",
+   "keywords": [
+    "논평"
+   ],
+   "published": "2026-11-25T15:42+09:00",
+   "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084169",
+   "sources": [
+    {
+     "title": "상정조차 안 된 온플법… \"무책임한 핑계일 뿐\"",
+     "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3084169",
+     "press": "newsclaim.co.kr"
+    }
+   ]
+  },
+  {
+   "type": "보도",
+   "title": "재외동포청 세종 이전 고시에 인천 야당·시민단체 반발",
+   "datetime": "2026.11.25",
+   "place": "",
+   "hosts": "경기신문",
+   "summary": "행정안전부가 재외동포청 등 31개 기관의 세종 이전 계획을 고시하자, 인천 정치권과 시민단체는 정부에 이전 철회를 요구하고 인천시의 대응 경위를 밝히라고 촉구했다. 김송원 인천경실련 사무처장은 박찬대 인천시장에게 공공기관 이전·통폐합에 대한 대응 방침을 밝히라고 말했고, 박 시장은 국무회의 등을 통해 본청 이전에 반대 의사를 전달했다고 밝혔다.",
+   "org": "경실련",
+   "keywords": [
+    "논평"
+   ],
+   "published": "2026-11-25T17:28+09:00",
+   "url": "https://www.kgnews.co.kr/news/article.html?no=921231",
+   "sources": [
+    {
+     "title": "재외동포청 세종 이전 고시에 인천 야당·시민단체 반발",
+     "url": "https://www.kgnews.co.kr/news/article.html?no=921231",
+     "press": "kgnews.co.kr"
+    }
+   ]
+  },
+  {
+   "type": "보도",
+   "title": "광주 SRF 운영비 중재 분쟁, 과거 운영비 최대 78억원으로 조정",
+   "datetime": "2026.11.24",
+   "place": "",
+   "hosts": "전남광주시",
+   "summary": "광주 가연성폐기물연료화시설(SRF) 운영사 포스코이앤씨가 2017~2024년 운영비 청구액을 최초 신청 수준인 최대 78억원으로 조정하기로 했다. 2025년 이후 운영비는 중재판정부 판단에 맡겨 최종 재정 부담은 아직 확정되지 않았다. 전남광주시는 분쟁해결협의체를 중심으로 남은 쟁점을 협의해 합리적 수준에서 마무리하겠다는 방침이다.",
+   "org": "환경운동연합",
+   "keywords": [
+    "기자회견"
+   ],
+   "published": "2026-11-24T16:40+09:00",
+   "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000086198",
+   "sources": [
+    {
+     "title": "광주 SRF 2134억 중재 분쟁 '숨통'…운영비 78억으로 조정",
+     "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000086198",
+     "press": "jnilbo.com"
+    },
+    {
+     "title": "2134억 광주 SRF 분쟁, 78억으로 물꼬 텄다",
+     "url": "http://www.gjdream.com/news/articleView.html?idxno=674630",
+     "press": "gjdream.com"
+    },
+    {
+     "title": "2,134억 광주 SRF 분쟁 첫 합의…과거 운영비 78억으로 한정",
+     "url": "https://view.asiae.co.kr/article/2026112417305918801",
+     "press": "view.asiae.co.kr"
+    },
+    {
+     "title": "광주 SRF 분쟁 돌파구 찾았다…운영비 손실분 2134억→78억 한정키로",
+     "url": "https://www.pressian.com/pages/articles/2026112416495333124?utm_source=naver&utm_medium=search",
+     "press": "pressian.com"
+    },
+    {
+     "title": "광주 SRF 운영비 분쟁 해결 실마리…과거 손실분 78억 원 합의",
+     "url": "https://www.nocutnews.co.kr/news/6611972?utm_source=naver&utm_medium=article&utm_campaign=20261124170304",
+     "press": "nocutnews.co.kr"
+    },
+    {
+     "title": "폐기물시설 운영비 2000억대 분쟁…전남광주·포스코E&C 합의 실마리",
+     "url": "https://www.hani.co.kr/arti/area/honam/1288878.html",
+     "press": "hani.co.kr"
+    },
+    {
+     "title": "‘2천억대’ 광주 SRF 분쟁 새 국면…손실 보전액 축소",
+     "url": "http://www.kjdaily.com/article.php?aid=1795515626693432002",
+     "press": "kjdaily.com"
+    }
+   ]
+  },
+  {
+   "type": "보도",
+   "title": "부산 주요 일정 및 주요 뉴스 종합",
+   "datetime": "2026.11.25(수) 오전 5시",
+   "place": "",
+   "hosts": "뉴시스",
+   "summary": "기준 단체인 환경운동연합과 직접 관련된 기자회견·성명·집회 내용은 본문에서 확인되지 않습니다. 본문은 부산시·구청장의 일정표와 양대노총의 65세 정년연장 입법 촉구, 증안펀드 확대 추진, 미국 관세 발표 등 여러 기사 제목을 나열한 종합 뉴스 목록입니다.",
+   "org": "환경운동연합",
+   "keywords": [
+    "기자회견"
+   ],
+   "published": "2026-11-25T05:00+09:00",
+   "url": "https://www.newsis.com/view/NISX20261124_0003880962",
+   "sources": [
+    {
+     "title": "[오늘의 주요일정]부산(11월25일 수요일)",
+     "url": "https://www.newsis.com/view/NISX20261124_0003880962",
+     "press": "newsis.com"
+    },
+    {
+     "title": "[위클리오늘] 부산 주요 일정 11월 25일 (수요일)",
+     "url": "http://www.weeklytoday.com/news/articleView.html?idxno=803356",
+     "press": "weeklytoday.com"
+    }
+   ]
+  },
+  {
+   "type": "보도",
+   "title": "포항 바이오매스 화력발전소 재추진에 대한 시민·환경단체 반대",
+   "datetime": "2026.11.25",
+   "place": "",
+   "hosts": "중도일보",
+   "summary": "경북 포항시 흥해읍 영일만3일반산업단지 시유지에 5500억원을 들여 추진되는 바이오매스 화력발전소를 포항신재생에너지가 재추진하려 하자, 시민과 시의원, 환경단체들이 중단을 요구하며 잇따라 반대 성명과 기자회견을 열고 있다. 포항시는 2024년과 2025년 두 차례 부지 매각을 불허했으며, 현재 TF 구성 등 재추진을 위한 행정절차에 나서고 있다.",
+   "org": "환경운동연합",
+   "keywords": [
+    "기자회견",
+    "성명"
+   ],
+   "published": "2026-11-25T17:50+09:00",
+   "url": "https://www.joongdo.co.kr/web/view.php?key=20261125010009020",
+   "sources": [
+    {
+     "title": "포항시민들 \"바이오매스 화력발전소 재추진 중단하라\"… 왜?",
+     "url": "https://www.joongdo.co.kr/web/view.php?key=20261125010009020",
+     "press": "joongdo.co.kr"
     }
    ]
   }
