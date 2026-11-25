@@ -1,0 +1,72 @@
+{
+  "max_events": 80,
+  "model_daily": "claude-haiku-5-5",
+  "model_weekly": "claude-sonnet-5-5",
+  "keywords": [
+    "청와대",
+    "분수대",
+    "기자회견",
+    "성명",
+    "논평"
+  ],
+  "orgs": [
+    {
+      "name": "참여연대",
+      "aliases": [
+        "참여연대"
+      ],
+      "pages": [
+        "https://www.peoplepower21.org"
+      ]
+    },
+    {
+      "name": "경실련",
+      "aliases": [
+        "경실련",
+        "경제정의실천시민연합"
+      ],
+      "pages": [
+        "https://ccej.or.kr"
+      ]
+    },
+    {
+      "name": "한국노총",
+      "aliases": [
+        "한국노총",
+        "한국노동조합총연맹"
+      ],
+      "pages": [
+        "https://inochong.org"
+      ]
+    },
+    {
+      "name": "민주노총",
+      "aliases": [
+        "민주노총",
+        "전국민주노동조합총연맹"
+      ],
+      "pages": [
+        "https://nodong.org"
+      ]
+    },
+    {
+      "name": "환경운동연합",
+      "aliases": [
+        "환경운동연합",
+        "환경연합"
+      ],
+      "pages": [
+        "https://kfem.or.kr"
+      ]
+    },
+    {
+      "name": "녹색연합",
+      "aliases": [
+        "녹색연합"
+      ],
+      "pages": [
+        "https://www.greenkorea.org"
+      ]
+    }
+  ]
+}

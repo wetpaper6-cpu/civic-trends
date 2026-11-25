@@ -1,0 +1,83 @@
+name: 시민사회 동향
+
+on:
+  schedule:
+    # 일~목 오후 5시 17분(KST)에 시작 → 저녁 7시 전에 게재 (GitHub 실행 지연 대비 여유)
+    - cron: "17 8 * * 0-4"
+  workflow_dispatch:          # Actions 탭에서 수동 실행
+    inputs:
+      weekly:
+        description: "주간 동향도 만들기 (목요일이 아니어도 시험용으로)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency: civic-trends
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TZ: Asia/Seoul
+      NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+      NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 준비 (Word 라이브러리, 한글 글꼴)
+        run: |
+          pip install python-docx
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+
+      - name: 일일 동향 수집·정리
+        run: python scripts/collect.py
+
+      - name: 주간 동향 (목요일)
+        run: |
+          if [ "$(date +%u)" = "4" ] || [ "${{ inputs.weekly }}" = "true" ]; then
+            python scripts/weekly.py
+          else
+            echo "목요일이 아니라 주간 동향은 건너뜁니다."
+          fi
+
+      - name: Word·PDF 만들기
+        run: python scripts/render.py
+
+      - name: 사이트에 반영
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "동향: $(date +%F)"
+          git push
+
+      - name: 릴리즈 게시
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          D=$(date +%F)
+          publish() {  # 태그, 제목파일, 노트파일, 첨부파일...
+            tag=$1; title=$(cat "$2"); notes=$3; shift 3
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release upload "$tag" "$@" --clobber
+              gh release edit "$tag" --title "$title" --notes-file "$notes"
+            else
+              gh release create "$tag" "$@" --title "$title" --notes-file "$notes"
+            fi
+          }
+          publish "daily-$D" build/daily-title.txt build/daily-notes.md \
+            "docs/files/daily-$D.docx" "docs/files/daily-$D.pdf"
+          if [ -f "docs/data/weekly-$D.json" ]; then
+            publish "weekly-$D" build/weekly-title.txt build/weekly-notes.md \
+              "docs/files/weekly-$D.docx" "docs/files/weekly-$D.pdf"
+          fi

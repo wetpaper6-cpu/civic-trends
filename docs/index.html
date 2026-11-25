@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시민사회 동향</title>
+<style>
+  :root { --bg:#f7f7f5; --card:#fff; --ink:#1d1d1f; --mute:#6b6b6b; --line:#e4e4e0; --accent:#1f6f5c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#161616; --card:#202020; --ink:#ececec; --mute:#9a9a9a; --line:#333; --accent:#5fc3a4; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif; background:var(--bg); color:var(--ink); }
+  header, main { max-width:860px; margin:auto; padding:0 20px; }
+  header { padding-top:28px; }
+  h1 { margin:0 0 4px; font-size:24px; }
+  .sub { color:var(--mute); font-size:14px; }
+  main { padding-bottom:60px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:12px 0; }
+  select { font-size:15px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); max-width:100%; }
+  .tabs { display:flex; gap:6px; border-bottom:1px solid var(--line); margin:16px 0 8px; }
+  .tab { border:none; background:none; color:var(--mute); font-size:15px; font-weight:600; padding:8px 4px; margin-right:12px; cursor:pointer; border-bottom:2px solid transparent; }
+  .tab.on { color:var(--ink); border-color:var(--accent); }
+  .dl { display:inline-flex; align-items:center; gap:4px; font-size:13px; text-decoration:none; color:var(--accent); border:1px solid var(--accent); border-radius:8px; padding:5px 11px; font-weight:600; }
+  .chip { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px; padding:5px 12px; font-size:13px; cursor:pointer; }
+  .chip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .label { font-size:12px; color:var(--mute); margin-right:4px; }
+  .item { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:10px 0; }
+  .item h3 { margin:0; font-size:16px; line-height:1.45; }
+  .item h3 a { color:var(--ink); text-decoration:none; }
+  .item h3 a:hover { color:var(--accent); }
+  .badge { display:inline-block; font-size:12px; font-weight:700; color:#fff; background:var(--accent); border-radius:4px; padding:1px 7px; margin-right:6px; vertical-align:2px; }
+  .badge.성명 { background:#3d5a99; } .badge.논평 { background:#8a5a1f; } .badge.보도, .badge.집회 { background:#777; }
+  dl { display:grid; grid-template-columns:5.6em 1fr; gap:4px 10px; margin:10px 0 0; font-size:14px; }
+  dt { color:var(--mute); white-space:nowrap; } dd { margin:0; line-height:1.5; }
+  .src { font-size:12px; color:var(--mute); margin-top:8px; }
+  .src a { color:var(--mute); }
+  .empty { color:var(--mute); padding:40px 0; text-align:center; }
+  .report { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; line-height:1.7; font-size:15px; }
+  .report h2 { font-size:17px; border-bottom:2px solid var(--accent); padding-bottom:4px; margin:22px 0 8px; }
+  .report h2:first-child { margin-top:0; }
+  .report h4 { font-size:15px; margin:14px 0 4px; }
+  .report p { margin:0 0 8px; }
+  .tbl { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; min-width:520px; }
+  th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; line-height:1.5; }
+  th { background:var(--bg); }
+  td small { display:block; color:var(--mute); font-size:11.5px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>시민사회 동향</h1>
+  <div class="sub" id="sub">불러오는 중…</div>
+</header>
+<main>
+  <div class="bar"><select id="date"></select></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const get = async u => (await fetch(u, {cache:"no-store"})).json();
+const LET = "가나다라마바사아";
+let entries = [], entry = null, tab = "daily", daily = null, weekly = null, org = "전체", kw = "전체";
+
+function downloads(files) {
+  return `<div class="bar"><a class="dl" href="${esc(files.docx)}" download>⬇ Word</a><a class="dl" href="${esc(files.pdf)}" download>⬇ PDF</a></div>`;
+}
+
+function chips(values, current, name) {
+  return `<div class="bar"><span class="label">${name}</span>` +
+    ["전체", ...values].map(v => `<button class="chip${v === current ? " on" : ""}" data-${name === "단체" ? "org" : "kw"}="${esc(v)}">${esc(v)}</button>`).join("") + `</div>`;
+}
+
+function renderDaily() {
+  const rows = daily.events.filter(i => (org === "전체" || i.org === org) && (kw === "전체" || i.keywords.includes(kw)));
+  $("#view").innerHTML = downloads(daily.files)
+    + chips(daily.orgs, org, "단체") + chips(daily.keywords, kw, "키워드")
+    + `<div class="sub">${rows.length}건 / 전체 ${daily.count}건</div>`
+    + (rows.length ? rows.map(i => `
+    <div class="item">
+      <h3><span class="badge ${esc(i.type)}">${esc(i.type)}</span><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a></h3>
+      <dl>
+        <dt>${i.place ? "일시 / 장소" : "일시"}</dt><dd>${esc(i.datetime)}${i.place ? " / " + esc(i.place) : ""}</dd>
+        <dt>주최 기관</dt><dd>${esc(i.hosts)}</dd>
+        <dt>주요 내용</dt><dd>${esc(i.summary)}</dd>
+      </dl>
+      <div class="src">출처: ${i.sources.slice(0, 4).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.press)}</a>`).join(", ")}${i.sources.length > 4 ? ` 외 ${i.sources.length - 4}건` : ""}</div>
+    </div>`).join("") : `<div class="empty">해당 조건의 소식이 없습니다.</div>`);
+  document.querySelectorAll("[data-org]").forEach(b => b.onclick = () => { org = b.dataset.org; renderDaily(); });
+  document.querySelectorAll("[data-kw]").forEach(b => b.onclick = () => { kw = b.dataset.kw; renderDaily(); });
+}
+
+function renderWeekly() {
+  const w = weekly;
+  const issues = list => list.length ? list.map((it, i) => `<h4>${LET[i]}. ${esc(it.title)}</h4><p>${esc(it.body)}</p>`).join("") : "<p>-</p>";
+  $("#view").innerHTML = downloads(w.files) + `<div class="report">
+    <div class="sub" style="margin-bottom:14px">${esc(w.period_label)} · 기자회견·성명·논평 등 ${w.count}건</div>
+    <h2>1. 개요</h2>${w.overview.split("\n\n").map(p => `<p>${esc(p)}</p>`).join("")}
+    <h2>2. 주요 정책/기조 현안</h2>${issues(w.main_issues)}
+    <h2>3. 그 외 주요 쟁점</h2>${issues(w.other_issues)}
+    <h2>4. 참고자료</h2>
+    <div class="tbl"><table><tr><th style="width:24%">주요 쟁점</th><th style="width:24%">단위주체</th><th>핵심주장</th></tr>
+    ${w.table.map(r => `<tr><td>${esc(r.issue)}</td><td>${esc(r.actor)}<small>${esc(r.meta || "")}</small></td><td>${esc(r.claim)}</td></tr>`).join("")}
+    </table></div></div>`;
+}
+
+function renderTabs() {
+  $("#tabs").innerHTML = `<button class="tab${tab === "daily" ? " on" : ""}" data-tab="daily">일일 동향</button>`
+    + (entry.weekly ? `<button class="tab${tab === "weekly" ? " on" : ""}" data-tab="weekly">주간 동향</button>` : "");
+  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; renderTabs(); tab === "daily" ? renderDaily() : renderWeekly(); });
+}
+
+async function load(date) {
+  entry = entries.find(e => e.date === date);
+  daily = await get(`data/${date}.json`);
+  weekly = entry.weekly ? await get(`data/weekly-${date}.json`) : null;
+  if (!weekly) tab = "daily";
+  renderTabs();
+  tab === "weekly" ? renderWeekly() : renderDaily();
+}
+
+(async () => {
+  try {
+    const idx = await get("data/index.json");
+    entries = idx.entries;
+    $("#sub").textContent = `일~목 저녁 7시 게재 · 목요일 주간 동향 · 마지막 업데이트 ${idx.updated.replace("T", " ").slice(0, 16)}`;
+    $("#date").innerHTML = entries.map(e => `<option value="${e.date}">${e.label}${e.weekly ? " · 주간 포함" : ""} (${e.count}건)</option>`).join("");
+    $("#date").onchange = e => load(e.target.value);
+    if (entries.length) await load(entries[0].date);
+    else throw 0;
+  } catch (e) {
+    $("#sub").textContent = "아직 게재된 동향이 없습니다.";
+  }
+})();
+</script>
+</body>
+</html>
