@@ -195,6 +195,15 @@ def article_text(url, limit=4000):
          or re.search(r'(?is)<time[^>]+datetime=["\']([^"\']+)', page))
     if m:
         og = f"[게시일 {m.group(1)[:10]}] {og}"
+    else:  # 메타 정보가 없으면 페이지에 보이는 날짜들을 힌트로 (게시판 상단 날짜 등)
+        plain = strip_tags(page)
+        found = []
+        for y, mo, d in re.findall(r"(20\d\d)[.\-/]\s?(\d{1,2})[.\-/]\s?(\d{1,2})", plain):
+            v = f"{y}-{int(mo):02d}-{int(d):02d}"
+            if v not in found:
+                found.append(v)
+        if found:
+            og = f"[페이지에 보이는 날짜: {', '.join(found[:3])}] {og}"
     paras = [squash(strip_tags(p)) for p in re.findall(r"(?is)<p[^>]*>(.*?)</p>", page)]
     body = " ".join(p for p in paras if len(p) > 30)
     if len(body) < 200:  # <p>를 안 쓰는 언론사: 기사 영역 통째로
@@ -334,6 +343,8 @@ def excluded(e):
     first_host = e["hosts"].split(",")[0].strip()
     if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
+    if e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
+        return "지역 현안"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
     if hosts and all(PARTIES.search(h) for h in hosts):
         return "정당 주최"
