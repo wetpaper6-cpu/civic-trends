@@ -598,7 +598,7 @@ def main():
     else:
         log("NAVER_CLIENT_ID/SECRET 없음: 네이버 검색을 건너뜁니다.")
 
-    # 홈페이지 새 글은 모두 본문을 읽어 날짜로 거름 (페이지당 최근 20개)
+    # 홈페이지 새 글은 모두 본문을 읽어 날짜로 거름 (페이지당 최근 40개)
     # 기록 형식: {주소: 처음 본 날짜}. 오늘 처음 본 글은 같은 날 다시 실행해도 다시 처리
     raw = load_json(SEEN_FILE) if SEEN_FILE.exists() else {}
     seen_dates = raw if isinstance(raw, dict) else {u: "0000-00-00" for u in raw}
@@ -607,7 +607,7 @@ def main():
     for org in CONFIG["orgs"]:
         for n, it in enumerate(scrape_homepage(org, keywords, seen, now)):
             seen_dates.setdefault(it["url"], ds_today)
-            if n < 20:
+            if n < 40:
                 add(it)
     save_json(SEEN_FILE, dict(sorted(seen_dates.items())))
 
