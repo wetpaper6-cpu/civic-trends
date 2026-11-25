@@ -77,7 +77,7 @@ jobs:
           }
           publish "daily-$D" build/daily-title.txt build/daily-notes.md \
             "docs/files/daily-$D.docx" "docs/files/daily-$D.pdf"
-          if [ -f "docs/data/weekly-$D.json" ]; then
+          if [ -f build/weekly-notes.md ]; then  # 이번 실행에서 주간 동향을 만든 경우에만
             publish "weekly-$D" build/weekly-title.txt build/weekly-notes.md \
               "docs/files/weekly-$D.docx" "docs/files/weekly-$D.pdf"
           fi
