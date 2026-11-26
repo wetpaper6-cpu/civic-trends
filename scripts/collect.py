@@ -345,7 +345,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 아래 JSON 형식으로만 답하세요. 다른 말은 쓰지 마세요.
 
 {{"type": "기자회견|토론회|성명|논평|집회 중 하나 (토론회 = 시민사회가 주최·주관한 토론회·간담회·세미나·좌담회·포럼)",
- "date": "행사일(성명·논평은 단체가 처음 발표한 날), YYYY-MM-DD. 기사가 오늘 나왔어도 본문상 발표·행사가 그 전이면 그 날짜. 확인할 수 없으면 빈 문자열",
+ "date": "행사일(성명·논평은 단체가 처음 발표한 날), YYYY-MM-DD. 기사가 오늘 나왔어도 본문상 발표·행사가 그 전이면 그 날짜 (예: 법안 통과 기사가 지난달 기자회견을 언급하면 지난달 날짜). 확인할 수 없으면 빈 문자열. datetime과 같은 날이어야 함",
  "title": "사안을 나타내는 간결한 제목 (언론사 제목의 과장 표현은 빼고)",
  "datetime": "행사 일시, 예: 2026.11.18(수) 오전 11시. 성명·논평은 발표일",
  "place": "기자회견·토론회·집회 장소. 성명·논평이거나 알 수 없으면 빈 문자열",
@@ -626,6 +626,15 @@ def enrich(ev):
         d = info["datetime"]
     m = re.search(r"(\d{4})\.(\d{2})\.(\d{2})", d)
     info["date"] = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else main["published"].date().isoformat()
+    # 일시 칸과 날짜 칸이 서로 다르면 일시 칸을 따름
+    # (예: 일시 "2026.10" → 지난달 행사, 일시 "2026.11.26" → 다음 날 열릴 행사의 예고 기사)
+    m2 = re.search(r"(\d{4})\.(\d{1,2})(?:\.(\d{1,2}))?", info["datetime"])
+    if m2:
+        dt_date = f"{m2.group(1)}-{int(m2.group(2)):02d}-{int(m2.group(3) or 1):02d}"
+        same = (dt_date == info["date"]) if m2.group(3) else (dt_date[:7] == info["date"][:7])
+        if not same:
+            log(f"[날짜 불일치: 일시 {info['datetime']} / 날짜 {info['date']} → {dt_date}] {main['title']}")
+            info["date"] = dt_date
     org = ev["org"]
     if org == OTHER:  # 지정 단체가 주최에 들어 있으면 가장 먼저 적힌 단체로
         pos = [(min(info["hosts"].find(a) for a in o["aliases"] if a in info["hosts"]), o["name"])
