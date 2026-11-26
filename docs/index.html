@@ -84,8 +84,7 @@ const bul = v => `<ul class="bul">${asList(v).map(t => `<li>${esc(t)}</li>`).joi
 function renderDaily() {
   const rows = daily.events.filter(i => (org === "전체" || i.org === org) && (kw === "전체" || i.keywords.includes(kw)));
   $("#view").innerHTML = downloads(daily.files)
-    + chips(daily.orgs, org, "단체") + chips(daily.keywords, kw, "키워드")
-    + `<div class="sub">${rows.length}건 / 전체 ${daily.count}건</div>`
+    + `<div class="sub">총 ${daily.count}건</div>`
     + (rows.length ? rows.map(i => `
     <div class="item">
       <h3><span class="badge ${esc(i.type)}">${esc(i.type)}</span><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a></h3>

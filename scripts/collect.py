@@ -604,7 +604,7 @@ def enrich(ev):
 # ================================================================ 출력
 def release_notes(day):
     lines = [f"# 시민사회 동향 · {day['period_label']}", "",
-             f"총 {day['count']}건 · 키워드: {', '.join(day['keywords'])}", "",
+             f"총 {day['count']}건", "",
              "📄 Word·PDF 파일은 맨 아래 **Assets**에서 내려받을 수 있습니다.", ""]
     for ev in day["events"]:
         when = ev["datetime"] + (f" / {ev['place']}" if ev["place"] else "")

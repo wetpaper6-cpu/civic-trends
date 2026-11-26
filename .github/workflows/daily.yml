@@ -2,8 +2,11 @@ name: 시민사회 동향
 
 on:
   schedule:
-    # 일~목 오후 5시 17분(KST)에 시작 → 저녁 7시 전에 게재 (GitHub 실행 지연 대비 여유)
+    # 일~목 오후 5시 17분(KST) 시작. GitHub 예약 실행은 늦어지거나 빠지는 일이 있어
+    # 5시 47분, 6시 17분에도 예비로 시작하고, 이미 게재됐으면 건너뜀
     - cron: "17 8 * * 0-4"
+    - cron: "47 8 * * 0-4"
+    - cron: "17 9 * * 0-4"
   workflow_dispatch:          # Actions 탭에서 수동 실행
     inputs:
       weekly:
@@ -29,7 +32,6 @@ jobs:
       NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
       NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      REPORT_DATE: ${{ inputs.report_date }}
     steps:
       - uses: actions/checkout@v4
 
@@ -37,18 +39,41 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: 날짜 정하기
+        run: |
+          D="${{ inputs.report_date }}"
+          if [ -z "$D" ]; then
+            D=$(date +%F)
+            # 예약 실행이 크게 늦어져 다음 날 새벽·오전에 시작된 경우: 원래 날짜로 처리
+            if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date +%-H)" -lt 12 ]; then
+              D=$(date -d yesterday +%F)
+            fi
+          fi
+          echo "REPORT_DATE=$D" >> "$GITHUB_ENV"
+          SKIP=false
+          # 예비 예약 실행: 그날 저녁 동향이 이미 게재됐으면 건너뜀
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "docs/data/$D.json" ]; then
+            G=$(python3 -c "import json;print(json.load(open('docs/data/$D.json'))['generated_at'])")
+            case "$G" in "$D"T1[7-9]*|"$D"T2*) SKIP=true ;; esac
+          fi
+          echo "SKIP=$SKIP" >> "$GITHUB_ENV"
+          echo "대상 날짜: $D / 건너뛰기: $SKIP"
+
       - name: 준비 (Word 라이브러리, 한글 글꼴)
+        if: env.SKIP != 'true'
         run: |
           pip install python-docx
           sudo apt-get update -qq
           sudo apt-get install -y -qq fonts-noto-cjk
 
       - name: 일일 동향 수집·정리
+        if: env.SKIP != 'true'
         run: python scripts/collect.py
 
       - name: 주간 동향 (목요일)
+        if: env.SKIP != 'true'
         run: |
-          D=${REPORT_DATE:-$(date +%F)}
+          D=$REPORT_DATE
           if [ "$(date -d "$D" +%u)" = "4" ] || [ "${{ inputs.weekly }}" = "true" ]; then
             python scripts/weekly.py
           else
@@ -56,23 +81,26 @@ jobs:
           fi
 
       - name: Word·PDF 만들기
+        if: env.SKIP != 'true'
         run: python scripts/render.py
 
       - name: 사이트에 반영
+        if: env.SKIP != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add docs
           if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
-          git commit -m "동향: ${REPORT_DATE:-$(date +%F)}"
+          git commit -m "동향: $REPORT_DATE"
           git pull --rebase -X theirs origin main || git pull --rebase origin main  # 실행 중 저장소가 바뀐 경우
           git push
 
       - name: 릴리즈 게시
+        if: env.SKIP != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          D=${REPORT_DATE:-$(date +%F)}
+          D=$REPORT_DATE
           publish() {  # 태그, 제목파일, 노트파일, 첨부파일...
             tag=$1; title=$(cat "$2"); notes=$3; shift 3
             if gh release view "$tag" >/dev/null 2>&1; then
