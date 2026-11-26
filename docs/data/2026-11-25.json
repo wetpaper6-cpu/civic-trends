@@ -5,7 +5,7 @@
  "period_end": "2026-11-25",
  "period_label": "2026.11.25(수)",
  "generated_at": "2026-11-26T10:34+09:00",
- "count": 27,
+ "count": 24,
  "keywords": [
   "청와대",
   "분수대",
@@ -662,31 +662,6 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "학교비정규직 총파업 및 교육공무직 임금·교부금 개편 관련 요구",
-   "datetime": "2026.11.27(금)",
-   "place": "국회 앞",
-   "hosts": "전국학교비정규직연대회의",
-   "summary": "교육공무직 저임금 구조 개선, 교육교부금 개편안 철회, 학교 인력 확충과 처우 개선을 위한 재원 확보 촉구",
-   "org": "연대회의",
-   "source": "naver",
-   "keywords": [
-    "성명",
-    "집회"
-   ],
-   "published": "2026-11-25T19:22+09:00",
-   "url": "https://biz.heraldcorp.com/article/10949445?ref=naver",
-   "sources": [
-    {
-     "title": "27일 전국 학교 급식 차질…조리사 ‘쌤’이 위생모 대신 머리띠 둘러맨...",
-     "url": "https://biz.heraldcorp.com/article/10949445?ref=naver",
-     "press": "biz.heraldcorp.com"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "date": "2026-11-25",
-   "scope": "전국",
    "title": "전력수급기본계획 원전 공론화 규탄",
    "datetime": "2026.11.25(수) 오전",
    "place": "서울 중구 정동1928아트센터",
@@ -924,35 +899,6 @@
    "type": "기자회견",
    "date": "2026-11-25",
    "scope": "전국",
-   "title": "고혈압·당뇨병 등록관리사업 국비 52억원 복원 촉구",
-   "datetime": "2026.11.25(수) 오전 10시 30분",
-   "place": "국회 정문 앞",
-   "hosts": "전국 고혈압·당뇨병 등록교육센터 공동대책협의회",
-   "summary": "2027년도 예산안에서 전액 삭감된 고혈압·당뇨병 등록관리사업 국비 52억원 복원 및 기존 의료비 지원 유지, 사업 전국 확대 요구",
-   "org": "기타 단체",
-   "source": "naver",
-   "keywords": [
-    "기자회견"
-   ],
-   "published": "2026-11-25T15:14+09:00",
-   "url": "https://www.wolyo.co.kr/news/articleView.html?idxno=321030",
-   "sources": [
-    {
-     "title": "고혈압·당뇨 환자들, 국회 앞 …\"치료비 예산 복원하라\"",
-     "url": "https://www.wolyo.co.kr/news/articleView.html?idxno=321030",
-     "press": "wolyo.co.kr"
-    },
-    {
-     "title": "고혈압·당뇨병 환자 의료비 지원 52억 전액 삭감 직전...\"예산 복원하라...",
-     "url": "https://www.bosa.co.kr/news/articleView.html?idxno=3017369",
-     "press": "bosa.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "기자회견",
-   "date": "2026-11-25",
-   "scope": "전국",
    "title": "대형마트 식품 스티로폼 포장 감축 및 무포장 판매 확대 촉구",
    "datetime": "2026.11.25(수)",
    "place": "서울 중구 이마트 본사 앞",
@@ -1023,30 +969,6 @@
      "title": "'통합돌봄' 한계점 진단 재설계 모색 토론회 26일 진행",
      "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=549896",
      "press": "kpanews.co.kr"
-    }
-   ]
-  },
-  {
-   "type": "토론회",
-   "date": "2026-11-25",
-   "scope": "전국",
-   "title": "원전 공론화위원회 공개설명회 절차 문제",
-   "datetime": "2026.11.25(수) 오전 8시30분",
-   "place": "서울 중구 정동1928 아트센터",
-   "hosts": "원전 공론화위원회",
-   "summary": "원전 확대 측 전문위원 불참으로 토론회가 설명회로 대체되고 시민 숙의 일정이 촉박한 공론화 절차의 부실성 지적",
-   "org": "환경운동연합",
-   "source": "naver",
-   "keywords": [
-    "토론회"
-   ],
-   "published": "2026-11-25T15:12+09:00",
-   "url": "https://www.hani.co.kr/arti/science/science_general/1289043.html",
-   "sources": [
-    {
-     "title": "찬반 갈등에 흔들리는 원전 공론화…시민 숙의에 던져진 과제는?",
-     "url": "https://www.hani.co.kr/arti/science/science_general/1289043.html",
-     "press": "hani.co.kr"
     }
    ]
   },
