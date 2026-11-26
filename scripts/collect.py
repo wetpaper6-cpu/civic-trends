@@ -428,6 +428,8 @@ def is_workplace_union(h):
     """특정 기업·기관의 노조 (산별·총연맹 등 전국 단위 노조는 제외)"""
     h = re.sub(r"\(.*?\)", "", h).strip()
     last = h.split()[-1] if h.split() else ""
+    if re.search(r"(공단|공사|은행|병원|의료원|대학교|재단|진흥원|공무원연금|보험공단)\s?(노동조합|노조)", h):
+        return True  # 근로복지공단 노동조합 등 특정 기관 노조
     if last != h and UNION_END.search(last) and not UNION_WIDE.search(last):
         return True  # 민주노총 공공운수노조 한국지역난방노동조합 등
     if re.search(r"(지부|지회|분회)$", last):
