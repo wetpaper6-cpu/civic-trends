@@ -361,7 +361,8 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 - 감사패·시상·기념식·단순 행사 안내처럼 주장이나 요구가 없는 것
 - 정기 수요시위(수요집회), 촛불행동의 주말 정기 촛불집회(촛불대행진 등)처럼 매주 정기적으로 열리는 집회
 - 특정 기업·사업장의 노사 현안임 (합병, 구조조정, 임금·단체협약, 파업, 본사 이전 등). 주최가 산별노조·총연맹이어도 특정 기업 사안이면 skip
-- 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·청년·종교·전문가·직능 단체(소상공인연합회 등)가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고(정당이 함께 주최해도 포함), 그 밖의 것은 skip
+- 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·청년·종교·인권·여성·환경 단체, 소상공인·자영업자 단체가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고(정당이 함께 주최해도 포함), 그 밖의 것은 skip.
+  의사·약사·출판·업계 협회처럼 특정 업계·직역의 이익을 주장하는 것, 지자체·공공기관·사업 유치위원회·추진단이 낸 것은 skip
 
 기준 단체: {org}
 기사 게시 시각: {published}
@@ -403,6 +404,8 @@ REGIONAL_BRANCH = re.compile(rf"({REGIONS})\S*(본부|지부|지회|지역본부
 PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당|개혁신당|진보당|정의당|기본소득당|사회민주당|노동당|녹색당|새미래|더민초|당협|원내대표|국회의원|의원")
 
 
+GOV = re.compile(r"^[가-힣]{1,5}(시|군|구|도|청|부|처)$|^[가-힣]+(시청|군청|구청|도청|교육청|공단|공사|진흥원)$|유치위원회|추진단|추진위원회$")
+INTEREST = re.compile(r"약사회|의사회|의사협회|치과의사|한의사협회|간호협회|세무사회|출판|산업연합회|산업협회|경영자총협회|상공회의소")
 CIVIC_WORDS = re.compile(r"시민|연대|행동|단체|본부|노조|노동조합|연합|협의회|네트워크|운동|모임|공동|유니온")
 
 
@@ -424,7 +427,10 @@ UNION_WIDE = re.compile(r"^(전국|민주노총|한국노총|공공운수|금속
 def is_workplace_union(h):
     """특정 기업·기관의 노조 (산별·총연맹 등 전국 단위 노조는 제외)"""
     h = re.sub(r"\(.*?\)", "", h).strip()
-    if re.search(r"(지부|지회|분회)$", h.split()[-1] if h.split() else ""):
+    last = h.split()[-1] if h.split() else ""
+    if last != h and UNION_END.search(last) and not UNION_WIDE.search(last):
+        return True  # 민주노총 공공운수노조 한국지역난방노동조합 등
+    if re.search(r"(지부|지회|분회)$", last):
         return True  # 금속노조 현대차지부, 언론노조 스카이라이프지부 등 사업장 단위
     return bool(UNION_END.search(h)) and not UNION_WIDE.search(h)
 
@@ -458,8 +464,14 @@ def excluded(e):
     if e["type"] == "집회" and "촛불행동" in e["hosts"] and re.search(r"촛불(대행진|집회|문화제|행진)|정기|주말|토요", text):
         return "정기 촛불집회"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
-    if hosts and all(is_party(h) for h in hosts):
-        return "정당 주최"
+    if not hosts or hosts[0] in (OTHER, "기타", "미상"):
+        return "주최 불명"
+    if all(is_party(h) for h in hosts) or re.search(r"의원|더민초|당협|원내대표", hosts[0]):
+        return "정당·의원 주최"
+    if GOV.search(hosts[0]):
+        return "정부·지자체 주최"
+    if INTEREST.search(hosts[0]):
+        return "업계·직역 단체"
     return None
 
 
@@ -510,13 +522,24 @@ def host_key(hosts):
     names = set()
     for h in hosts.split(","):
         h = h.strip()
+        if "공공운수" in h:
+            names.add("공공운수노조")
+            continue
         for o in CONFIG["orgs"]:
             if any(al in h for al in o["aliases"]):
                 h = o["name"]
                 break
+        if "공공운수" in h:
+            h = "공공운수노조"
         if h:
             names.add(re.sub(r"\s|\(.*?\)", "", h))
     return names
+
+
+def same_host_set(a, b):
+    """같은 단체로 볼 수 있는지 (한국독립영화협회 ⊃ 독립영화협회 같은 포함 관계도 같은 단체)"""
+    A, B = host_key(a), host_key(b)
+    return any(x == y or (len(x) >= 4 and x in y) or (len(y) >= 4 and y in x) for x in A for y in B)
 
 
 COMMON_WORDS = re.compile(r"촉구|요구|규탄|반대|발표|기자회견|성명|논평|입장|관련|및|대한|위한|국회|정부|즉각|철회|중단")
@@ -536,8 +559,7 @@ def merge_similar(events):
     out = []
     for e in events:
         for o in out:
-            hk1, hk2 = host_key(e["hosts"]), host_key(o["hosts"])
-            same_hosts = hk1 and hk2 and (hk1 & hk2) and len(hk1 & hk2) >= min(len(hk1), len(hk2)) / 2
+            same_hosts = same_host_set(e["hosts"], o["hosts"])
             overlap = len(topic_grams(e["title"]) & topic_grams(o["title"]))
             if e["date"] == o["date"] and (
                     (e["type"] == o["type"] and ((same_hosts and overlap >= 2) or overlap >= 5))
