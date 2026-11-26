@@ -1,5 +1,5 @@
 {
-  "max_events": 200,
+  "max_events": 250,
   "model_daily": "claude-haiku-5-5",
   "model_weekly": "claude-sonnet-5-5",
   "keywords": [
@@ -8,7 +8,9 @@
     "기자회견",
     "성명",
     "논평",
-    "토론회"
+    "토론회",
+    "인권",
+    "집회"
   ],
   "orgs": [
     {
@@ -90,6 +92,28 @@
       "pages": [
         "https://womenandwar.net"
       ]
+    },
+    {
+      "name": "진보연대",
+      "aliases": [
+        "한국진보연대",
+        "진보연대"
+      ],
+      "pages": []
+    },
+    {
+      "name": "촛불행동",
+      "aliases": [
+        "촛불행동"
+      ],
+      "pages": []
+    },
+    {
+      "name": "천주교인권연대",
+      "aliases": [
+        "천주교인권연대"
+      ],
+      "pages": []
     }
   ],
   "extra_queries": [
@@ -105,7 +129,10 @@
     "시민사회 논평",
     "시민단체 토론회",
     "시민사회 토론회",
-    "국회 토론회 시민단체"
+    "국회 토론회 시민단체",
+    "인권단체 기자회견",
+    "인권단체 성명",
+    "시민단체 집회"
   ],
   "weekly_first_date": "2026-11-26"
 }
