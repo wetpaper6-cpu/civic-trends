@@ -1,5 +1,5 @@
 {
-  "max_events": 250,
+  "max_events": 600,
   "model_daily": "claude-haiku-5-5",
   "model_weekly": "claude-sonnet-5-5",
   "keywords": [

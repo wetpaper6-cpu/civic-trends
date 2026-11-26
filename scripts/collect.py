@@ -429,9 +429,18 @@ def is_workplace_union(h):
     return bool(UNION_END.search(h)) and not UNION_WIDE.search(h)
 
 
+LAW_CHANGE = re.compile(r"[가-힣]+(?<!특별)법(?!원)[^,]{0,8}?(제정|개정|철회|저지|통과|처리|폐기|반대|폐지)")
+
+
 def excluded(e):
     """지방의 지역 현안·정당 주최는 제외. 지방에서 열렸어도 전국 이슈(scope=전국)면 포함"""
     national = e.get("scope") == "전국"
+    # 서울 밖에서 지역 단체가 함께 연 행사는, 특정 국가 법안의 내용을 다루지 않으면 지역 행사로 봄
+    hosts_all = [h.strip() for h in e["hosts"].split(",") if h.strip()]
+    if (e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]
+            and any(REGIONAL_HOST.search(h) for h in hosts_all)
+            and not LAW_CHANGE.search(e["title"])):
+        national = False
     if not national and e["place"] and REGIONAL_PLACE.search(e["place"]) and "서울" not in e["place"]:
         return "지방 행사"
     first_host = e["hosts"].split(",")[0].strip()
@@ -698,8 +707,11 @@ def main():
     groups.sort(key=lambda g: len(g["articles"]), reverse=True)
     # 긴 목록을 한 번에 묶으면 엉뚱하게 합쳐지므로, 사안별로 각각 정리한 뒤 마지막에 짧은 목록으로 합침
     from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        enriched = list(pool.map(enrich, groups[:CONFIG.get("max_events", 200)]))
+    limit = CONFIG.get("max_events", 600)
+    if len(groups) > limit:
+        log(f"[처리 한도 초과] 묶음 {len(groups)}개 중 {limit}개만 처리 (config.json의 max_events로 조정)")
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        enriched = list(pool.map(enrich, groups[:limit]))
     events, old_posts = [], []
     for e in enriched:
         if not e:
