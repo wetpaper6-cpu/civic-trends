@@ -359,7 +359,7 @@ LLM_PROMPT = """다음은 한국 시민사회 활동을 다룬 기사(또는 단
 - 서울 이외 지역의 지역 현안임 (위 scope 기준으로 '지역'인 것. '전국'이면 지역 단체가 했어도 skip하지 말 것)
 - 정당·정당 소속 정치인·정부·지자체·기업이 주체임
 - 감사패·시상·기념식·단순 행사 안내처럼 주장이나 요구가 없는 것
-- 정기 수요시위(수요집회)처럼 매주 정기적으로 열리는 집회
+- 정기 수요시위(수요집회), 촛불행동의 주말 정기 촛불집회(촛불대행진 등)처럼 매주 정기적으로 열리는 집회
 - 특정 기업·사업장의 노사 현안임 (합병, 구조조정, 임금·단체협약, 파업, 본사 이전 등). 주최가 산별노조·총연맹이어도 특정 기업 사안이면 skip
 - 기준 단체가 '{other}'이면: 시민사회단체·노동단체(총연맹·산별노조)·학생·청년·종교·전문가·직능 단체(소상공인연합회 등)가 국가 정책이나 사회 현안에 대해 낸 것은 포함하고(정당이 함께 주최해도 포함), 그 밖의 것은 skip
 
@@ -443,8 +443,11 @@ def excluded(e):
         return "지역 조직"
     if not national and e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
         return "지역 현안"
-    if re.search(r"수요\s?(시위|집회)", e["title"] + " " + as_text(e.get("summary", ""))):
+    text = e["title"] + " " + as_text(e.get("summary", ""))
+    if re.search(r"수요\s?(시위|집회)", text):
         return "정기 수요시위"
+    if e["type"] == "집회" and "촛불행동" in e["hosts"] and re.search(r"촛불(대행진|집회|문화제|행진)|정기|주말|토요", text):
+        return "정기 촛불집회"
     hosts = [h.strip() for h in e["hosts"].split(",") if h.strip()]
     if hosts and all(is_party(h) for h in hosts):
         return "정당 주최"
