@@ -407,7 +407,7 @@ PARTIES = re.compile(r"국민의힘|더불어민주당|민주당|조국혁신당
 
 
 GOV = re.compile(r"^[가-힣]{1,5}(시|군|구|도|청|부|처)$|^[가-힣]+(시청|군청|구청|도청|교육청|공단|공사|진흥원)$|유치위원회|추진단|추진위원회$|공론화위원회|^국가[가-힣]*위원회$|^대통령")
-INTEREST = re.compile(r"약사회|의사회|의사협회|치과의사|한의사협회|간호협회|세무사회|출판|산업연합회|산업협회|경영자총협회|상공회의소")
+INTEREST = re.compile(r"약사회|의사회|의사협회|치과의사|한의사협회|간호협회|세무사회|출판|산업연합회|산업협회|경영자총협회|상공회의소|조합장|농협|축협|수협|중앙회")
 CIVIC_WORDS = re.compile(r"시민|연대|행동|단체|본부|노조|노동조합|연합|협의회|네트워크|운동|모임|공동|유니온")
 
 
@@ -460,8 +460,10 @@ def excluded(e):
         return "기업·기관 노조"
     if not national and REGIONAL_HOST.search(first_host):
         return "지역 조직"
-    if not national and e.get("scope") == "지역" and re.search(REGIONS, e["hosts"] + " " + e["place"]) and "서울" not in e["place"]:
-        return "지역 현안"
+    if not national and e.get("scope") == "지역":
+        seoul_city = "서울" in e["hosts"] or "서울시" in (e["title"] + as_text(e.get("summary", "")))
+        if not seoul_city:
+            return "지역 현안"  # 구청·구의회, 지역 병원·보건소, 지방 사업 등 (서울에서 열렸어도)
     text = e["title"] + " " + as_text(e.get("summary", ""))
     if re.search(r"수요\s?(시위|집회)", text):
         return "정기 수요시위"
@@ -483,6 +485,8 @@ def excluded(e):
 
 DEDUPE_PROMPT = """아래는 같은 기간의 시민사회 기자회견·성명 목록입니다.
 같은 행사(같은 기자회견, 같은 성명)를 가리키는 항목끼리 번호를 묶어 주세요.
+같은 주체(이름이 조금 달라도 같은 기관이면 같은 주체. 예: '전국 시도교육감'과 '대한민국교육감협의회')가
+같은 날 같은 사안으로 낸 기자회견과 성명도 한 묶음으로 묶으세요.
 JSON으로만 답하세요: {{"groups": [[번호, ...], ...]}}  (모든 번호를 한 번씩)
 
 {items}"""
@@ -500,14 +504,15 @@ def dedupe_final(events):
     for grp in res.get("groups", []):
         ids = [i for i in grp if isinstance(i, int) and 1 <= i <= len(events) and i not in used]
         used.update(ids)
-        # 유형·날짜가 다르면 같은 행사가 아님 (예: 11.25 성명과 11.23 논평)
+        # 날짜가 다르면 같은 사안이 아님 (예: 11.25 성명과 11.23 논평). 같은 날 같은 주체의 기자회견·성명은 하나로
         by_key = {}
         for i in ids:
-            by_key.setdefault((events[i - 1]["type"], events[i - 1]["date"]), []).append(i)
+            by_key.setdefault(events[i - 1]["date"], []).append(i)
         sub_groups += by_key.values()
     for ids in sub_groups:
         members = [events[i - 1] for i in ids]
-        best = max(members, key=lambda e: (len(e["sources"]), len(e["summary"])))
+        rank = {"기자회견": 0, "토론회": 1, "집회": 2, "성명": 3, "논평": 4}
+        best = min(members, key=lambda e: (rank.get(e["type"], 9), -len(e["sources"])))
         if any(m.get("scope") == "전국" for m in members):
             best["scope"] = "전국"
         if any(m.get("source") == "homepage" for m in members):
@@ -530,6 +535,9 @@ def host_key(hosts):
         h = h.strip()
         if "공공운수" in h:
             names.add("공공운수노조")
+            continue
+        if "교육감" in h:
+            names.add("교육감협의회")
             continue
         for o in CONFIG["orgs"]:
             if any(al in h for al in o["aliases"]):
